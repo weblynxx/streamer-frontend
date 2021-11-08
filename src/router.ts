@@ -64,7 +64,6 @@ router.beforeEach(async (to, from, next) => {
     //user is loggedin
     if (!AuthorityUtils.isEmptyAccount()) {
       // check access to route based on roles
-      alert('zzzzzzz!');
       if (
         !AuthorityUtils.isStreamer() &&
         !AuthorityUtils.hasAnyRole(to.meta.requiresRole)
