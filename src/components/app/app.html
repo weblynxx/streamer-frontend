@@ -1,0 +1,84 @@
+<v-app id="inspire">
+  <component :is="layout">
+    <router-view />
+  </component>
+</v-app>
+
+<!-- <v-app id="inspire">
+  <v-app-bar app color="white" flat v-if="isLoggedIn">
+    <v-container class="py-0 fill-height">
+      <v-btn text> Dashboard</v-btn>
+      <v-btn text> Profile </v-btn>
+      <v-spacer></v-spacer>
+      <span class="text-h4">StreamerId</span>
+    </v-container>
+  </v-app-bar>
+  <v-main fluid transition="slide-x-transition" class="">
+    <div class="context"></div>
+    <div class="area">
+      <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <router-view />
+    </div>
+  </v-main>
+  <v-main class="grey lighten-3">
+    <v-container>
+      <v-row>
+        <v-col cols="3" v-if="isLoggedIn">
+          <v-sheet rounded="lg">
+            <v-list color="transparent">
+              <v-list-item link>
+                <v-list-item-content>
+                  <v-list-item-title>My Profile</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+              <v-list-item link>
+                <v-list-item-content>
+                  <v-list-item-title>Services</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+
+              <v-divider class="my-2"></v-divider>
+
+              <v-list-item link color="grey lighten-4">
+                <v-list-item-content>
+                  <v-list-item-title>
+                    Refresh your streamerId
+                  </v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
+          </v-sheet>
+        </v-col>
+
+        <v-col>
+          <v-sheet min-height="80vh" rounded="lg">
+            <router-view />
+          </v-sheet>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-main>
+</v-app> -->

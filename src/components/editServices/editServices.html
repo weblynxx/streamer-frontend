@@ -1,0 +1,27 @@
+<div>
+  <v-row>
+    <v-col>
+      <v-card max-width="1200" class="ml-auto mr-auto elevation-0 mt-12">
+        <v-card-title class="elevation-0">
+          {{ "My services" }}
+          <v-spacer></v-spacer>
+        </v-card-title>
+        <v-card-text class="elevation-0">
+          <v-container grid-list-md>
+            <v-layout wrap>
+              <v-flex xs12 sm8 md8>
+                <v-select dense name="sulatation" outlined></v-select>
+              </v-flex>
+              <v-flex xs12 sm8 md8>
+                <v-text-field dense name="firstname" outlined> </v-text-field>
+              </v-flex>
+              <v-flex xs12 sm8 md8>
+                <v-text-field dense name="lastname" outlined> </v-text-field>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-card-text>
+      </v-card>
+    </v-col>
+  </v-row>
+</div>

@@ -1,0 +1,60 @@
+<div>
+  <v-row>
+    <v-col>
+      <v-card class="ml-auto mr-auto elevation-0 mt-12">
+        <v-card-title class="elevation-0">
+          {{ "My profile" }}
+          <v-spacer></v-spacer>
+        </v-card-title>
+        <validation-observer ref="observer-edit-profile-form" v-slot="v">
+          <v-form
+            id="editProfile"
+            class="form__edit"
+            data-vv-scope="editProfile"
+          >
+            <v-card-text class="elevation-0">
+              <v-container grid-list-md>
+                <v-layout wrap>
+                  <v-flex xs12 sm8 md8>
+                    <validation-provider
+                      name="firstname"
+                      rules="required|max:32"
+                      v-slot="{ errors }"
+                    >
+                      <v-text-field
+                        dense
+                        v-model="updateProfile.firstName"
+                        label="Имя"
+                        name="firstname"
+                        outlined
+                        :error-messages="errors[0]"
+                      >
+                      </v-text-field>
+                    </validation-provider>
+                  </v-flex>
+                  <v-flex xs12 sm8 md8>
+                    <validation-provider
+                      name="lastName"
+                      rules="required|max:32"
+                      v-slot="{ errors }"
+                    >
+                      <v-text-field
+                        dense
+                        v-model="updateProfile.lastName"
+                        label="Фамилия"
+                        name="lastName"
+                        outlined
+                        :error-messages="errors[0]"
+                      >
+                      </v-text-field>
+                    </validation-provider>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-card-text>
+          </v-form>
+        </validation-observer>
+      </v-card>
+    </v-col>
+  </v-row>
+</div>

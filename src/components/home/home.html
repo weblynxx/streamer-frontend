@@ -1,0 +1,65 @@
+<v-container class="mb-10">
+  <v-row class="mt-10"></v-row>
+  <v-row>
+    <v-col cols="2">
+      <v-sheet rounded="lg">
+        <v-list color="transparent">
+          <v-list-item link>
+            <v-list-item-content>
+              <v-list-item-title>
+                <v-avatar size="36px">
+                  <img
+                    v-if="message.avatar"
+                    alt="Avatar"
+                    :src="message.avatar"
+                  />
+                  <v-icon
+                    v-else
+                    :color="message.color"
+                    v-text="message.icon"
+                  ></v-icon>
+                </v-avatar>
+                <strong v-html="message.name" class="ml-4"></strong>
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item link @click="window=1">
+            <v-list-item-action>
+              <v-icon>mdi-account</v-icon>
+            </v-list-item-action>
+            <v-list-item-title> My profile </v-list-item-title>
+          </v-list-item>
+          <v-list-item link @click="window=2">
+            <v-list-item-action>
+              <v-icon>mdi-youtube-tv</v-icon>
+            </v-list-item-action>
+            <v-list-item-title> My services </v-list-item-title>
+          </v-list-item>
+
+          <v-divider class="my-2"></v-divider>
+
+          <v-list-item link color="grey lighten-4" @click="logout">
+            <v-list-item-action>
+              <v-icon>mdi-exit-to-app</v-icon>
+            </v-list-item-action>
+            <v-list-item-title> Sign out </v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-sheet>
+    </v-col>
+    <v-col cols="2"></v-col>
+    <v-col cols="4">
+      <v-sheet min-height="70vh" rounded="lg" style="border: 2px solid #673ab7">
+        <v-window v-model="window" class="elevation-0" vertical>
+          <v-window-item :value="1">
+            <edit-profile></edit-profile>
+          </v-window-item>
+          <v-window-item :value="2">
+            <edit-services></edit-services>
+          </v-window-item>
+        </v-window>
+      </v-sheet>
+    </v-col>
+    <v-col cols="4"></v-col>
+  </v-row>
+</v-container>
