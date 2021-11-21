@@ -9,8 +9,17 @@
         <v-card-text class="elevation-0">
           <v-container grid-list-md>
             <v-layout wrap>
-              <v-flex>
-                <v-btn :href="twitchOauthUrl()">go</v-btn>
+              <v-flex
+                xs12
+                md12
+                v-for="item in getterServices"
+                :key="item.id"
+                class="d-flex justify-space-between"
+              >
+                <div class="text-h5">{{ item.name}}</div>
+                <v-btn v-if="item.name=='Twitch'" :href="twitchOauthUrl()" small
+                  >link</v-btn
+                >
               </v-flex>
             </v-layout>
           </v-container>
