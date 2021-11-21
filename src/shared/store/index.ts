@@ -94,12 +94,7 @@ const storeOptions: StoreOptions<RootState> = {
     authManagement,
     editProfileManagement,
   },
-  plugins: [
-    createPersistedState({
-      key: 'streamer-id',
-      paths: [],
-    }),
-  ],
+  plugins: [],
 };
 
 const store = new Vuex.Store<RootState>(storeOptions);

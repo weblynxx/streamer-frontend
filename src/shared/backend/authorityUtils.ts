@@ -33,9 +33,8 @@ export default class AuthorityUtils {
   public static getCurrentRole() {
     if (this.isStreamer()) {
       return 'ROLE_STREAMER';
-    } else if (this.isCustomer()) {
-      return 'ROLE_CUSTOMER';
     }
+    return 'ROLE_CUSTOMER';
   }
 
   public static isStreamer() {
