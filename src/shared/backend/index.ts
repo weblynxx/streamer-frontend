@@ -79,6 +79,9 @@ export enum URLS {
 
   streamersDtoOData = '/odata/StreamerDto',
   streamers = '/api/Streamers',
+
+  servicesDtoOData = '/odata/ServiceDto',
+  services = '/api/Service',
 }
 
 export enum URL_PARAMS {
