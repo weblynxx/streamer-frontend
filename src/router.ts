@@ -51,7 +51,7 @@ const router = new VueRouter({
   ],
 });
 
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to: any, from, next) => {
   document.title = to.meta.title + ' | Streamer';
   if (to.name == undefined) {
     next({
@@ -66,7 +66,7 @@ router.beforeEach(async (to, from, next) => {
     return;
   }
   // does the route require authorization?
-  if (!to.matched.some(record => record.meta.requiresAuth)) {
+  if (!to.matched.some((record: any) => record.meta.requiresAuth)) {
     next();
     return;
   }
