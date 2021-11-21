@@ -24,13 +24,25 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'home',
+      component: () => import('@/components/home/home.vue'),
       meta: {
-        title: 'Home',
+        title: 'Home Page',
         layout: 'main',
         requiresAuth: true,
         requiresRole: [AUTHORITIES.STREAMER],
       },
-      component: () => import('@/components/home/home.vue'),
+    },
+
+    {
+      path: '/oauth/twitch',
+      name: 'TwitchOAuth',
+      meta: {
+        title: 'TwitchOAuth',
+        layout: 'main',
+        requiresAuth: true,
+        requiresRole: [AUTHORITIES.STREAMER],
+      },
+      component: () => import('@/components/redirects/twitch/twitch.vue'),
     },
     {
       path: '/',
@@ -68,7 +80,6 @@ router.beforeEach(async (to, from, next) => {
         !AuthorityUtils.isStreamer() &&
         !AuthorityUtils.hasAnyRole(to.meta.requiresRole)
       ) {
-        alert('her2e!');
         next('error-access-view');
         return;
       }
