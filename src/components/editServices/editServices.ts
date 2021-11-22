@@ -21,6 +21,6 @@ export default class EditServiceComponent extends Vue {
     this.actionGetServices();
   }
   private twitchOauthUrl() {
-    return `https://id.twitch.tv/oauth2/authorize?client_id=${process.env.VUE_APP_TWITCH_CLIENT_ID}&redirect_uri=${process.env.VUE_TWITCH_REDIRECT}/oauth/twitch&response_type=code&scope=user:read:email`;
+    return `https://id.twitch.tv/oauth2/authorize?client_id=${process.env.VUE_APP_TWITCH_CLIENT_ID}&redirect_uri=${process.env.VUE_APP_TWITCH_REDIRECT}/oauth/twitch&response_type=code&scope=user:read:email`;
   }
 }
