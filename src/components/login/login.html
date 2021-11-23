@@ -1,144 +1,184 @@
 <v-content>
   <v-container class="fill-height" fluid>
-    <v-row align="center" justify="center">
-      <v-col cols="12" sm="8" md="8">
-        <v-card class="ml-auto mr-auto elevation-12" max-width="800px">
-          <v-window v-model="step">
-            <v-window-item :value="1">
-              <v-row>
-                <v-col cols="12" md="8">
-                  <v-card-text class="mt-12">
-                    <h1 class="text-center display-2 teal--text text--accent-3">
-                      Sign in to Streamer
-                    </h1>
-                    <h4 class="text-center mt-4">
-                      Ensure your email for registration
-                    </h4>
-                    <v-form>
-                      <v-text-field
-                        label="Username"
-                        name="username"
-                        type="text"
-                        v-model="newUser.userName"
-                        color="teal accent-3"
-                      />
-
-                      <v-text-field
-                        id="password"
-                        label="Password"
-                        v-model="newUser.password"
-                        name="password"
-                        type="password"
-                        color="teal accent-3"
-                      />
-                    </v-form>
-                    <h3 class="text-center mt-4">Forgot your password ?</h3>
-                  </v-card-text>
-                  <div class="text-center mt-3 mb-4">
-                    <v-btn
-                      rounded
-                      color="teal accent-3"
-                      @click="login"
-                      :isLoading="isLoading"
-                      :disabled="isLoading"
+    <div class="ml-auto mr-auto  white--text logo" data-end="AD">Send</div>
+    <v-row justify="center">
+      <v-col cols="12" xs="12" sm="8" md="5">
+        <v-card class="ml-auto mr-auto main_login_form" color="#1F2340">
+          <v-card-text>
+            <v-tabs
+              v-model="tab"
+              :class="!isMobile ? 'mb-6 mt-8 mx-5' :'mx-5'"
+              :fixed-tabs="isMobile"
+              slider-size="2"
+              style="border-bottom: 1px solid #373A5F; width: 92%;"
+            >
+              <v-tabs-slider color="#FEA116"></v-tabs-slider>
+              <v-tab
+                class="v-tabs-font-style "
+                active-class="v-tabs-font-style-active"
+                >Войти</v-tab
+              >
+              <v-tab
+                class="v-tabs-font-style"
+                active-class="v-tabs-font-style-active"
+                >Зарегистриоваться</v-tab
+              >
+            </v-tabs>
+            <v-tabs-items v-model="tab" class="transparent-background">
+              <validation-observer ref="observer-login-form" v-slot="v">
+                <!--  -->
+                <!-- Login -->
+                <!--  -->
+                <v-tab-item class="pa-3">
+                  <validation-provider
+                    name="login"
+                    rules="required"
+                    v-slot="{ errors }"
+                  >
+                    <v-text-field
+                      label="Логин"
+                      :height="isMobile ? '50px' :'86px'"
+                      color="#55597D"
                       dark
-                      >SIGN IN</v-btn
+                      v-model="newUser.userName"
+                      background-color="#14182E"
+                      :error-messages="errors[0]"
                     >
-                  </div>
-                </v-col>
-                <v-col cols="12" md="4" class="teal accent-3">
-                  <v-card-text class="white--text mt-12">
-                    <h1 class="text-center display-1">Hello, Friend!</h1>
-                    <h5 class="text-center">
-                      Enter your personal details and start journay with us
-                    </h5>
-                  </v-card-text>
-                  <div class="text-center">
-                    <v-btn rounded outlined dark @click="step++">SIGN UP</v-btn>
-                  </div>
-                </v-col>
-              </v-row>
-            </v-window-item>
-            <v-window-item :value="2">
-              <v-row class="fill-height">
-                <v-col cols="12" md="4" class="teal accent-3">
-                  <v-card-text class="white--text mt-12">
-                    <h1 class="text-center display-1">Welcome Back!</h1>
-                    <h5 class="text-center">
-                      To Keep connected with us please login with your personnel
-                      info
-                    </h5>
-                  </v-card-text>
-                  <div class="text-center">
-                    <v-btn rounded outlined dark @click="step--">Sign in</v-btn>
-                  </div>
-                </v-col>
-
-                <v-col cols="12" md="8">
-                  <v-card-text class="mt-12">
-                    <h1 class="text-center display-2 teal--text text--accent-3">
-                      Create Account
-                    </h1>
-                    <h4 class="text-center mt-4">
-                      Ensure your email for registration
-                    </h4>
-                    <v-form>
-                      <v-text-field
-                        label="Email"
-                        name="Email"
-                        v-model="newUser.email"
-                        @change="emailChanged"
-                        type="text"
-                        color="teal accent-3"
-                      />
-                      <v-text-field
-                        label="Username"
-                        name="username"
-                        v-model="newUser.userName"
-                        type="text"
-                        color="teal accent-3"
-                      />
-                      <v-row>
-                        <v-col
-                          ><v-text-field
-                            label="First name"
-                            name="firstName"
-                            v-model="newUser.firstName"
-                            type="text"
-                            color="teal accent-3"
-                        /></v-col>
-                        <v-col>
-                          <v-text-field
-                            label="Last Name"
-                            name="lastName"
-                            v-model="newUser.lastName"
-                            type="text"
-                            color="teal accent-3"
-                          />
-                        </v-col>
-                      </v-row>
-
-                      <v-text-field
-                        id="password"
-                        v-model="newUser.password"
-                        :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-                        label="Password"
-                        name="password"
-                        :type="showPassword ? 'text' : 'password'"
-                        @click:append="showPassword = !showPassword"
-                        color="teal accent-3"
-                      />
-                    </v-form>
-                  </v-card-text>
-                  <div class="text-center mt-n5 mb-4">
-                    <v-btn rounded color="teal accent-3" @click="create" dark
-                      >SIGN UP</v-btn
+                    </v-text-field>
+                  </validation-provider>
+                  <validation-provider
+                    name="password"
+                    rules="required"
+                    v-slot="{ errors }"
+                  >
+                    <v-text-field
+                      label="Пароль"
+                      dark
+                      :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                      :type="showPassword ? 'text' : 'password'"
+                      @click:append="showPassword = !showPassword"
+                      v-model="newUser.password"
+                      :height="isMobile ? '50px' :'86px'"
+                      color="#55597D"
+                      background-color="#14182E"
+                      v-on:keyup.enter="login"
+                      :error-messages="errors[0]"
+                    ></v-text-field>
+                  </validation-provider>
+                  <v-flex class="d-flex flex-inline">
+                    <v-btn
+                      x-large
+                      :disabled="isLoading"
+                      :loading="isLoading"
+                      class="btn_log_in ml-auto mr-auto white--text mb-8 mt-6"
+                      color="#fea116"
+                      @click="login"
+                      >Войти</v-btn
                     >
-                  </div>
-                </v-col>
-              </v-row>
-            </v-window-item>
-          </v-window>
+                  </v-flex>
+                </v-tab-item>
+              </validation-observer>
+              <validation-observer ref="observer-register-form" v-slot="v">
+                <!--  -->
+                <!-- Registration form -->
+                <!--  -->
+                <v-tab-item>
+                  <validation-provider
+                    name="email"
+                    rules="required|email"
+                    v-slot="{ errors }"
+                  >
+                    <v-text-field
+                      label="E-mail"
+                      @change="emailChanged"
+                      :height="isMobile ? '50px' :'86px'"
+                      color="#55597D"
+                      dark
+                      v-model="newUser.email"
+                      background-color="#14182E"
+                      :error-messages="errors[0]"
+                    ></v-text-field>
+                  </validation-provider>
+                  <validation-provider
+                    name="login"
+                    rules="required"
+                    v-slot="{ errors }"
+                  >
+                    <v-text-field
+                      label="Логин"
+                      :height="isMobile ? '50px' :'86px'"
+                      color="#55597D"
+                      dark
+                      v-model="newUser.userName"
+                      background-color="#14182E"
+                      :error-messages="errors[0]"
+                    ></v-text-field>
+                  </validation-provider>
+
+                  <validation-provider
+                    name="firstName"
+                    rules="required"
+                    v-slot="{ errors }"
+                  >
+                    <v-text-field
+                      label="Имя"
+                      dark
+                      v-model="newUser.firstName"
+                      :height="isMobile ? '50px' :'86px'"
+                      color="#55597D"
+                      background-color="#14182E"
+                      :error-messages="errors[0]"
+                    ></v-text-field>
+                  </validation-provider>
+                  <validation-provider
+                    name="lastName"
+                    rules="required"
+                    v-slot="{ errors }"
+                  >
+                    <v-text-field
+                      label="Фамилия"
+                      dark
+                      v-model="newUser.lastName"
+                      :height="isMobile ? '50px' :'86px'"
+                      color="#55597D"
+                      background-color="#14182E"
+                      :error-messages="errors[0]"
+                    ></v-text-field>
+                  </validation-provider>
+                  <validation-provider
+                    name="password"
+                    rules="required|min:8|verify_password"
+                    v-slot="{ errors }"
+                  >
+                    <v-text-field
+                      label="Паоль"
+                      dark
+                      :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                      :type="showPassword ? 'text' : 'password'"
+                      @click:append="showPassword = !showPassword"
+                      v-model="newUser.password"
+                      :height="isMobile ? '50px' :'86px'"
+                      color="#55597D"
+                      background-color="#14182E"
+                      :error-messages="errors[0]"
+                    ></v-text-field>
+                  </validation-provider>
+
+                  <v-flex class="d-flex flex-inline">
+                    <v-btn
+                      x-large
+                      :disabled="isLoading"
+                      :loading="isLoading"
+                      class="btn_log_in ml-auto mr-auto white--text mb-10"
+                      color="#fea116"
+                      @click="create"
+                      >Регистрация</v-btn
+                    >
+                  </v-flex>
+                </v-tab-item>
+              </validation-observer>
+            </v-tabs-items>
+          </v-card-text>
         </v-card>
       </v-col>
     </v-row>

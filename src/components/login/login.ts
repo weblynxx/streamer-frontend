@@ -4,6 +4,7 @@ import { User, UserEmpty } from '../../shared/model/user';
 import { namespace } from 'vuex-class';
 import { Logger } from 'fsts';
 import { DefaultViewHelper } from '../ViewHelper';
+import { Ref } from 'vue-property-decorator';
 
 const logger = new Logger('authorization');
 const authModule = namespace('authManagement');
@@ -14,10 +15,13 @@ export default class LoginComponent extends Vue {
   @authModule.Action('login') private actionLogin!: any;
   @authModule.Action('loadAccountDetails')
   private actionLoadAccountDetails!: any;
+  @Ref('observer-login-form') private observerLoginForm!: any;
+  @Ref('observer-register-form') private observerRegisterForm!: any;
 
   private step = 1;
   private showPassword = false;
   private isLoading = false;
+  private tab = 0;
 
   private newUser: User = {
     ...UserEmpty,
@@ -30,6 +34,12 @@ export default class LoginComponent extends Vue {
   }
 
   private async create() {
+    this.isLoading = true;
+    const result = await this.observerRegisterForm.validate();
+    if (!result) {
+      this.isLoading = false;
+      return;
+    }
     this.newUser.authorities = 'ROLE_STREAMER';
     var payload = {
       newEmployee: this.newUser,
@@ -38,25 +48,12 @@ export default class LoginComponent extends Vue {
       .then(() => {
         this.loginAfterCreateAdmin();
       })
-      .catch(() => {});
+      .catch(() => {
+        this.isLoading = false;
+      });
   }
 
   async loginAfterCreateAdmin() {
-    const credentialPayload = {
-      username: this.newUser.userName,
-      password: this.newUser.password,
-      rememberMe: false,
-    };
-    await this.actionLogin(credentialPayload).then(() => {
-      this.actionLoadAccountDetails()
-        .then(() => {
-          this.$router.push({ path: '/' });
-        })
-        .catch(() => {});
-    });
-  }
-  public async login() {
-    var redirect = this.$route.query.redirect as string;
     const credentialPayload = {
       username: this.newUser.userName,
       password: this.newUser.password,
@@ -64,8 +61,38 @@ export default class LoginComponent extends Vue {
     };
     await this.actionLogin(credentialPayload)
       .then(() => {
+        this.isLoading = false;
         this.actionLoadAccountDetails()
           .then(() => {
+            this.$router.push({ path: '/' });
+          })
+          .catch(() => {
+            this.isLoading = false;
+          });
+      })
+      .catch(() => {
+        this.isLoading = false;
+      });
+    this.isLoading = false;
+  }
+  public async login() {
+    this.isLoading = true;
+    var redirect = this.$route.query.redirect as string;
+    const credentialPayload = {
+      username: this.newUser.userName,
+      password: this.newUser.password,
+      rememberMe: true,
+    };
+    const result = await this.observerLoginForm.validate();
+    if (!result) {
+      this.isLoading = false;
+      return;
+    }
+    await this.actionLogin(credentialPayload)
+      .then(() => {
+        this.actionLoadAccountDetails()
+          .then(() => {
+            this.isLoading = false;
             redirect = redirect && redirect != '/' ? redirect : '/';
             this.$router.push({ path: redirect }).catch((e: any) => {
               console.log(e);
@@ -73,6 +100,7 @@ export default class LoginComponent extends Vue {
             this.isLoading = false; // KPTM-354
           })
           .catch(() => {
+            this.isLoading = false;
             logger.debug('error');
           });
       })
@@ -85,5 +113,8 @@ export default class LoginComponent extends Vue {
         // Show snackbar error when login failed
         DefaultViewHelper.showSnackbarError('error.login.login_failed');
       });
+  }
+  get isMobile() {
+    return this.$vuetify.breakpoint.xsOnly;
   }
 }
