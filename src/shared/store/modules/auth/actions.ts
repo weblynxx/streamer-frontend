@@ -13,7 +13,6 @@ export const actions: ActionTree<AuthState, RootState> = {
    * Login to the backend.
    */
   async login({ commit, dispatch }, payload: Credentials) {
-    console.log(payload);
     // authenticate to get the access token
     return defaultBackendAccount
       .authenticate(payload.username!, payload.password!, payload.rememberMe)
@@ -84,6 +83,9 @@ export const actions: ActionTree<AuthState, RootState> = {
       })
       .catch(error => {
         console.log(error);
+        if (error.response.data) {
+          throw error.response.data;
+        }
         commit(
           'setSnackbarError',
           {
