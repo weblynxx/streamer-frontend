@@ -37,7 +37,7 @@
                   >
                     <v-text-field
                       label="Логин"
-                      :height="isMobile ? '50px' :'86px'"
+                      :height="isMobile ? '50px' :'66px'"
                       color="#55597D"
                       dark
                       v-model="newUser.userName"
@@ -58,7 +58,7 @@
                       :type="showPassword ? 'text' : 'password'"
                       @click:append="showPassword = !showPassword"
                       v-model="newUser.password"
-                      :height="isMobile ? '50px' :'86px'"
+                      :height="isMobile ? '50px' :'66px'"
                       color="#55597D"
                       background-color="#14182E"
                       v-on:keyup.enter="login"
@@ -91,7 +91,7 @@
                     <v-text-field
                       label="E-mail"
                       @change="emailChanged"
-                      :height="isMobile ? '50px' :'86px'"
+                      :height="isMobile ? '50px' :'66px'"
                       color="#55597D"
                       dark
                       v-model="newUser.email"
@@ -106,7 +106,7 @@
                   >
                     <v-text-field
                       label="Логин"
-                      :height="isMobile ? '50px' :'86px'"
+                      :height="isMobile ? '50px' :'66px'"
                       color="#55597D"
                       dark
                       v-model="newUser.userName"
@@ -124,7 +124,7 @@
                       label="Имя"
                       dark
                       v-model="newUser.firstName"
-                      :height="isMobile ? '50px' :'86px'"
+                      :height="isMobile ? '50px' :'66px'"
                       color="#55597D"
                       background-color="#14182E"
                       :error-messages="errors[0]"
@@ -139,7 +139,7 @@
                       label="Фамилия"
                       dark
                       v-model="newUser.lastName"
-                      :height="isMobile ? '50px' :'86px'"
+                      :height="isMobile ? '50px' :'66px'"
                       color="#55597D"
                       background-color="#14182E"
                       :error-messages="errors[0]"
@@ -147,7 +147,7 @@
                   </validation-provider>
                   <validation-provider
                     name="password"
-                    rules="required|min:8|verify_password"
+                    rules="required|min:8"
                     v-slot="{ errors }"
                   >
                     <v-text-field
@@ -157,7 +157,7 @@
                       :type="showPassword ? 'text' : 'password'"
                       @click:append="showPassword = !showPassword"
                       v-model="newUser.password"
-                      :height="isMobile ? '50px' :'86px'"
+                      :height="isMobile ? '50px' :'66px'"
                       color="#55597D"
                       background-color="#14182E"
                       :error-messages="errors[0]"
