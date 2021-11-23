@@ -34,12 +34,12 @@ module.exports = {
     port: 2002,
     proxy: {
       '^/api': {
-        target: 'http://127.0.0.1:5252',
+        target: process.env.VUE_APP_DEFAULT_BACKEND_URL,
         ws: false,
         changeOrigin: false,
       },
       '^/odata': {
-        target: 'http://127.0.0.1:5252',
+        target: process.env.VUE_APP_DEFAULT_BACKEND_URL,
         changeOrigun: false,
       },
     },
