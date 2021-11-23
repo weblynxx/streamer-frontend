@@ -1,13 +1,7 @@
-@import url("https://fonts.googleapis.com/css?family=Exo:400,700");
-#app {
-  background-color: transparent !important;
-}
-* {
-  margin: 0px;
-  padding: 0px;
-}
-
-body {
-  background-color: transparent;
-  font-family: "Exo", sans-serif;
+.v-application {
+  [class*='text-'] {
+    color: #36405a;
+    font-family: 'Gilroy', sans-serif !important;
+  }
+  font-family: 'Gilroy', sans-serif !important;
 }
