@@ -12,7 +12,7 @@ export default class TwitchRedirectComponent extends Vue {
   mounted() {
     instance.post<any>(`/api/Service/TwitchLogin`, {
       AccessToken: this.$route.query.code,
-    });
+    }).then((resp:any) => {alert(resp)});
     // instance.post<any>(`/api/Service/TwitchLogin`);
     // this.$router.push('/');
   }
