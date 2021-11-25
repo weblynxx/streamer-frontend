@@ -6,7 +6,7 @@ import LSService from './LocalStorageService';
 const lsService = LSService.getService();
 
 export const instance = axios.create({
-  baseURL: process.env.VUE_KEEPTIME_BACKEND_API_URL,
+  baseURL: process.env.VUE_STREAMER_BACKEND_API_URL,
 });
 
 // Add a request interceptor
@@ -20,7 +20,7 @@ instance.interceptors.request.use(
     return config;
   },
   error => {
-    store.dispatch('auth/logout');
+    store.dispatch('authManagement/logout');
     router.push({ name: 'login', params: { checkLogin: 'false' } });
   }
 );
@@ -79,6 +79,9 @@ export enum URLS {
 
   streamersDtoOData = '/odata/StreamerDto',
   streamers = '/api/Streamers',
+
+  servicesDtoOData = '/odata/ServiceDto',
+  services = '/api/Service',
 }
 
 export enum URL_PARAMS {

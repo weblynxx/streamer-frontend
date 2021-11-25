@@ -9,14 +9,17 @@
         <v-card-text class="elevation-0">
           <v-container grid-list-md>
             <v-layout wrap>
-              <v-flex xs12 sm8 md8>
-                <v-select dense name="sulatation" outlined></v-select>
-              </v-flex>
-              <v-flex xs12 sm8 md8>
-                <v-text-field dense name="firstname" outlined> </v-text-field>
-              </v-flex>
-              <v-flex xs12 sm8 md8>
-                <v-text-field dense name="lastname" outlined> </v-text-field>
+              <v-flex
+                xs12
+                md12
+                v-for="item in getterServices"
+                :key="item.id"
+                class="d-flex justify-space-between"
+              >
+                <div class="text-h5">{{ item.name}}</div>
+                <v-btn v-if="item.name=='Twitch'" :href="twitchOauthUrl()" small
+                  >link</v-btn
+                >
               </v-flex>
             </v-layout>
           </v-container>

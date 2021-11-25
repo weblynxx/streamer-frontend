@@ -24,13 +24,25 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'home',
+      component: () => import('@/components/home/home.vue'),
       meta: {
-        title: 'Home',
+        title: 'Home Page',
         layout: 'main',
         requiresAuth: true,
         requiresRole: [AUTHORITIES.STREAMER],
       },
-      component: () => import('@/components/home/home.vue'),
+    },
+
+    {
+      path: '/oauth/twitch',
+      name: 'TwitchOAuth',
+      meta: {
+        title: 'TwitchOAuth',
+        layout: 'main',
+        requiresAuth: true,
+        requiresRole: [AUTHORITIES.STREAMER],
+      },
+      component: () => import('@/components/redirects/twitch/twitch.vue'),
     },
     {
       path: '/',
@@ -39,7 +51,7 @@ const router = new VueRouter({
   ],
 });
 
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to: any, from, next) => {
   document.title = to.meta.title + ' | Streamer';
   if (to.name == undefined) {
     next({
@@ -54,7 +66,7 @@ router.beforeEach(async (to, from, next) => {
     return;
   }
   // does the route require authorization?
-  if (!to.matched.some(record => record.meta.requiresAuth)) {
+  if (!to.matched.some((record: any) => record.meta.requiresAuth)) {
     next();
     return;
   }
@@ -64,12 +76,10 @@ router.beforeEach(async (to, from, next) => {
     //user is loggedin
     if (!AuthorityUtils.isEmptyAccount()) {
       // check access to route based on roles
-      alert('zzzzzzz!');
       if (
         !AuthorityUtils.isStreamer() &&
         !AuthorityUtils.hasAnyRole(to.meta.requiresRole)
       ) {
-        alert('her2e!');
         next('error-access-view');
         return;
       }

@@ -4,6 +4,8 @@ import { Snackbar } from '../model/snackbar';
 import { RootState } from './types';
 import { authManagement } from './modules/auth';
 import { editProfileManagement } from './modules/editProfileManagement';
+import { editServiceManagement } from './modules/editServiceManagement';
+
 import createPersistedState from 'vuex-persistedstate';
 import { instance } from '../backend';
 
@@ -93,13 +95,9 @@ const storeOptions: StoreOptions<RootState> = {
   modules: {
     authManagement,
     editProfileManagement,
+    editServiceManagement,
   },
-  plugins: [
-    createPersistedState({
-      key: 'streamer-id',
-      paths: [],
-    }),
-  ],
+  plugins: [],
 };
 
 const store = new Vuex.Store<RootState>(storeOptions);

@@ -51,6 +51,8 @@ extend('verify_password', {
     );
     return strongRegex.test(value);
   },
+  message:
+    'Пароль должен содержать хотя бы одну прописную букву, строчную букву, а также цифру и спец символ',
 });
 
 extend('verify_phone', {
