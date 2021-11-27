@@ -79,10 +79,7 @@ extend('verify_already_exist_username', {
       args[0] == '' ? '00000000-0000-0000-0000-000000000000' : args[0];
 
     var isForCustomer = args[1] == 'forCustomer' ? true : false;
-    var url = '/api/Employees/ValidateUserName';
-    if (isForCustomer) {
-      url = '/api/Employees/ValidateUserNameForContact';
-    }
+    var url = '/api/Streamers/ValidateUserName';
     return instance
       .post<Promise<void>>(url, {
         username: value,
