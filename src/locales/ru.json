@@ -1,0 +1,17 @@
+{
+  "auth_management": {
+    "login": "Логин",
+    "email": "E-Mail",
+    "password": "Пароль",
+    "first_name": "Имя",
+    "last_name": "Фамилия",
+    "log_in": "Войти",
+    "register": "Регистрация"
+  },
+  "messages": {
+    "verify_password": "Пароль должен содержать хотя бы одну букву в нижнем и верхнем регистре, цифру, а также спец. символ (.!_?...)",
+    "_default": "default_message",
+    "verify_already_exist_username": "Пользователь с таким именем уже существует",
+    "verify_already_exist_email": "Пользователь с таким email уже существует"
+  }
+}
