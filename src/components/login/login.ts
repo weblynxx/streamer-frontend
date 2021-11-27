@@ -1,10 +1,12 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { User, UserEmpty } from '../../shared/model/user';
-import { namespace } from 'vuex-class';
+import { Action, namespace } from 'vuex-class';
 import { Logger } from 'fsts';
 import { DefaultViewHelper } from '../ViewHelper';
 import { Ref } from 'vue-property-decorator';
+import i18n from '../../i18n';
+import { localize } from 'vee-validate';
 
 const logger = new Logger('authorization');
 const authModule = namespace('authManagement');
@@ -116,5 +118,15 @@ export default class LoginComponent extends Vue {
   }
   get isMobile() {
     return this.$vuetify.breakpoint.xsOnly;
+  }
+
+  @Action('setLocale') public setLocaleForVuex!: any;
+  
+  private setLocale(locale: string) {
+    this.$i18n.locale = locale;
+    i18n.locale = locale;
+    localStorage.setItem('locale', locale);
+    localize(locale);
+    this.setLocaleForVuex();
   }
 }

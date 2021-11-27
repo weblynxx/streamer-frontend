@@ -26,8 +26,17 @@
 </template>
 <style>
 @import url('../style/fonts/Gilroy/stylesheet.css');
+html,
 body {
-  background: #121420 !important;
+  margin: 0;
+  height: 100%;
+  background: url('../assets/bg.png');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+body {
   font-family: 'Gilroy', sans-serif !important;
   font: optional;
 }

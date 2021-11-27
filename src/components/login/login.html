@@ -1,6 +1,44 @@
 <v-content>
   <v-container class="fill-height" fluid>
-    <div class="ml-auto mr-auto  white--text logo" data-end="AD">Send</div>
+    <v-flex md12 class="d-flex d-flex-inline">
+      <v-flex md4 v-if="!isMobile"></v-flex>
+      <v-flex md4 class="d-flex justify-center">
+        <div class="white--text logo" data-end="AD">Send</div>
+      </v-flex>
+      <v-row align="center" justify="center" v-if="!isMobile">
+        <v-col cols="1"></v-col>
+        <v-col cols="3">
+          <v-avatar class="pa-2 cursor">
+            <v-img
+              :src="$i18n.locale =='en' ? require(`../../assets/en-flag.svg`) : require(`../../assets/ru-flag.png`)"
+              aspect-ratio="1.0"
+              @click="setLocale($i18n.locale =='en' ? 'ru' : 'en')"
+              max-height="32"
+            ></v-img>
+          </v-avatar>
+          <span class="white--text"
+            >{{$i18n.locale =='en' ? 'English' : 'Русский'}}</span
+          >
+        </v-col>
+        <v-col cols="8"> </v-col>
+      </v-row>
+      <v-row align="center" justify="center" v-else>
+        <v-col>
+          <v-avatar class="pa-2">
+            <v-img
+              :src="$i18n.locale =='en' ? require(`../../assets/en-flag.svg`) : require(`../../assets/ru-flag.png`)"
+              aspect-ratio="1.0"
+              @click="setLocale($i18n.locale =='en' ? 'ru' : 'en')"
+              max-height="32"
+            ></v-img>
+          </v-avatar>
+          <span class="white--text"
+            >{{$i18n.locale =='en' ? 'English' : 'Русский'}}</span
+          >
+        </v-col>
+      </v-row>
+    </v-flex>
+
     <v-row justify="center">
       <v-col cols="12" xs="12" sm="8" md="5" lg="4">
         <v-card class="ml-auto mr-auto main_login_form" color="#1F2340">
@@ -16,12 +54,12 @@
               <v-tab
                 class="v-tabs-font-style "
                 active-class="v-tabs-font-style-active"
-                >Войти</v-tab
+                >{{ $t('auth_management.log_in')}}</v-tab
               >
               <v-tab
                 class="v-tabs-font-style"
                 active-class="v-tabs-font-style-active"
-                >Зарегистриоваться</v-tab
+                >{{ $t('auth_management.register')}}</v-tab
               >
             </v-tabs>
             <v-tabs-items v-model="tab" class="transparent-background">
@@ -32,11 +70,12 @@
                 <v-tab-item class="pa-3">
                   <validation-provider
                     name="login"
+                    :name="$t('auth_management.login')"
                     rules="required"
                     v-slot="{ errors }"
                   >
                     <v-text-field
-                      label="Login"
+                      :label="$t('auth_management.login')"
                       :height="isMobile ? '50px' :'66px'"
                       color="#55597D"
                       dark
@@ -47,12 +86,12 @@
                     </v-text-field>
                   </validation-provider>
                   <validation-provider
-                    name="password"
+                    :name="$t('auth_management.password')"
                     rules="required"
                     v-slot="{ errors }"
                   >
                     <v-text-field
-                      label="Пароль"
+                      :label="$t('auth_management.password')"
                       dark
                       :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                       :type="showPassword ? 'text' : 'password'"
@@ -73,7 +112,7 @@
                       class="btn_log_in ml-auto mr-auto white--text mb-8 mt-6"
                       color="#fea116"
                       @click="login"
-                      >Войти</v-btn
+                      >{{$t('auth_management.log_in') }}</v-btn
                     >
                   </v-flex>
                 </v-tab-item>
@@ -101,11 +140,12 @@
                   </validation-provider>
                   <validation-provider
                     name="login"
-                    rules="required"
+                    mode="lazy"
+                    rules="required|max:32|verify_already_exist_username"
                     v-slot="{ errors }"
                   >
                     <v-text-field
-                      label="Логин"
+                      :label="$t('auth_management.login')"
                       :height="isMobile ? '50px' :'66px'"
                       color="#55597D"
                       dark
@@ -121,7 +161,7 @@
                     v-slot="{ errors }"
                   >
                     <v-text-field
-                      label="Имя"
+                      :label="$t('auth_management.first_name')"
                       dark
                       v-model="newUser.firstName"
                       :height="isMobile ? '50px' :'66px'"
@@ -136,7 +176,7 @@
                     v-slot="{ errors }"
                   >
                     <v-text-field
-                      label="Фамилия"
+                      :label="$t('auth_management.last_name')"
                       dark
                       v-model="newUser.lastName"
                       :height="isMobile ? '50px' :'66px'"
@@ -151,7 +191,7 @@
                     v-slot="{ errors }"
                   >
                     <v-text-field
-                      label="Паоль"
+                      :label="$t('auth_management.password')"
                       dark
                       :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                       :type="showPassword ? 'text' : 'password'"
@@ -172,7 +212,7 @@
                       class="btn_log_in ml-auto mr-auto white--text mb-10"
                       color="#fea116"
                       @click="create"
-                      >Регистрация</v-btn
+                      >{{$t('auth_management.register')}}</v-btn
                     >
                   </v-flex>
                 </v-tab-item>
