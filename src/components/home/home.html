@@ -39,39 +39,56 @@
               <v-list-item-action>
                 <v-img :src="require(`../../assets/Profile.png`)"></v-img>
               </v-list-item-action>
-              <v-list-item-title class="white--text"> {{ $t('home_management.profile')}} </v-list-item-title>
+              <v-list-item-title class="white--text">
+                {{ $t('home_management.profile')}}
+              </v-list-item-title>
+            </v-list-item>
+            <v-list-item link @click="window=2">
+              <v-list-item-action>
+                <v-img :src="require(`../../assets/Send.png`)"></v-img>
+              </v-list-item-action>
+              <v-list-item-title class="white--text">
+                {{ $t('home_management.integrations')}}
+              </v-list-item-title>
+            </v-list-item>
+            <v-list-item link @click="window=1">
+              <v-list-item-action>
+                <v-img :src="require(`../../assets/Contact_data.png`)"></v-img>
+              </v-list-item-action>
+              <v-list-item-title class="white--text">
+                {{ $t('home_management.contact_data')}}
+              </v-list-item-title>
+            </v-list-item>
+            <v-list-item link>
+              <v-list-item-action>
+                <v-img :src="require(`../../assets/restorants.png`)"></v-img>
+              </v-list-item-action>
+              <v-list-item-title class="white--text">
+                {{ $t('home_management.my_restaurants')}}
+              </v-list-item-title>
+            </v-list-item>
+            <v-list-item link>
+              <v-list-item-action>
+                <v-img :src="require(`../../assets/delivery_time.png`)"></v-img>
+              </v-list-item-action>
+              <v-list-item-title class="white--text">
+                {{ $t('home_management.delivery_time')}}
+              </v-list-item-title>
             </v-list-item>
           </v-list>
-          <v-list-item link @click="window=2">
-            <v-list-item-action>
-              <v-img :src="require(`../../assets/Send.png`)"></v-img>
-            </v-list-item-action>
-            <v-list-item-title class="white--text"> {{ $t('home_management.integrations')}} </v-list-item-title>
-          </v-list-item>
-        </v-list>
-        <v-list-item link @click="window=1">
-          <v-list-item-action>
-            <v-img :src="require(`../../assets/Contact_data.png`)"></v-img>
-          </v-list-item-action>
-          <v-list-item-title class="white--text"> {{ $t('home_management.contact_data')}} </v-list-item-title>
-        </v-list-item>
-      </v-list>
-      <v-list-item link >
-        <v-list-item-action>
-          <v-img :src="require(`../../assets/restorants.png`)"></v-img>
-        </v-list-item-action>
-        <v-list-item-title class="white--text"> {{ $t('home_management.my_restaurants')}} </v-list-item-title>
-      </v-list-item>
-    </v-list>
-    <v-list-item link >
-      <v-list-item-action>
-        <v-img :src="require(`../../assets/delivery_time.png`)"></v-img>
-      </v-list-item-action>
-      <v-list-item-title class="white--text"> {{ $t('home_management.delivery_time')}} </v-list-item-title>
-    </v-list-item>
-  </v-list>
         </v-card-text>
       </v-card>
+      <v-flex class="d-flex mt-12 ml-n12 cursor" @click="logout">
+        <v-img
+          :src="require(`../../assets/Logout.png`)"
+          max-width="48"
+          max-height="48"
+        >
+        </v-img>
+        <v-flex class="ml-2 mt-1 white--text" style="font-size: 25px;">
+          {{ $t('auth_management.logout')}}
+        </v-flex>
+      </v-flex>
     </v-col>
     <v-col cols="6">
       <v-card min-height="50vh" rounded="lg" color="#1F2340">

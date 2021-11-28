@@ -15,7 +15,8 @@
     "first_name": "Имя",
     "last_name": "Фамилия",
     "log_in": "Войти",
-    "register": "Регистрация"
+    "register": "Регистрация",
+    "logout": "Выход"
   },
   "home_management": {
     "profile": "Профиль",
@@ -28,7 +29,7 @@
     "profile": "Профиль",
     "your_uniq_id": "Ваш уникальный ID:",
     "update": "Обновить",
-    "update_streamer_id":"Хотите обновить StreamerId?",
+    "update_streamer_id": "Хотите обновить StreamerId?",
     "uniq_id_info": "Вы можете обновить свой ID, тем самым сделав предыдущий ID недоступным для использования",
     "food_preference": "Предпочтение в еде",
     "clothes_preference": "Предпочтение в одежде",
