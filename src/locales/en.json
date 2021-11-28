@@ -1,4 +1,13 @@
 {
+  "app": {
+    "dialogs": {
+      "alert": "Alert",
+      "confirm": "Confirm",
+      "error": "Error",
+      "save": "Do you want to save?",
+      "update": "Do you want to update?"
+    }
+  },
   "auth_management": {
     "login": "Login",
     "email": "E-Mail",
@@ -14,6 +23,34 @@
     "contact_data": "Contact data",
     "my_restaurants": "My restaurants",
     "delivery_time": "Delivery time"
+  },
+  "editProfile_management": {
+    "profile": "Profile",
+    "your_uniq_id": "Your uniq ID:",
+    "update": "Update",
+    "update_streamer_id": "Do you want to update StreamerId?",
+    "uniq_id_info": "You can update your ID, thereby making the previous ID unavailable for use",
+    "food_preference": "Preference in food",
+    "clothes_preference": "Preference in clothing",
+    "food_category": {
+      "pizza": "Зizza",
+      "sushi": "Sushi",
+      "steaks": "Steaks",
+      "hot_dogs": "Hot dogs",
+      "vietnamese_food": "Vietnamese food",
+      "georgian_food": "Georgian food",
+      "seafood": "Seafood",
+      "bakery_products": "Bakery products",
+      "burgers": "Burgers"
+    },
+    "error": {
+      "update_profile": "Updating the profile failed.",
+      "update_streamerId": "Updating the StreamerId failed."
+    },
+    "success": {
+      "update_profile": "Profile has been updated successfully.",
+      "update_streamerId": "StreamerId has been updated successfully."
+    }
   },
   "messages": {
     "verify_password": "The password must contain at least: 1 uppercase letter, 1 lowercase letter, 1 number, and one special character (E.g. , . _ & ? etc.)",

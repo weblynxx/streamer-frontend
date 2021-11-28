@@ -1,4 +1,13 @@
 {
+  "app": {
+    "dialogs": {
+      "alert": "Предупрждение",
+      "confirm": "Подтврждение",
+      "error": "Ошибка",
+      "save": "Вы действительно хотите сохранить?",
+      "update": "Вы действиельно хотите обновить?"
+    }
+  },
   "auth_management": {
     "login": "Логин",
     "email": "E-Mail",
@@ -14,6 +23,34 @@
     "contact_data": "Контактные данные",
     "my_restaurants": "Мои рестораны",
     "delivery_time": "Время доставки"
+  },
+  "editProfile_management": {
+    "profile": "Профиль",
+    "your_uniq_id": "Ваш уникальный ID:",
+    "update": "Обновить",
+    "update_streamer_id":"Хотите обновить StreamerId?",
+    "uniq_id_info": "Вы можете обновить свой ID, тем самым сделав предыдущий ID недоступным для использования",
+    "food_preference": "Предпочтение в еде",
+    "clothes_preference": "Предпочтение в одежде",
+    "food_category": {
+      "pizza": "Пицца",
+      "sushi": "Суши",
+      "steaks": "Стейки",
+      "hot_dogs": "Хот доги",
+      "vietnamese_food": "Вьетнамская еда",
+      "georgian_food": "Грузинская еда",
+      "seafood": "Морепродукты",
+      "bakery_products": "Выпечка",
+      "burgers": "Бургеры"
+    },
+    "error": {
+      "update_profile": "Ошибка при обновлении профиля.",
+      "update_streamerId": "Ошибка при обновлении StreamerId."
+    },
+    "success": {
+      "update_profile": "Профиль был успешно обновлен.",
+      "update_streamerId": "StreamerId был усешно обновлен."
+    }
   },
   "messages": {
     "verify_password": "Пароль должен содержать хотя бы одну букву в нижнем и верхнем регистре, цифру, а также спец. символ (.!_?...)",
