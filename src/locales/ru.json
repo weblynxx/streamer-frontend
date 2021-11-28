@@ -8,6 +8,13 @@
     "log_in": "Войти",
     "register": "Регистрация"
   },
+  "home_management": {
+    "profile": "Профиль",
+    "integrations": "Интеграции",
+    "contact_data": "Контактные данные",
+    "my_restaurants": "Мои рестораны",
+    "delivery_time": "Время доставки"
+  },
   "messages": {
     "verify_password": "Пароль должен содержать хотя бы одну букву в нижнем и верхнем регистре, цифру, а также спец. символ (.!_?...)",
     "_default": "default_message",

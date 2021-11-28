@@ -1,23 +1,53 @@
 <template>
-  <v-app>
-    <div class="area">
-      <ul class="circles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
-    </div>
-    <v-app-bar color="white" app flat>
+  <v-app class="transparent_bg">
+    <v-app-bar color="transparent" flat class="mt-12">
       <v-container class="py-0 fill-height">
-        <v-btn text color="black"> Home</v-btn>
-        <v-btn text color="black"> About </v-btn>
-        <v-spacer></v-spacer>
-        <span class="text-h4 black--text">StreamerId</span>
+        <v-flex md12 class="d-flex d-flex-inline">
+          <v-flex md4 v-if="!isMobile"></v-flex>
+          <v-flex md4 class="d-flex justify-center">
+            <div class="white--text logo" data-end="AD">Send</div>
+          </v-flex>
+          <v-row align="center" justify="center" v-if="!isMobile">
+            <v-col cols="1"></v-col>
+            <v-col cols="3">
+              <v-avatar class="pa-2 cursor">
+                <v-img
+                  :src="
+                    $i18n.locale == 'en'
+                      ? require(`../assets/en-flag.svg`)
+                      : require(`../assets/ru-flag.png`)
+                  "
+                  aspect-ratio="1.0"
+                  @click="setLocale($i18n.locale == 'en' ? 'ru' : 'en')"
+                  max-height="32"
+                ></v-img>
+              </v-avatar>
+              <span class="white--text">{{
+                $i18n.locale == 'en' ? 'English' : 'Русский'
+              }}</span>
+            </v-col>
+            <v-col cols="8"> </v-col>
+          </v-row>
+          <v-row align="center" justify="center" v-else>
+            <v-col>
+              <v-avatar class="pa-2">
+                <v-img
+                  :src="
+                    $i18n.locale == 'en'
+                      ? require(`../assets/en-flag.svg`)
+                      : require(`../assets/ru-flag.png`)
+                  "
+                  aspect-ratio="1.0"
+                  @click="setLocale($i18n.locale == 'en' ? 'ru' : 'en')"
+                  max-height="32"
+                ></v-img>
+              </v-avatar>
+              <span class="white--text">{{
+                $i18n.locale == 'en' ? 'English' : 'Русский'
+              }}</span>
+            </v-col>
+          </v-row>
+        </v-flex>
       </v-container>
     </v-app-bar>
     <v-main>
@@ -42,131 +72,37 @@
 </template>
 <style>
 @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+html,
 body {
-  background-color: transparent;
+  margin: 0;
+  height: 100%;
+  background: url('../assets/bg_main.png');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+body {
   font-family: 'Exo', sans-serif;
 }
-
-.area {
-  background: white;
-  background: -webkit-linear-gradient(to left, #8f94fb, #ffffff);
-  width: 100%;
-  height: 100vh;
-  position: absolute;
+.transparent_bg {
+  background-color: transparent !important;
 }
-
-.circles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+.logo {
+  font-family: Gilroy;
+  font-size: 100px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 125px;
+  letter-spacing: 0em;
+  text-align: left;
 }
-
-.circles li {
-  position: absolute;
-  display: block;
-  list-style: none;
-  width: 20px;
-  height: 20px;
-  background: rgba(255, 120, 255, 0.2);
-  animation: animate 10s linear infinite;
-  bottom: -150px;
+.logo::after {
+  content: attr(data-end);
+  color: #fea116;
 }
-
-.circles li:nth-child(1) {
-  left: 25%;
-  width: 80px;
-  height: 80px;
-  animation-delay: 0s;
-  animation-duration: infinite;
-}
-
-.circles li:nth-child(2) {
-  left: 10%;
-  width: 20px;
-  height: 20px;
-  animation-delay: 2s;
-  animation-duration: infinite;
-}
-
-.circles li:nth-child(3) {
-  left: 70%;
-  width: 20px;
-  height: 20px;
-  animation-delay: 0s;
-  animation-duration: infinite;
-}
-
-.circles li:nth-child(4) {
-  left: 40%;
-  width: 60px;
-  height: 60px;
-  animation-delay: 0s;
-  animation-duration: infinite;
-}
-
-.circles li:nth-child(5) {
-  left: 65%;
-  width: 20px;
-  height: 20px;
-  animation-delay: 0s;
-  animation-duration: infinite;
-}
-
-.circles li:nth-child(6) {
-  left: 75%;
-  width: 110px;
-  height: 110px;
-  animation-delay: 3s;
-  animation-duration: infinite;
-}
-
-.circles li:nth-child(7) {
-  left: 35%;
-  width: 150px;
-  height: 150px;
-  animation-delay: 7s;
-  animation-duration: infinite;
-}
-
-.circles li:nth-child(8) {
-  left: 50%;
-  width: 25px;
-  height: 25px;
-  animation-delay: 15s;
-  animation-duration: infinite;
-}
-
-.circles li:nth-child(9) {
-  left: 20%;
-  width: 15px;
-  height: 15px;
-  animation-delay: 2s;
-  animation-duration: infinite;
-}
-
-.circles li:nth-child(10) {
-  left: 85%;
-  width: 150px;
-  height: 150px;
-  animation-delay: 0s;
-  animation-duration: infinite;
-}
-
-@keyframes animate {
-  0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 1;
-    border-radius: 0;
-  }
-
-  100% {
-    transform: translateY(-1000px) rotate(720deg);
-    opacity: 0;
-    border-radius: 50%;
-  }
+.cursor {
+  cursor: pointer;
 }
 </style>
 <script lang="ts">
@@ -174,8 +110,10 @@ import router from '@/router';
 import { Snackbar } from '@/shared/model/snackbar';
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { State } from 'vuex-class';
+import { Action, State } from 'vuex-class';
 import EmptyLayout from './EmptyLayout.vue';
+import i18n from '../i18n';
+import { localize } from 'vee-validate';
 @Component({
   components: {
     'empty-layout': EmptyLayout,
@@ -186,6 +124,18 @@ export default class MainLayout extends Vue {
   // computed
   get snackbar() {
     return this.stateSnackbar;
+  }
+  @Action('setLocale') public setLocaleForVuex!: any;
+
+  private setLocale(locale: string) {
+    this.$i18n.locale = locale;
+    i18n.locale = locale;
+    localStorage.setItem('locale', locale);
+    localize(locale);
+    this.setLocaleForVuex();
+  }
+  get isMobile() {
+    return this.$vuetify.breakpoint.xsOnly;
   }
 }
 </script>
