@@ -11,6 +11,7 @@ export interface User {
   emailConfirmed: boolean;
   role: string;
   token: string;
+  streamerId: string;
 }
 export const UserEmpty: User = {
   id: '',
@@ -25,6 +26,7 @@ export const UserEmpty: User = {
   emailConfirmed: false,
   role: '',
   token: '',
+  streamerId: '',
 };
 
 export interface Password {

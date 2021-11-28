@@ -6,6 +6,7 @@ import { defaultBackendAccount } from '../../../backend/account';
 import { defaultBackendStreamers } from '../../../backend/streamers';
 import { User } from '../../../model/user';
 import { initialState } from './state';
+import i18n from '@/i18n';
 
 export const actions: ActionTree<EditProfileManagementState, RootState> = {
   async getprofile({ commit }) {
@@ -22,6 +23,33 @@ export const actions: ActionTree<EditProfileManagementState, RootState> = {
         'setSnackbarError',
         {
           message: `error.load_data_failed`,
+          duration: 5000,
+        },
+        { root: true }
+      );
+    }
+  },
+
+  async generateNewStreamerId({ commit }) {
+    try {
+      defaultBackendStreamers.generateNewStreamerId().then(() => {
+        commit(
+          'setSnackbarSuccess',
+          {
+            message: i18n.tc(
+              `editProfile_management.success.update_streamerId`
+            ),
+            duration: 5000,
+          },
+          { root: true }
+        );
+      });
+    } catch (e) {
+      console.log(e);
+      commit(
+        'setSnackbarError',
+        {
+          message: i18n.tc(`editProfile_management.error.update_streamerId`),
           duration: 5000,
         },
         { root: true }
