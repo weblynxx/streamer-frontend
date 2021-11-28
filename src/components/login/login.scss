@@ -37,7 +37,7 @@
   text-transform: capitalize;
 }
 .v-tabs-font-style.v-tab--active {
-  color: white;
+  color: white !important;
 }
 .v-text-field {
   border-radius: 20px;
