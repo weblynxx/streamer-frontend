@@ -15,7 +15,7 @@ export default class TwitchRedirectComponent extends Vue {
         AccessToken: this.$route.query.code,
       })
       .then((resp: any) => {
-        this.$router.push('/');
+        this.$router.push('/services');
       })
       .catch(() => {
         this.$router.push('/');

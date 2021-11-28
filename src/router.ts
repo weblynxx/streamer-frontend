@@ -24,7 +24,7 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('@/components/home/home.vue'),
+      component: () => import('@/components/editProfile/editProfile.vue'),
       meta: {
         title: 'Home Page',
         layout: 'main',
@@ -32,7 +32,17 @@ const router = new VueRouter({
         requiresRole: [AUTHORITIES.STREAMER],
       },
     },
-
+    {
+      path: '/services',
+      name: 'Services',
+      component: () => import('@/components/editServices/editServices.vue'),
+      meta: {
+        title: 'Home Page',
+        layout: 'main',
+        requiresAuth: true,
+        requiresRole: [AUTHORITIES.STREAMER],
+      },
+    },
     {
       path: '/oauth/twitch',
       name: 'TwitchOAuth',

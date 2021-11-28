@@ -51,7 +51,113 @@
       </v-container>
     </v-app-bar>
     <v-main>
-      <router-view></router-view>
+      <v-container class="mb-10">
+        <v-row class="mt-10"></v-row>
+        <v-row>
+          <v-col cols="3">
+            <v-card color="#1F2340" class="profile_form" rounded="lg">
+              <v-card-text>
+                <v-row>
+                  <v-col cols="3">
+                    <v-avatar color="indigo" height="70" width="70">
+                      <v-icon dark>
+                        mdi-account-circle
+                      </v-icon>
+                    </v-avatar>
+                  </v-col>
+                  <v-col>
+                    <v-row class="pt-2">
+                      <v-col>
+                        <v-flex class="white--text profile_form_text ">
+                          {{
+                            currentUser.lastName + ', ' + currentUser.firstName
+                          }}
+                        </v-flex>
+                      </v-col>
+                      <v-col cols="2">
+                        <v-img
+                          :src="require(`../assets/setting.png`)"
+                          width="30"
+                          height="30"
+                        >
+                        </v-img>
+                      </v-col>
+                    </v-row>
+                  </v-col>
+                </v-row>
+              </v-card-text>
+            </v-card>
+            <v-card color="#1F2340" class="profile_form mt-2" rounded="lg">
+              <v-card-text>
+                <v-list color="transparent">
+                  <v-list-item link to="/">
+                    <v-list-item-action>
+                      <v-img :src="require(`../assets/Profile.png`)"></v-img>
+                    </v-list-item-action>
+                    <v-list-item-title class="white--text">
+                      {{ $t('home_management.profile') }}
+                    </v-list-item-title>
+                  </v-list-item>
+                  <v-list-item link to="/services">
+                    <v-list-item-action>
+                      <v-img :src="require(`../assets/Send.png`)"></v-img>
+                    </v-list-item-action>
+                    <v-list-item-title class="white--text">
+                      {{ $t('home_management.integrations') }}
+                    </v-list-item-title>
+                  </v-list-item>
+                  <v-list-item link @click="window = 1">
+                    <v-list-item-action>
+                      <v-img
+                        :src="require(`../assets/Contact_data.png`)"
+                      ></v-img>
+                    </v-list-item-action>
+                    <v-list-item-title class="white--text">
+                      {{ $t('home_management.contact_data') }}
+                    </v-list-item-title>
+                  </v-list-item>
+                  <v-list-item link>
+                    <v-list-item-action>
+                      <v-img :src="require(`../assets/restorants.png`)"></v-img>
+                    </v-list-item-action>
+                    <v-list-item-title class="white--text">
+                      {{ $t('home_management.my_restaurants') }}
+                    </v-list-item-title>
+                  </v-list-item>
+                  <v-list-item link>
+                    <v-list-item-action>
+                      <v-img
+                        :src="require(`../assets/delivery_time.png`)"
+                      ></v-img>
+                    </v-list-item-action>
+                    <v-list-item-title class="white--text">
+                      {{ $t('home_management.delivery_time') }}
+                    </v-list-item-title>
+                  </v-list-item>
+                </v-list>
+              </v-card-text>
+            </v-card>
+            <v-flex class="d-flex mt-12 ml-n12 cursor" @click="logout">
+              <v-img
+                :src="require(`../assets/Logout.png`)"
+                max-width="48"
+                max-height="48"
+              >
+              </v-img>
+              <v-flex class="ml-2 mt-1 white--text" style="font-size: 25px;">
+                {{ $t('auth_management.logout') }}
+              </v-flex>
+            </v-flex>
+          </v-col>
+          <v-col cols="6">
+            <v-card min-height="50vh" rounded="lg" color="#1F2340">
+              <router-view></router-view>
+            </v-card>
+          </v-col>
+          <v-col cols="4"></v-col>
+        </v-row>
+      </v-container>
+
       <v-snackbar
         top
         v-model="snackbar.show"
@@ -104,21 +210,33 @@ body {
 .cursor {
   cursor: pointer;
 }
+.profile_form_text {
+  font-family: Gilroy;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 35px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.v-text-field input {
+  color: white !important;
+  font-size: 18px;
+  line-height: 21px;
+}
 </style>
 <script lang="ts">
-import router from '@/router';
 import { Snackbar } from '@/shared/model/snackbar';
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { Action, State } from 'vuex-class';
-import EmptyLayout from './EmptyLayout.vue';
+import { Action, namespace, State } from 'vuex-class';
 import i18n from '../i18n';
 import { localize } from 'vee-validate';
-@Component({
-  components: {
-    'empty-layout': EmptyLayout,
-  },
-})
+import { Credentials } from '@/shared/model/credentials';
+
+const authModule = namespace('authManagement');
+
+@Component
 export default class MainLayout extends Vue {
   @State('snackbar') public stateSnackbar!: Snackbar;
   // computed
@@ -136,6 +254,22 @@ export default class MainLayout extends Vue {
   }
   get isMobile() {
     return this.$vuetify.breakpoint.xsOnly;
+  }
+  @authModule.Action('logout') private actionLogout: any;
+  @authModule.Getter('getUser') private currentUser!: Credentials;
+
+  get message() {
+    return {
+      name: `${this.currentUser.lastName}, ${this.currentUser.firstName}`,
+      title: 'Welcome to Vuetify!',
+    };
+  }
+  private window = 0;
+
+  private logout() {
+    this.actionLogout().then((result: any) => {
+      this.$router.push('/login');
+    });
   }
 }
 </script>
