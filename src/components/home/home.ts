@@ -17,7 +17,6 @@ export default class HomeComponent extends Vue {
   @authModule.Action('logout') private actionLogout: any;
   @authModule.Getter('getUser') private currentUser!: Credentials;
 
-  private streanerId = '1d3a228a-516b-4598-bebc-8326ba6ca9cf';
   get message() {
     return {
       name: `${this.currentUser.lastName}, ${this.currentUser.firstName}`,

@@ -1,9 +1,10 @@
 <div>
   <v-row>
     <v-col>
-      <v-card class="ml-auto mr-auto elevation-0 mt-12">
-        <v-card-title class="elevation-0">
-          {{ "My profile" }}
+      <v-card class="ml-auto mr-auto elevation-0 transparent_bg">
+        <v-card-title class="white--text profile_font">
+          <v-spacer></v-spacer>
+          {{ $t('editProfile_management.profile') }}
           <v-spacer></v-spacer>
         </v-card-title>
         <validation-observer ref="observer-edit-profile-form" v-slot="v">
@@ -14,25 +15,53 @@
           >
             <v-card-text class="elevation-0">
               <v-container grid-list-md>
-                <v-layout wrap>
-                  <v-flex xs12 sm8 md8>
-                    <validation-provider
-                      name="firstname"
-                      rules="required|max:32"
-                      v-slot="{ errors }"
-                    >
-                      <v-text-field
-                        dense
-                        v-model="updateProfile.firstName"
-                        label="Имя"
-                        name="firstname"
-                        outlined
-                        :error-messages="errors[0]"
-                      >
-                      </v-text-field>
-                    </validation-provider>
+                <v-layout wrap class="white--text">
+                  <v-flex xs12 md12>
+                    <span class="white--text your_uniq_id_font">
+                      {{$t('editProfile_management.your_uniq_id')}}
+                    </span>
                   </v-flex>
                   <v-flex xs12 sm8 md8>
+                    <v-text-field
+                      class="rounded-lg white--text"
+                      readonly
+                      background-color="#14182E"
+                      v-model="editedProfile.streamerId"
+                      outlined
+                    >
+                    </v-text-field>
+                  </v-flex>
+                  <v-flex>
+                    <v-btn
+                      v-t="'editProfile_management.update'"
+                      color="#FEA116"
+                      class="ml-12 white--text rounded-lg px-10 py-7"
+                      @click="generateNewStreamerId"
+                      :disabled="isLoading"
+                      :loading="isLoading"
+                    ></v-btn>
+                  </v-flex>
+                  <v-flex xs12 md6 class="mt-n8">
+                    <div
+                      class="uniq_id_info"
+                      v-t="'editProfile_management.uniq_id_info'"
+                    ></div>
+                  </v-flex>
+                  <v-flex xs12 md12>
+                    <validation-provider rules="max:255" v-slot="{ errors }">
+                      <v-textarea
+                        outlined
+                        background-color="#14182E"
+                        dark
+                        rows="6"
+                        no-resize
+                        counter="255"
+                        class="rounded-lg"
+                        :error-messages="errors[0]"
+                      ></v-textarea>
+                    </validation-provider>
+                  </v-flex>
+                  <!-- <v-flex xs12 sm8 md8>
                     <validation-provider
                       name="lastName"
                       rules="required|max:32"
@@ -48,7 +77,7 @@
                       >
                       </v-text-field>
                     </validation-provider>
-                  </v-flex>
+                  </v-flex> -->
                 </v-layout>
               </v-container>
             </v-card-text>

@@ -22,11 +22,25 @@ export default class EditProfileComponent extends Vue {
 
   created() {
     this.actionGetProfile().then(() => {
-      this.updateProfile = Object.assign({}, this.stateCurrentUser);
+      this.editedProfile = Object.assign({}, this.stateCurrentUser);
     });
   }
 
-  updateProfile: User = {
+  editedProfile: User = {
     ...UserEmpty,
   };
+
+  private isLoading = false;
+
+  @editProfileManagementModule.Action('generateNewStreamerId')
+  private actionGenerateNewStreamerId!: any;
+  generateNewStreamerId() {
+    this.isLoading = true;
+    this.actionGenerateNewStreamerId().then(() => {
+      this.actionGetProfile().then(() => {
+        this.editedProfile = Object.assign({}, this.stateCurrentUser);
+        this.isLoading = false;
+      });
+    });
+  }
 }
