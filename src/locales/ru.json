@@ -53,6 +53,10 @@
       "update_streamerId": "StreamerId был усешно обновлен."
     }
   },
+  "editServices_management": {
+    "integrations": "Интеграции в соц. сети",
+    "link": "Привязать"
+  },
   "messages": {
     "verify_password": "Пароль должен содержать хотя бы одну букву в нижнем и верхнем регистре, цифру, а также спец. символ (.!_?...)",
     "_default": "default_message",

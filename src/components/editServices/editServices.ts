@@ -5,7 +5,7 @@ import { namespace } from 'vuex-class';
 import { Logger } from 'fsts';
 import Axios from 'axios';
 import router from '@/router';
-import { Service } from '@/shared/model/service';
+import { LinkedServices, Service } from '@/shared/model/service';
 
 const authModule = namespace('authManagement');
 const editServiceManagementModule = namespace('editServiceManagement');
@@ -17,10 +17,40 @@ export default class EditServiceComponent extends Vue {
   @editServiceManagementModule.Getter('getServices')
   private getterServices!: Service[];
 
+  @editServiceManagementModule.Action('getLinkedServices')
+  private actionGetLinkedServices!: any;
+  @editServiceManagementModule.Getter('getLinkedServices')
+  private getterLinkedServices!: LinkedServices[];
+
   mounted() {
     this.actionGetServices();
+    this.actionGetLinkedServices();
   }
+  private isLoading = false;
+
+  //#region  Twitch region
   private twitchOauthUrl() {
     return `https://id.twitch.tv/oauth2/authorize?client_id=${process.env.VUE_APP_TWITCH_CLIENT_ID}&redirect_uri=${process.env.VUE_APP_TWITCH_REDIRECT}/oauth/twitch&response_type=code&scope=user:read:email`;
   }
+
+  get getTwitchFullUrl() {
+    let resultUrl = 'https://twitch.tv';
+    let twitch = this.getterLinkedServices.find(
+      (x: LinkedServices) => x.serviceName == 'Twitch'
+    );
+    if (twitch != undefined) {
+      return resultUrl + '/' + twitch.userName;
+    }
+    return resultUrl;
+  }
+  get isTwitchLinkDisabled() {
+    let twitch = this.getterLinkedServices.find(
+      (x: LinkedServices) => x.serviceName == 'Twitch'
+    );
+    if (twitch != undefined) {
+      return true;
+    }
+    return false;
+  }
+  //#endregion
 }
