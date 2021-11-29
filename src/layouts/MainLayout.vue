@@ -2,87 +2,64 @@
   <v-app class="transparent_bg">
     <v-app-bar color="transparent" flat class="mt-12">
       <v-container class="py-0 fill-height">
-        <v-flex md12 class="d-flex d-flex-inline">
-          <v-flex md4 v-if="!isMobile"></v-flex>
-          <v-flex md4 class="d-flex justify-center">
-            <div class="white--text logo" data-end="AD">Send</div>
-          </v-flex>
-          <v-row align="center" justify="center" v-if="!isMobile">
-            <v-col cols="1"></v-col>
-            <v-col cols="3">
-              <v-avatar class="pa-2 cursor">
-                <v-img
-                  :src="
-                    $i18n.locale == 'en'
-                      ? require(`../assets/en-flag.svg`)
-                      : require(`../assets/ru-flag.png`)
-                  "
-                  aspect-ratio="1.0"
-                  @click="setLocale($i18n.locale == 'en' ? 'ru' : 'en')"
-                  max-height="32"
-                ></v-img>
-              </v-avatar>
-              <span class="white--text">{{
-                $i18n.locale == 'en' ? 'English' : 'Русский'
-              }}</span>
-            </v-col>
-            <v-col cols="8"> </v-col>
-          </v-row>
-          <v-row align="center" justify="center" v-else>
-            <v-col>
-              <v-avatar class="pa-2">
-                <v-img
-                  :src="
-                    $i18n.locale == 'en'
-                      ? require(`../assets/en-flag.svg`)
-                      : require(`../assets/ru-flag.png`)
-                  "
-                  aspect-ratio="1.0"
-                  @click="setLocale($i18n.locale == 'en' ? 'ru' : 'en')"
-                  max-height="32"
-                ></v-img>
-              </v-avatar>
-              <span class="white--text">{{
-                $i18n.locale == 'en' ? 'English' : 'Русский'
-              }}</span>
-            </v-col>
-          </v-row>
-        </v-flex>
+        <v-row align="center">
+          <v-col align="right" cols="7">
+            <v-img
+              :src="require(`../assets/SendAD.png`)"
+              max-height="100"
+              max-width="300"
+            ></v-img>
+          </v-col>
+          <v-col align="center">
+            <v-avatar class="pa-2 cursor">
+              <v-img
+                :src="
+                  $i18n.locale == 'en'
+                    ? require(`../assets/en-flag.svg`)
+                    : require(`../assets/ru-flag.png`)
+                "
+                aspect-ratio="1.0"
+                @click="setLocale($i18n.locale == 'en' ? 'ru' : 'en')"
+                max-height="32"
+              ></v-img>
+            </v-avatar>
+            <span class="white--text">{{
+              $i18n.locale == 'en' ? 'English' : 'Русский'
+            }}</span></v-col
+          >
+        </v-row>
       </v-container>
     </v-app-bar>
     <v-main>
       <v-container class="mb-10">
-        <v-row class="mt-10"></v-row>
         <v-row>
           <v-col cols="3">
             <v-card color="#1F2340" class="profile_form" rounded="lg">
               <v-card-text>
-                <v-row>
-                  <v-col cols="3">
-                    <v-avatar color="indigo" height="70" width="70">
-                      <v-icon dark>
-                        mdi-account-circle
-                      </v-icon>
-                    </v-avatar>
-                  </v-col>
+                <v-row align="center" justify="center">
                   <v-col>
-                    <v-row class="pt-2">
-                      <v-col>
-                        <v-flex class="white--text profile_form_text ">
-                          {{
-                            currentUser.lastName + ', ' + currentUser.firstName
-                          }}
-                        </v-flex>
-                      </v-col>
-                      <v-col cols="2">
-                        <v-img
-                          :src="require(`../assets/setting.png`)"
-                          width="30"
-                          height="30"
-                        >
-                        </v-img>
-                      </v-col>
-                    </v-row>
+                    <v-flex class="d-flex d-flex-inline">
+                      <v-avatar color="indigo" max-height="60" max-width="60">
+                        <v-icon dark>
+                          mdi-account-circle
+                        </v-icon>
+                      </v-avatar>
+                      <v-flex
+                        class="d-flex white--text profile_form_text ml-4 mt-2"
+                      >
+                        {{
+                          currentUser.lastName + ', ' + currentUser.firstName
+                        }}
+                      </v-flex>
+                    </v-flex>
+                  </v-col>
+                  <v-col align="right" justify="center" cols="2">
+                    <v-img
+                      :src="require(`../assets/setting.png`)"
+                      max-width="30"
+                      max-height="30"
+                    >
+                    </v-img>
                   </v-col>
                 </v-row>
               </v-card-text>
@@ -212,7 +189,7 @@ body {
 }
 .profile_form_text {
   font-family: Gilroy;
-  font-size: 30px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 500;
   line-height: 35px;
@@ -223,6 +200,12 @@ body {
   color: white !important;
   font-size: 18px;
   line-height: 21px;
+}
+
+@media only screen and (max-width: 600px) {
+  .main_login_form {
+    border-radius: 10px !important;
+  }
 }
 </style>
 <script lang="ts">

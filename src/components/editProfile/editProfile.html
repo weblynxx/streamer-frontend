@@ -21,7 +21,7 @@
                       {{$t('editProfile_management.your_uniq_id')}}
                     </span>
                   </v-flex>
-                  <v-flex xs12 sm8 md8>
+                  <v-flex xs8 sm8 md8>
                     <v-text-field
                       class="rounded-lg white--text"
                       readonly
@@ -31,16 +31,17 @@
                     >
                     </v-text-field>
                   </v-flex>
-                  <v-flex>
+                  <v-flex xs4 sm4 md4>
                     <v-btn
                       v-t="'editProfile_management.update'"
                       color="#FEA116"
-                      class="ml-12 white--text rounded-lg px-10 py-7"
+                      class="white--text rounded-lg px-10 py-7 ml-2"
                       @click="generateNewStreamerId"
                       :disabled="isLoading"
                       :loading="isLoading"
                     ></v-btn>
                   </v-flex>
+
                   <v-flex xs12 md6 class="mt-n8">
                     <div
                       class="uniq_id_info"
