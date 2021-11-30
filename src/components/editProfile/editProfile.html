@@ -25,6 +25,8 @@
                     <v-text-field
                       class="rounded-lg white--text"
                       readonly
+                      dark
+                      dense
                       background-color="#14182E"
                       v-model="editedProfile.streamerId"
                       outlined
@@ -35,7 +37,7 @@
                     <v-btn
                       v-t="'editProfile_management.update'"
                       color="#FEA116"
-                      class="white--text rounded-lg px-10 py-7 ml-2"
+                      class="white--text rounded-lg px-10  ml-2"
                       @click="generateNewStreamerId"
                       :disabled="isLoading"
                       :loading="isLoading"

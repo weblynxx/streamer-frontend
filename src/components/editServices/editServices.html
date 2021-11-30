@@ -10,30 +10,32 @@
         <v-card-text class="elevation-0">
           <v-container grid-list-md>
             <v-layout wrap>
-              <v-flex xs12 md12 class="d-flex ">
-                <v-flex md2>
+              <v-flex xs12 md12 class="d-flex justify-space-between">
+                <v-flex md1>
                   <v-img
                     :src="require(`../../assets/Twitch.png`)"
-                    max-width="49"
-                    max-height="49"
+                    max-width="40"
+                    max-height="40"
                   ></v-img>
                 </v-flex>
 
-                <v-flex md6>
+                <v-flex md8>
                   <v-text-field
                     outlined
+                    dense
+                    dark
                     readonly
                     background-color="#14182E"
                     class="rounded-lg"
                     :value="getTwitchFullUrl"
                   ></v-text-field>
                 </v-flex>
-                <v-flex md3>
+                <v-flex md2>
                   <v-btn
                     v-t="'editServices_management.link'"
                     :href="twitchOauthUrl()"
                     color="#FEA116"
-                    class="ml-12 white--text rounded-lg px-10 py-7"
+                    dark
                     :disabled="isLoading || isTwitchLinkDisabled"
                     :loading="isLoading"
                   ></v-btn>

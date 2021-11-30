@@ -1,226 +1,242 @@
-<v-content>
-  <v-container class="fill-height" fluid>
-    <v-flex md12 class="d-flex d-flex-inline">
-      <v-flex md4 v-if="!isMobile"></v-flex>
-      <v-flex md4 class="d-flex justify-center">
-        <div class="white--text logo" data-end="AD">Send</div>
-      </v-flex>
-      <v-row align="center" justify="center" v-if="!isMobile">
-        <v-col cols="1"></v-col>
-        <v-col cols="3">
-          <v-avatar class="pa-2 cursor">
-            <v-img
-              :src="$i18n.locale =='en' ? require(`../../assets/en-flag.svg`) : require(`../../assets/ru-flag.png`)"
-              aspect-ratio="1.0"
-              @click="setLocale($i18n.locale =='en' ? 'ru' : 'en')"
-              max-height="32"
-            ></v-img>
-          </v-avatar>
-          <span class="white--text"
-            >{{$i18n.locale =='en' ? 'English' : 'Русский'}}</span
-          >
-        </v-col>
-        <v-col cols="8"> </v-col>
-      </v-row>
-      <v-row align="center" justify="center" v-else>
-        <v-col>
-          <v-avatar class="pa-2">
-            <v-img
-              :src="$i18n.locale =='en' ? require(`../../assets/en-flag.svg`) : require(`../../assets/ru-flag.png`)"
-              aspect-ratio="1.0"
-              @click="setLocale($i18n.locale =='en' ? 'ru' : 'en')"
-              max-height="32"
-            ></v-img>
-          </v-avatar>
-          <span class="white--text"
-            >{{$i18n.locale =='en' ? 'English' : 'Русский'}}</span
-          >
-        </v-col>
-      </v-row>
-    </v-flex>
-
-    <v-row justify="center">
-      <v-col cols="12" xs="12" sm="8" md="5" lg="4">
-        <v-card class="ml-auto mr-auto main_login_form" color="#1F2340">
-          <v-card-text>
-            <v-tabs
-              v-model="tab"
-              :class="!isMobile ? 'mb-6 mt-8 mx-5' :'mx-5'"
-              :fixed-tabs="isMobile"
-              slider-size="2"
-              style="border-bottom: 1px solid #373A5F; width: 92%;"
+<v-container fill-height>
+  <v-row>
+    <v-col>
+      <v-flex md12 class="d-flex d-flex-inline">
+        <v-flex md4 v-if="!isMobile"></v-flex>
+        <v-flex md4 class="d-flex justify-center">
+          <div class="white--text logo" data-end="AD">Send</div>
+        </v-flex>
+        <v-row align="center" justify="center" v-if="!isMobile">
+          <v-col cols="1"></v-col>
+          <v-col cols="3">
+            <v-avatar class="pa-2 cursor">
+              <v-img
+                :src="$i18n.locale =='en' ? require(`../../assets/en-flag.svg`) : require(`../../assets/ru-flag.png`)"
+                aspect-ratio="1.0"
+                @click="setLocale($i18n.locale =='en' ? 'ru' : 'en')"
+                max-height="32"
+              ></v-img>
+            </v-avatar>
+            <span class="white--text"
+              >{{$i18n.locale =='en' ? 'English' : 'Русский'}}</span
             >
-              <v-tabs-slider color="#FEA116"></v-tabs-slider>
-              <v-tab
-                class="v-tabs-font-style "
-                active-class="v-tabs-font-style-active"
-                >{{ $t('auth_management.log_in')}}</v-tab
+          </v-col>
+          <v-col cols="8"> </v-col>
+        </v-row>
+        <v-row align="center" justify="center" v-else>
+          <v-col>
+            <v-avatar class="pa-2">
+              <v-img
+                :src="$i18n.locale =='en' ? require(`../../assets/en-flag.svg`) : require(`../../assets/ru-flag.png`)"
+                aspect-ratio="1.0"
+                @click="setLocale($i18n.locale =='en' ? 'ru' : 'en')"
+                max-height="32"
+              ></v-img>
+            </v-avatar>
+            <span class="white--text"
+              >{{$i18n.locale =='en' ? 'English' : 'Русский'}}</span
+            >
+          </v-col>
+        </v-row>
+      </v-flex>
+      <v-row justify="center">
+        <v-col cols="12" xs="12" sm="8" md="5" lg="4">
+          <v-card class="ml-auto mr-auto main_login_form" color="#1F2340">
+            <v-card-text>
+              <v-tabs
+                v-model="tab"
+                :class="!isMobile ? 'mb-2' :'mx-5'"
+                :fixed-tabs="isMobile"
+                slider-size="2"
+                style="border-bottom: 1px solid #373A5F; width: 92%;"
               >
-              <v-tab
-                class="v-tabs-font-style"
-                active-class="v-tabs-font-style-active"
-                >{{ $t('auth_management.register')}}</v-tab
-              >
-            </v-tabs>
-            <v-tabs-items v-model="tab" class="transparent-background">
-              <validation-observer ref="observer-login-form" v-slot="v">
-                <!--  -->
-                <!-- Login -->
-                <!--  -->
-                <v-tab-item class="pa-3">
-                  <validation-provider
-                    name="login"
-                    :name="$t('auth_management.login')"
-                    rules="required"
-                    v-slot="{ errors }"
-                  >
-                    <v-text-field
-                      :label="$t('auth_management.login')"
-                      :height="isMobile ? '50px' :'66px'"
-                      color="#55597D"
-                      dark
-                      v-model="newUser.userName"
-                      background-color="#14182E"
-                      :error-messages="errors[0]"
+                <v-tabs-slider color="#FEA116"></v-tabs-slider>
+                <v-tab
+                  class="v-tabs-font-style"
+                  active-class="v-tabs-font-style-active"
+                  >{{ $t('auth_management.log_in')}}</v-tab
+                >
+                <v-tab
+                  class="v-tabs-font-style"
+                  active-class="v-tabs-font-style-active"
+                  >{{ $t('auth_management.register')}}</v-tab
+                >
+              </v-tabs>
+              <v-tabs-items v-model="tab" class="transparent-background">
+                <validation-observer ref="observer-login-form" v-slot="v">
+                  <!--  -->
+                  <!-- Login -->
+                  <!--  -->
+                  <v-tab-item class="pa-3">
+                    <validation-provider
+                      name="login"
+                      :name="$t('auth_management.login')"
+                      rules="required"
+                      v-slot="{ errors }"
                     >
-                    </v-text-field>
-                  </validation-provider>
-                  <validation-provider
-                    :name="$t('auth_management.password')"
-                    rules="required"
-                    v-slot="{ errors }"
-                  >
-                    <v-text-field
-                      :label="$t('auth_management.password')"
-                      dark
-                      :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-                      :type="showPassword ? 'text' : 'password'"
-                      @click:append="showPassword = !showPassword"
-                      v-model="newUser.password"
-                      :height="isMobile ? '50px' :'66px'"
-                      color="#55597D"
-                      background-color="#14182E"
-                      v-on:keyup.enter="login"
-                      :error-messages="errors[0]"
-                    ></v-text-field>
-                  </validation-provider>
-                  <v-flex class="d-flex flex-inline">
-                    <v-btn
-                      x-large
-                      :disabled="isLoading"
-                      :loading="isLoading"
-                      class="btn_log_in ml-auto mr-auto white--text mb-8 mt-6"
-                      color="#fea116"
-                      @click="login"
-                      >{{$t('auth_management.log_in') }}</v-btn
+                      <v-text-field
+                        :label="$t('auth_management.login')"
+                        color="#55597D"
+                        class="rounded-lg"
+                        dark
+                        outlined
+                        dense
+                        v-model="newUser.userName"
+                        background-color="#14182E"
+                        :error-messages="errors[0]"
+                      >
+                      </v-text-field>
+                    </validation-provider>
+                    <validation-provider
+                      :name="$t('auth_management.password')"
+                      rules="required"
+                      v-slot="{ errors }"
                     >
-                  </v-flex>
-                </v-tab-item>
-              </validation-observer>
-              <validation-observer ref="observer-register-form" v-slot="v">
-                <!--  -->
-                <!-- Registration form -->
-                <!--  -->
-                <v-tab-item>
-                  <validation-provider
-                    name="email"
-                    rules="required|email"
-                    v-slot="{ errors }"
-                  >
-                    <v-text-field
-                      label="E-mail"
-                      @change="emailChanged"
-                      :height="isMobile ? '50px' :'66px'"
-                      color="#55597D"
-                      dark
-                      v-model="newUser.email"
-                      background-color="#14182E"
-                      :error-messages="errors[0]"
-                    ></v-text-field>
-                  </validation-provider>
-                  <validation-provider
-                    name="login"
-                    mode="lazy"
-                    rules="required|max:32|verify_already_exist_username"
-                    v-slot="{ errors }"
-                  >
-                    <v-text-field
-                      :label="$t('auth_management.login')"
-                      :height="isMobile ? '50px' :'66px'"
-                      color="#55597D"
-                      dark
-                      v-model="newUser.userName"
-                      background-color="#14182E"
-                      :error-messages="errors[0]"
-                    ></v-text-field>
-                  </validation-provider>
+                      <v-text-field
+                        :label="$t('auth_management.password')"
+                        dark
+                        :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                        :type="showPassword ? 'text' : 'password'"
+                        @click:append="showPassword = !showPassword"
+                        v-model="newUser.password"
+                        color="#55597D"
+                        outlined
+                        class="rounded-lg"
+                        dense
+                        background-color="#14182E"
+                        v-on:keyup.enter="login"
+                        :error-messages="errors[0]"
+                      ></v-text-field>
+                    </validation-provider>
+                    <v-flex class="d-flex flex-inline">
+                      <v-btn
+                        :disabled="isLoading"
+                        :loading="isLoading"
+                        dense
+                        class="btn_log_in ml-auto mr-auto white--text px-8"
+                        color="#fea116"
+                        @click="login"
+                        >{{$t('auth_management.log_in') }}</v-btn
+                      >
+                    </v-flex>
+                  </v-tab-item>
+                </validation-observer>
+                <validation-observer ref="observer-register-form" v-slot="v">
+                  <!--  -->
+                  <!-- Registration form -->
+                  <!--  -->
+                  <v-tab-item>
+                    <validation-provider
+                      name="email"
+                      rules="required|email"
+                      v-slot="{ errors }"
+                    >
+                      <v-text-field
+                        label="E-mail"
+                        @change="emailChanged"
+                        color="#55597D"
+                        dark
+                        outlined
+                        dense
+                        class="rounded-lg"
+                        v-model="newUser.email"
+                        background-color="#14182E"
+                        :error-messages="errors[0]"
+                      ></v-text-field>
+                    </validation-provider>
+                    <validation-provider
+                      name="login"
+                      mode="lazy"
+                      rules="required|max:32|verify_already_exist_username"
+                      v-slot="{ errors }"
+                    >
+                      <v-text-field
+                        :label="$t('auth_management.login')"
+                        color="#55597D"
+                        dark
+                        outlined
+                        dense
+                        class="rounded-lg"
+                        v-model="newUser.userName"
+                        background-color="#14182E"
+                        :error-messages="errors[0]"
+                      ></v-text-field>
+                    </validation-provider>
 
-                  <validation-provider
-                    name="firstName"
-                    rules="required"
-                    v-slot="{ errors }"
-                  >
-                    <v-text-field
-                      :label="$t('auth_management.first_name')"
-                      dark
-                      v-model="newUser.firstName"
-                      :height="isMobile ? '50px' :'66px'"
-                      color="#55597D"
-                      background-color="#14182E"
-                      :error-messages="errors[0]"
-                    ></v-text-field>
-                  </validation-provider>
-                  <validation-provider
-                    name="lastName"
-                    rules="required"
-                    v-slot="{ errors }"
-                  >
-                    <v-text-field
-                      :label="$t('auth_management.last_name')"
-                      dark
-                      v-model="newUser.lastName"
-                      :height="isMobile ? '50px' :'66px'"
-                      color="#55597D"
-                      background-color="#14182E"
-                      :error-messages="errors[0]"
-                    ></v-text-field>
-                  </validation-provider>
-                  <validation-provider
-                    name="password"
-                    rules="required|min:8"
-                    v-slot="{ errors }"
-                  >
-                    <v-text-field
-                      :label="$t('auth_management.password')"
-                      dark
-                      :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-                      :type="showPassword ? 'text' : 'password'"
-                      @click:append="showPassword = !showPassword"
-                      v-model="newUser.password"
-                      :height="isMobile ? '50px' :'66px'"
-                      color="#55597D"
-                      background-color="#14182E"
-                      :error-messages="errors[0]"
-                    ></v-text-field>
-                  </validation-provider>
-
-                  <v-flex class="d-flex flex-inline">
-                    <v-btn
-                      x-large
-                      :disabled="isLoading"
-                      :loading="isLoading"
-                      class="btn_log_in ml-auto mr-auto white--text mb-10"
-                      color="#fea116"
-                      @click="create"
-                      >{{$t('auth_management.register')}}</v-btn
+                    <validation-provider
+                      name="firstName"
+                      rules="required"
+                      v-slot="{ errors }"
                     >
-                  </v-flex>
-                </v-tab-item>
-              </validation-observer>
-            </v-tabs-items>
-          </v-card-text>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
-</v-content>
+                      <v-text-field
+                        :label="$t('auth_management.first_name')"
+                        dark
+                        v-model="newUser.firstName"
+                        dark
+                        outlined
+                        dense
+                        class="rounded-lg"
+                        color="#55597D"
+                        background-color="#14182E"
+                        :error-messages="errors[0]"
+                      ></v-text-field>
+                    </validation-provider>
+                    <validation-provider
+                      name="lastName"
+                      rules="required"
+                      v-slot="{ errors }"
+                    >
+                      <v-text-field
+                        :label="$t('auth_management.last_name')"
+                        dark
+                        v-model="newUser.lastName"
+                        dark
+                        outlined
+                        dense
+                        class="rounded-lg"
+                        color="#55597D"
+                        background-color="#14182E"
+                        :error-messages="errors[0]"
+                      ></v-text-field>
+                    </validation-provider>
+                    <validation-provider
+                      name="password"
+                      rules="required|min:8|verify_password"
+                      v-slot="{ errors }"
+                    >
+                      <v-text-field
+                        :label="$t('auth_management.password')"
+                        :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                        :type="showPassword ? 'text' : 'password'"
+                        @click:append="showPassword = !showPassword"
+                        v-model="newUser.password"
+                        dark
+                        outlined
+                        dense
+                        class="rounded-lg"
+                        color="#55597D"
+                        background-color="#14182E"
+                        :error-messages="errors[0]"
+                      ></v-text-field>
+                    </validation-provider>
+
+                    <v-flex class="d-flex flex-inline">
+                      <v-btn
+                        :disabled="isLoading"
+                        :loading="isLoading"
+                        class="btn_log_in ml-auto mr-auto white--text "
+                        color="#fea116"
+                        @click="create"
+                        >{{$t('auth_management.register')}}</v-btn
+                      >
+                    </v-flex>
+                  </v-tab-item>
+                </validation-observer>
+              </v-tabs-items>
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-col>
+  </v-row>
+</v-container>

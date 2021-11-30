@@ -17,54 +17,18 @@
 .main_login_form {
   border-radius: 20px !important;
 }
-.btn_log_in {
-  width: 309px;
-  height: 79px !important;
-  background: #fea116;
-  box-shadow: 0px 0px 20px rgba(254, 161, 22, 0.55);
-  border-radius: 20px;
-}
 .btn_log_in span {
-  font-size: 30px;
   text-transform: capitalize;
 }
 .v-tabs-font-style {
-  font-family: Gilroy;
-  font-size: 25px;
   font-weight: 400;
   letter-spacing: 0em;
-  text-align: left;
   text-transform: capitalize;
 }
 .v-tabs-font-style.v-tab--active {
   color: white !important;
 }
-.v-text-field {
-  border-radius: 20px;
-}
-.v-input__slot::before {
-  border: none !important;
-}
-.v-text-field input {
-  font-size: 1.3em;
-  color: #55597d;
-  font-family: Gilroy;
-  font-size: 25px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: 29px;
-  letter-spacing: 0em;
-  text-align: left;
-}
-.v-text-field label {
-  font-size: 1.3em;
-  margin-left: 10px;
-}
-.v-text-field label.v-label--active {
-  font-size: 1.3em;
-  margin-top: -18px;
-  margin-left: 5px;
-}
+
 .theme--light.v-tabs > .v-tabs-bar {
   background-color: transparent !important;
 }
@@ -79,40 +43,4 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .main_login_form {
-    border-radius: 10px !important;
-  }
-  .logo {
-    font-size: 40px;
-  }
-  .v-tabs-font-style {
-    font-size: 15px !important;
-  }
-  .btn_log_in {
-    max-width: 199px;
-    max-height: 49px !important;
-    border-radius: 15px;
-  }
-  .btn_log_in span {
-    font-size: 15px;
-    text-transform: capitalize;
-  }
-  .v-tabs-font-style {
-    font-size: 15px;
-  }
-  .v-text-field {
-    border-radius: 10px;
-  }
-  .v-text-field input {
-    font-size: 15px;
-  }
-  .v-text-field label {
-    font-size: 1em;
-    margin-left: 10px;
-  }
-  .v-text-field label.v-label--active {
-    font-size: 1em;
-    margin-top: -5px;
-    margin-left: 5px;
-  }
 }

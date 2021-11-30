@@ -1,12 +1,6 @@
 <template>
-  <div>
-    <v-container fill-height fluid>
-      <v-row align="center" justify="center">
-        <v-col>
-          <router-view></router-view>
-        </v-col>
-      </v-row>
-    </v-container>
+  <v-app class="transparent_bg">
+    <router-view></router-view>
     <v-snackbar
       top
       v-model="snackbar.show"
@@ -22,7 +16,7 @@
         </v-btn>
       </template>
     </v-snackbar>
-  </div>
+  </v-app>
 </template>
 <style>
 @import url('../style/fonts/Gilroy/stylesheet.css');
@@ -30,12 +24,13 @@ html,
 body {
   margin: 0;
   height: 100%;
-  background: url('../assets/bg.png');
+  background: url('../assets/bg_main.png');
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
+
 body {
   font-family: 'Gilroy', sans-serif !important;
   font: optional;
@@ -54,7 +49,6 @@ import { Snackbar } from '@/shared/model/snackbar';
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Action, State } from 'vuex-class';
-
 @Component
 export default class EmptyLayout extends Vue {
   @State('snackbar') public stateSnackbar!: Snackbar;
