@@ -32,7 +32,7 @@ export const actions: ActionTree<EditProfileManagementState, RootState> = {
 
   async generateNewStreamerId({ commit }) {
     try {
-      defaultBackendStreamers.generateNewStreamerId().then(() => {
+      await defaultBackendStreamers.generateNewStreamerId().then(() => {
         commit(
           'setSnackbarSuccess',
           {
@@ -59,7 +59,7 @@ export const actions: ActionTree<EditProfileManagementState, RootState> = {
 
   async updateStreamerContactData({ commit }, payload: Streamer) {
     try {
-      defaultBackendStreamers
+      await defaultBackendStreamers
         .updateStreamerContactData(payload)
         .then(response => {
           commit(
@@ -89,7 +89,7 @@ export const actions: ActionTree<EditProfileManagementState, RootState> = {
   },
   async updateProfile({ commit }, payload: Streamer) {
     try {
-      defaultBackendStreamers.updateStreamer(payload).then(response => {
+      await defaultBackendStreamers.updateStreamer(payload).then(response => {
         commit('setProfile', response.data);
         commit(
           'setSnackbarSuccess',
@@ -112,8 +112,8 @@ export const actions: ActionTree<EditProfileManagementState, RootState> = {
       );
     }
   },
-  generateNewPassword({ commit }) {
-    return defaultBackendStreamers.returnNewPassword().then(response => {
+  async generateNewPassword({ commit }) {
+    return await defaultBackendStreamers.returnNewPassword().then(response => {
       commit('setNewPassword', response.data);
     });
   },
