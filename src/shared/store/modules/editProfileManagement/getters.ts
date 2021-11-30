@@ -4,7 +4,7 @@ import { RootState } from '../../types';
 import { Streamer } from '../../../model/user';
 
 export const getters: GetterTree<EditProfileManagementState, RootState> = {
-  getProfile(state): Streamer | undefined {
-    return state.currentEmployee;
+  currentUser(state): Streamer | undefined {
+    return state.currentUser;
   },
 };
