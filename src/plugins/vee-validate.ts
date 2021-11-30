@@ -20,12 +20,32 @@ import {
   integer,
   max_value,
 } from 'vee-validate/dist/rules';
+import validationMessagesRU from 'vee-validate/dist/locale/ru';
+import validationMessagesEN from 'vee-validate/dist/locale/en';
 
 import Axios from 'axios';
 import LSService from '../shared/backend/LocalStorageService';
 import { instance } from '@/shared/backend';
+import i18n from '@/i18n';
 
 const lsService = LSService.getService();
+
+localize('en', validationMessagesEN);
+localize('ru', validationMessagesRU);
+localize(i18n.messages); // enable custom messages (merge in locale), otherwise will see just "{Field} ist ungültig."
+
+// built-in validators (in Vee-validate)
+extend('required', required);
+extend('required_if', required_if);
+extend('email', email);
+extend('confirmed', confirmed);
+extend('regex', regex);
+extend('min', min);
+extend('max', max);
+extend('ext', ext);
+extend('numeric', numeric);
+extend('integer', integer);
+extend('max_value', max_value);
 
 Vue.component('ValidationObserver', ValidationObserver);
 Vue.component('ValidationProvider', ValidationProvider);
@@ -51,8 +71,6 @@ extend('verify_password', {
     );
     return strongRegex.test(value);
   },
-  message:
-    'Пароль должен содержать хотя бы одну прописную букву, строчную букву, а также цифру и спец символ',
 });
 
 extend('verify_phone', {
