@@ -93,7 +93,7 @@
                       {{ $t('home_management.contact_data') }}
                     </v-list-item-title>
                   </v-list-item>
-                  <v-list-item link>
+                  <v-list-item link to="/editContactData">
                     <v-list-item-action>
                       <v-img :src="require(`../assets/restorants.png`)"></v-img>
                     </v-list-item-action>
@@ -101,7 +101,7 @@
                       {{ $t('home_management.my_restaurants') }}
                     </v-list-item-title>
                   </v-list-item>
-                  <v-list-item link>
+                  <v-list-item link to="/editTimeDelivery">
                     <v-list-item-action>
                       <v-img
                         :src="require(`../assets/delivery_time.png`)"

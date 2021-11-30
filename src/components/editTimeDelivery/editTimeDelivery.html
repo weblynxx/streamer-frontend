@@ -1,0 +1,41 @@
+<div>
+  <v-row>
+    <v-col>
+      <v-card class="ml-auto mr-auto elevation-0 transparent_bg">
+        <v-card-title class="white--text profile_font">
+          <v-spacer></v-spacer>
+          {{ $t('timeDelivery_management.allowed_period') }}
+          <v-spacer></v-spacer>
+        </v-card-title>
+        <validation-observer ref="observer-edit-time-delivery-form" v-slot="v">
+          <v-form id="editContactData" data-vv-scope="editTimeDelivery">
+            <v-card-text class="elevation-0">
+              <v-container grid-list-md>
+                <v-layout wrap>
+                  <v-flex xs6 md6>
+                    <!-- <validation-provider
+                      :name="$t('editContactData_management.city')"
+                      rules="required"
+                      v-slot="{ errors }"
+                    >
+                      <v-text-field
+                        :label="$t('editContactData_management.city')"
+                        outlined
+                        dense
+                        background-color="#14182E"
+                        dark
+                        class="rounded-lg "
+                        v-model="editedProfile.city"
+                        :error-messages="errors[0]"
+                      ></v-text-field>
+                    </validation-provider> -->
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-card-text>
+          </v-form>
+        </validation-observer>
+      </v-card>
+    </v-col>
+  </v-row>
+</div>

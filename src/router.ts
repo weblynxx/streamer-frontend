@@ -56,6 +56,18 @@ const router = new VueRouter({
       },
     },
     {
+      path: '/editTimeDelivery',
+      name: 'TimeDelivery',
+      component: () =>
+        import('@/components/editTimeDelivery/editTimeDelivery.vue'),
+      meta: {
+        title: 'Time delivery',
+        layout: 'main',
+        requiresAuth: true,
+        requiresRole: [AUTHORITIES.STREAMER],
+      },
+    },
+    {
       path: '/oauth/twitch',
       name: 'TwitchOAuth',
       meta: {

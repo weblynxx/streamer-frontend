@@ -79,6 +79,12 @@
       "update_contact_data": "Contact data has been updated successfully."
     }
   },
+  "timeDelivery_management": {
+    "allowed_period": "Allowed delivery period",
+    "allowed_period_info": "You confirm that during this period of time you can accept orders at the address you specified, if it is not possible to accept an order during the specified period of time, use the order suspension function below",
+    "edit": "Edit",
+    "stop_delivery": "Stop delivery"
+  },
   "messages": {
     "verify_password": "The password must contain at least: 1 uppercase letter, 1 lowercase letter, 1 number, and one special character (E.g. , . _ & ? etc.)",
     "_default": "default_message",
