@@ -12,6 +12,13 @@ export interface Streamer {
   role: string;
   token: string;
   streamerId: string;
+  city: string;
+  street: string;
+  house: string;
+  houseBuilding: string;
+  entrance: string;
+  floor: number;
+  flat: string;
 }
 export const StreamerEmpty: Streamer = {
   id: '',
@@ -27,6 +34,13 @@ export const StreamerEmpty: Streamer = {
   role: '',
   token: '',
   streamerId: '',
+  city: '',
+  entrance: '',
+  flat: '',
+  floor: 1,
+  house: '',
+  houseBuilding: '',
+  street: '',
 };
 
 export interface Password {
