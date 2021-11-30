@@ -2,7 +2,7 @@ import { MutationTree } from 'vuex';
 import axios from 'axios';
 import { AuthState } from './types';
 import { initialState } from './state';
-import { User } from '../../../model/user';
+import { Streamer } from '../../../model/user';
 import { AUTHORITIES } from './index';
 import { Credentials } from '../../../model/credentials';
 import LSService from '../../../backend/LocalStorageService';

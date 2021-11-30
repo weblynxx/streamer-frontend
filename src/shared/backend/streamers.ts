@@ -1,10 +1,10 @@
 import { AxiosPromise } from 'axios';
 import { instance } from '.';
 import { URLS } from './index';
-import { Password, User } from '../model/user';
+import { Password, Streamer } from '../model/user';
 
 export interface BackendStreamers {
-  updateStreamer(user: User): AxiosPromise<User>;
+  updateStreamer(user: Streamer): AxiosPromise<Streamer>;
   deleteStreamer(userId: number): AxiosPromise;
   generateNewPassword(userId: number): AxiosPromise;
   isUniqueEmail(email: string): AxiosPromise;
@@ -16,8 +16,8 @@ export const defaultBackendStreamers: BackendStreamers = {
   generateNewStreamerId(): AxiosPromise {
     return instance.get(`${URLS.streamers}/GenerateNewStreamerId`);
   },
-  updateStreamer(user: User): AxiosPromise<User> {
-    return instance.put<User>(`${URLS.streamers}/${user.id}`, user);
+  updateStreamer(user: Streamer): AxiosPromise<Streamer> {
+    return instance.put<Streamer>(`${URLS.streamers}/${user.id}`, user);
   },
   deleteStreamer(userId: number): AxiosPromise {
     return instance.delete(`${URLS.streamers}/${userId}`);

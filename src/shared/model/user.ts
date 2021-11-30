@@ -1,4 +1,4 @@
-export interface User {
+export interface Streamer {
   id: string;
   firstName: string;
   lastName: string;
@@ -13,7 +13,7 @@ export interface User {
   token: string;
   streamerId: string;
 }
-export const UserEmpty: User = {
+export const StreamerEmpty: Streamer = {
   id: '',
   firstName: '',
   lastName: '',

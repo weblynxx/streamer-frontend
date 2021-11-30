@@ -4,7 +4,7 @@ import { RootState } from '../../types';
 import AuthorityUtils from '../../../backend/authorityUtils';
 import { defaultBackendAccount } from '../../../backend/account';
 import { defaultBackendStreamers } from '../../../backend/streamers';
-import { User } from '../../../model/user';
+import { Streamer } from '../../../model/user';
 import { initialState } from './state';
 import i18n from '@/i18n';
 
@@ -12,7 +12,7 @@ export const actions: ActionTree<EditProfileManagementState, RootState> = {
   async getprofile({ commit }) {
     try {
       const accountId = AuthorityUtils.getAccountId();
-      const currentEmployee: User = (
+      const currentEmployee: Streamer = (
         await defaultBackendAccount.getMyAccountWithPassword(accountId!)
       ).data;
       commit('setProfile', currentEmployee);
@@ -56,7 +56,7 @@ export const actions: ActionTree<EditProfileManagementState, RootState> = {
       );
     }
   },
-  async updateProfile({ commit }, payload: User) {
+  async updateProfile({ commit }, payload: Streamer) {
     try {
       defaultBackendStreamers.updateStreamer(payload).then(response => {
         commit('setProfile', response.data);

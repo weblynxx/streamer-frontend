@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import { Component, Watch, Ref } from 'vue-property-decorator';
-import { User, UserEmpty } from '../../shared/model/user';
+import { Streamer, StreamerEmpty } from '../../shared/model/user';
 import { namespace } from 'vuex-class';
 import { Logger } from 'fsts';
 import Axios from 'axios';

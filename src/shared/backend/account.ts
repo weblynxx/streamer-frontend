@@ -6,7 +6,7 @@ import { ChangePassword } from '../model/changePassword';
 import { PasswordResetFinish } from '../model/passwordResetFinish';
 import { IdToken } from '../model/idToken';
 import { Credentials } from '../model/credentials';
-import { User } from '../model/user';
+import { Streamer } from '../model/user';
 
 export interface BackendAccount {
   authenticate: (
@@ -20,9 +20,9 @@ export interface BackendAccount {
     userId: string;
     refresh_token: string;
   }>;
-  createStreamer: (payload: any) => AxiosPromise<User>;
+  createStreamer: (payload: any) => AxiosPromise<Streamer>;
   getMyAccount: () => AxiosPromise<any>;
-  getMyAccountWithPassword: (id: number) => AxiosPromise<User>;
+  getMyAccountWithPassword: (id: number) => AxiosPromise<Streamer>;
   changeMyPassword: (oldPassword: string, newPassword: string) => AxiosPromise;
   initResetPassword: (email: string) => AxiosPromise;
   checkPasswordReset: (key: string) => AxiosPromise;
@@ -52,9 +52,9 @@ export const defaultBackendAccount: BackendAccount = {
     };
     return instance.post<any>(`${URLS.authenticate}`, credentials);
   },
-  createStreamer(payload: any): AxiosPromise<User> {
+  createStreamer(payload: any): AxiosPromise<Streamer> {
     var newEmployee = payload.newEmployee;
-    return instance.post<User>(`${URLS.account}/CreateStreamer`, {
+    return instance.post<Streamer>(`${URLS.account}/CreateStreamer`, {
       FirstName: newEmployee.firstName,
       LastName: newEmployee.lastName,
       Email: newEmployee.email,
@@ -66,8 +66,8 @@ export const defaultBackendAccount: BackendAccount = {
   getMyAccount(): AxiosPromise<any> {
     return instance.get<any>(`${URLS.account}/GetMe`);
   },
-  getMyAccountWithPassword(id: number): AxiosPromise<User> {
-    return instance.get<User>(`${URLS.account}/${id}/password`);
+  getMyAccountWithPassword(id: number): AxiosPromise<Streamer> {
+    return instance.get<Streamer>(`${URLS.account}/${id}/password`);
   },
   changeMyPassword(currentPassword: string, newPassword: string): AxiosPromise {
     const changePassword: ChangePassword = {

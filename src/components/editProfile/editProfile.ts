@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import { Component, Watch, Ref } from 'vue-property-decorator';
-import { User, UserEmpty } from '../../shared/model/user';
+import { Streamer, StreamerEmpty } from '../../shared/model/user';
 import { namespace } from 'vuex-class';
 import { Logger } from 'fsts';
 
@@ -10,7 +10,7 @@ const authModule = namespace('authManagement');
 @Component
 export default class EditProfileComponent extends Vue {
   @editProfileManagementModule.State('currentUser')
-  private stateCurrentUser!: User;
+  private stateCurrentUser!: Streamer;
   @editProfileManagementModule.Action('getprofile')
   private actionGetProfile!: any;
   @editProfileManagementModule.Action('updateProfile')
@@ -26,8 +26,8 @@ export default class EditProfileComponent extends Vue {
     });
   }
 
-  editedProfile: User = {
-    ...UserEmpty,
+  editedProfile: Streamer = {
+    ...StreamerEmpty,
   };
 
   private isLoading = false;

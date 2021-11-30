@@ -1,9 +1,9 @@
 import store from '../store';
-import { User } from '../model/user';
+import { Streamer } from '../model/user';
 
 export default class AuthorityUtils {
   public static hasAnyRole(roles: string[]) {
-    const user: User = store.getters['authManagement/user'];
+    const user: Streamer = store.getters['authManagement/user'];
     return user && user.authorities != '';
   }
   public static isEmptyAccount() {

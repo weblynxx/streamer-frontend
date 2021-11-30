@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { User, UserEmpty } from '../../shared/model/user';
+import { Streamer, StreamerEmpty } from '../../shared/model/user';
 import { Action, namespace } from 'vuex-class';
 import { Logger } from 'fsts';
 import { DefaultViewHelper } from '../ViewHelper';
@@ -25,8 +25,8 @@ export default class LoginComponent extends Vue {
   private isLoading = false;
   private tab = 0;
 
-  private newUser: User = {
-    ...UserEmpty,
+  private newUser: Streamer = {
+    ...StreamerEmpty,
   };
 
   emailChanged() {

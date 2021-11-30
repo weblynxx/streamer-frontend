@@ -1,7 +1,7 @@
 import { AxiosPromise } from 'axios';
 import { instance } from '.';
 import { URLS } from './index';
-import { Password, User } from '../model/user';
+import { Password, Streamer } from '../model/user';
 import { LinkedServices, Service } from '../model/service';
 
 export interface BackendServices {
