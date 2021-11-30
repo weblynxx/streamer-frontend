@@ -6,6 +6,10 @@
       "error": "Error",
       "save": "Do you want to save?",
       "update": "Do you want to update?"
+    },
+    "actions": {
+      "save": "Save",
+      "cancel": "Cancel"
     }
   },
   "auth_management": {
@@ -56,6 +60,24 @@
   "editServices_management": {
     "integrations": "Integration in social networks",
     "link": "Link"
+  },
+  "editContactData_management": {
+    "title": "Information for delivery:",
+    "city": "City",
+    "street": "Street",
+    "house": "House",
+    "houseBuilding": "House building",
+    "entrance": "Entrance",
+    "floor": "Floor",
+    "flat": "Flat",
+    "phone_number": "Phone number",
+    "intercom_code": "Intercom code",
+    "error": {
+      "update_contact_data": "Updating the contact data failed."
+    },
+    "success": {
+      "update_contact_data": "Contact data has been updated successfully."
+    }
   },
   "messages": {
     "verify_password": "The password must contain at least: 1 uppercase letter, 1 lowercase letter, 1 number, and one special character (E.g. , . _ & ? etc.)",

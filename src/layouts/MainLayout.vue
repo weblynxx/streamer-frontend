@@ -83,7 +83,7 @@
                       {{ $t('home_management.integrations') }}
                     </v-list-item-title>
                   </v-list-item>
-                  <v-list-item link @click="window = 1">
+                  <v-list-item link to="/editContactData">
                     <v-list-item-action>
                       <v-img
                         :src="require(`../assets/Contact_data.png`)"

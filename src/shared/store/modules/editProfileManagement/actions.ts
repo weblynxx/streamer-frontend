@@ -56,6 +56,37 @@ export const actions: ActionTree<EditProfileManagementState, RootState> = {
       );
     }
   },
+
+  async updateStreamerContactData({ commit }, payload: Streamer) {
+    try {
+      defaultBackendStreamers
+        .updateStreamerContactData(payload)
+        .then(response => {
+          commit(
+            'setSnackbarSuccess',
+            {
+              message: i18n.tc(
+                `editContactData_management.success.update_contact_data`
+              ),
+              duration: 5000,
+            },
+            { root: true }
+          );
+        });
+    } catch (e) {
+      console.log(e);
+      commit(
+        'setSnackbarError',
+        {
+          message: i18n.tc(
+            `editContactData_management.error.update_contact_data`
+          ),
+          duration: 5000,
+        },
+        { root: true }
+      );
+    }
+  },
   async updateProfile({ commit }, payload: Streamer) {
     try {
       defaultBackendStreamers.updateStreamer(payload).then(response => {

@@ -44,6 +44,18 @@ const router = new VueRouter({
       },
     },
     {
+      path: '/editContactData',
+      name: 'ContactData',
+      component: () =>
+        import('@/components/editContactData/editContactData.vue'),
+      meta: {
+        title: 'Contact data',
+        layout: 'main',
+        requiresAuth: true,
+        requiresRole: [AUTHORITIES.STREAMER],
+      },
+    },
+    {
       path: '/oauth/twitch',
       name: 'TwitchOAuth',
       meta: {

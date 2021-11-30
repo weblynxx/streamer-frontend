@@ -6,6 +6,10 @@
       "error": "Ошибка",
       "save": "Вы действительно хотите сохранить?",
       "update": "Вы действиельно хотите обновить?"
+    },
+    "actions": {
+      "save": "Сохранить",
+      "cancel": "Отмена"
     }
   },
   "auth_management": {
@@ -56,6 +60,24 @@
   "editServices_management": {
     "integrations": "Интеграции в соц. сети",
     "link": "Привязать"
+  },
+  "editContactData_management": {
+    "title": "Информация для доставки:",
+    "city": "Город",
+    "street": "Улица",
+    "house": "Дом",
+    "houseBuilding": "Корпус",
+    "entrance": "Подъезд",
+    "floor": "Этаж",
+    "flat": "Квартира",
+    "phone_number": "Телефон",
+    "intercom_code": "Домофон/Код",
+    "error": {
+      "update_contact_data": "Ошибка при обновлении информации"
+    },
+    "success": {
+      "update_contact_data": "Контактные данные обновлены успешно"
+    }
   },
   "messages": {
     "verify_password": "Пароль должен содержать хотя бы одну букву в нижнем и верхнем регистре, цифру, а также спец. символ (.!_?...)",
