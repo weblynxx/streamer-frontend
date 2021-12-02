@@ -4,7 +4,7 @@ import { Streamer } from '../model/user';
 export default class AuthorityUtils {
   public static hasAnyRole(roles: string[]) {
     const user: Streamer = store.getters['authManagement/user'];
-    return user && user.authorities != '';
+    return user && roles.includes(user.authorities);
   }
   public static isEmptyAccount() {
     return !store.getters['authManagement/isLoggedIn'];

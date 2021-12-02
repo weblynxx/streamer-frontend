@@ -114,6 +114,7 @@ router.beforeEach(async (to: any, from, next) => {
         !AuthorityUtils.isStreamer() &&
         !AuthorityUtils.hasAnyRole(to.meta.requiresRole)
       ) {
+        alert("You can't access to service");
         next('error-access-view');
         return;
       }
