@@ -82,6 +82,9 @@ export enum URLS {
 
   servicesDtoOData = '/odata/ServiceDto',
   services = '/api/Service',
+
+  partnersOData = '/odata/Partners',
+  partners = '/api/Partners',
 }
 
 export enum URL_PARAMS {
