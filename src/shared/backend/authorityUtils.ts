@@ -33,12 +33,18 @@ export default class AuthorityUtils {
   public static getCurrentRole() {
     if (this.isStreamer()) {
       return 'ROLE_STREAMER';
+    } else if (this.isAdmin()) {
+      return 'ROLE_ADMIN';
     }
     return 'ROLE_CUSTOMER';
   }
 
   public static isStreamer() {
     return store.getters['authManagement/isStreamer'];
+  }
+
+  public static isAdmin() {
+    return store.getters['authManagement/isAdmin'];
   }
 
   public static isCustomer() {

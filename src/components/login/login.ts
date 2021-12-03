@@ -17,6 +17,7 @@ export default class LoginComponent extends Vue {
   @authModule.Action('login') private actionLogin!: any;
   @authModule.Action('loadAccountDetails')
   private actionLoadAccountDetails!: any;
+  @authModule.State('isAdmin') private isAdmin!: boolean;
   @Ref('observer-login-form') private observerLoginForm!: any;
   @Ref('observer-register-form') private observerRegisterForm!: any;
 
@@ -61,6 +62,7 @@ export default class LoginComponent extends Vue {
       password: this.newUser.password,
       rememberMe: true,
     };
+    var redirect = this.$route.query.redirect as string;
     await this.actionLogin(credentialPayload)
       .then(() => {
         this.isLoading = false;
@@ -95,7 +97,12 @@ export default class LoginComponent extends Vue {
         this.actionLoadAccountDetails()
           .then(() => {
             this.isLoading = false;
-            redirect = redirect && redirect != '/' ? redirect : '/';
+            redirect =
+              redirect && redirect != '/' //contain not empty and not base ur
+                ? redirect
+                : this.isAdmin
+                ? '/adminHome'
+                : '/';
             this.$router.push({ path: redirect }).catch((e: any) => {
               console.log(e);
             });
@@ -121,7 +128,7 @@ export default class LoginComponent extends Vue {
   }
 
   @Action('setLocale') public setLocaleForVuex!: any;
-  
+
   private setLocale(locale: string) {
     this.$i18n.locale = locale;
     i18n.locale = locale;

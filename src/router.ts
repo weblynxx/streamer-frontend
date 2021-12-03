@@ -29,7 +29,18 @@ const router = new VueRouter({
         title: 'Home Page',
         layout: 'main',
         requiresAuth: true,
-        requiresRole: [AUTHORITIES.STREAMER],
+        requiresRole: [AUTHORITIES.ADMIN],
+      },
+    },
+    {
+      path: '/adminHome',
+      name: 'home',
+      component: () => import('@/components/admin/admin.vue'),
+      meta: {
+        title: 'Home Page',
+        layout: 'admin',
+        requiresAuth: true,
+        requiresRole: [AUTHORITIES.ADMIN],
       },
     },
     {
