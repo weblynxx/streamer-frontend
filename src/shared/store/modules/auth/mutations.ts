@@ -34,6 +34,7 @@ export const mutations: MutationTree<AuthState> = {
       state.isStreamer = state.account.authorities.includes(
         AUTHORITIES.STREAMER
       );
+      state.isAdmin = state.account.authorities.includes(AUTHORITIES.ADMIN);
       state.isCustomer = state.account.authorities.includes(
         AUTHORITIES.CUSTOMER
       );
