@@ -1,10 +1,8 @@
 name: Build Docker Images for Prod & Push to DockerHub
 
 on:
-  push:
-    branches: [ dev ]
   pull_request:
-    branches: [ dev ]
+    branches: [ main ]
 
 jobs:
 
@@ -24,8 +22,8 @@ jobs:
     
     - name: Docker Build Frontend
       run: |
-        docker build . -t smirnovskoe/streamad_frontend:latest
+        docker build . -t smirnovskoe/streamad_frontend:prod
         
     - name: Docker Push Frontend
       run: |
-        docker push smirnovskoe/streamad_frontend:latest  
+        docker push smirnovskoe/streamad_frontend:prod
