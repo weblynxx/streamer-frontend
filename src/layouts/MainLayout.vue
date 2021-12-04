@@ -1,27 +1,140 @@
 <template>
-  <v-app>
-    <div class="area">
-      <ul class="circles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
-    </div>
-    <v-app-bar color="white" app flat>
+  <v-app class="transparent_bg">
+    <v-app-bar color="transparent" flat class="mt-12">
       <v-container class="py-0 fill-height">
-        <v-btn text color="black"> Home</v-btn>
-        <v-btn text color="black"> About </v-btn>
-        <v-spacer></v-spacer>
-        <span class="text-h4 black--text">StreamerId</span>
+        <v-row align="center">
+          <v-col align="right" cols="7">
+            <v-img
+              :src="require(`../assets/SendAD.png`)"
+              max-height="100"
+              max-width="300"
+            ></v-img>
+          </v-col>
+          <v-col align="center">
+            <v-avatar class="pa-2 cursor">
+              <v-img
+                :src="
+                  $i18n.locale == 'en'
+                    ? require(`../assets/en-flag.svg`)
+                    : require(`../assets/ru-flag.png`)
+                "
+                aspect-ratio="1.0"
+                @click="setLocale($i18n.locale == 'en' ? 'ru' : 'en')"
+                max-height="32"
+              ></v-img>
+            </v-avatar>
+            <span class="white--text">{{
+              $i18n.locale == 'en' ? 'English' : 'Русский'
+            }}</span></v-col
+          >
+        </v-row>
       </v-container>
     </v-app-bar>
     <v-main>
-      <router-view></router-view>
+      <v-container class="mb-10">
+        <v-row>
+          <v-col cols="3">
+            <v-card color="#1F2340" class="profile_form" rounded="lg">
+              <v-card-text>
+                <v-row align="center" justify="center">
+                  <v-col>
+                    <v-flex class="d-flex d-flex-inline">
+                      <v-avatar color="indigo" max-height="60" max-width="60">
+                        <v-icon dark>
+                          mdi-account-circle
+                        </v-icon>
+                      </v-avatar>
+                      <v-flex
+                        class="d-flex white--text profile_form_text ml-4 mt-2"
+                      >
+                        {{
+                          currentUser.lastName + ', ' + currentUser.firstName
+                        }}
+                      </v-flex>
+                    </v-flex>
+                  </v-col>
+                  <v-col align="right" justify="center" cols="2">
+                    <v-img
+                      :src="require(`../assets/setting.png`)"
+                      max-width="30"
+                      max-height="30"
+                    >
+                    </v-img>
+                  </v-col>
+                </v-row>
+              </v-card-text>
+            </v-card>
+            <v-card color="#1F2340" class="profile_form mt-2" rounded="lg">
+              <v-card-text>
+                <v-list color="transparent">
+                  <v-list-item link to="/">
+                    <v-list-item-action>
+                      <v-img :src="require(`../assets/Profile.png`)"></v-img>
+                    </v-list-item-action>
+                    <v-list-item-title class="white--text">
+                      {{ $t('home_management.profile') }}
+                    </v-list-item-title>
+                  </v-list-item>
+                  <v-list-item link to="/services">
+                    <v-list-item-action>
+                      <v-img :src="require(`../assets/Send.png`)"></v-img>
+                    </v-list-item-action>
+                    <v-list-item-title class="white--text">
+                      {{ $t('home_management.integrations') }}
+                    </v-list-item-title>
+                  </v-list-item>
+                  <v-list-item link to="/editContactData">
+                    <v-list-item-action>
+                      <v-img
+                        :src="require(`../assets/Contact_data.png`)"
+                      ></v-img>
+                    </v-list-item-action>
+                    <v-list-item-title class="white--text">
+                      {{ $t('home_management.contact_data') }}
+                    </v-list-item-title>
+                  </v-list-item>
+                  <v-list-item link to="/editContactData">
+                    <v-list-item-action>
+                      <v-img :src="require(`../assets/restorants.png`)"></v-img>
+                    </v-list-item-action>
+                    <v-list-item-title class="white--text">
+                      {{ $t('home_management.my_restaurants') }}
+                    </v-list-item-title>
+                  </v-list-item>
+                  <v-list-item link to="/editTimeDelivery">
+                    <v-list-item-action>
+                      <v-img
+                        :src="require(`../assets/delivery_time.png`)"
+                      ></v-img>
+                    </v-list-item-action>
+                    <v-list-item-title class="white--text">
+                      {{ $t('home_management.delivery_time') }}
+                    </v-list-item-title>
+                  </v-list-item>
+                </v-list>
+              </v-card-text>
+            </v-card>
+            <v-flex class="d-flex mt-12 ml-n12 cursor" @click="logout">
+              <v-img
+                :src="require(`../assets/Logout.png`)"
+                max-width="48"
+                max-height="48"
+              >
+              </v-img>
+              <v-flex class="ml-2 mt-1 white--text" style="font-size: 25px;">
+                {{ $t('auth_management.logout') }}
+              </v-flex>
+            </v-flex>
+          </v-col>
+          <v-col cols="6">
+            <v-card min-height="50vh" rounded="lg" color="#1F2340">
+              <router-view></router-view>
+            </v-card>
+          </v-col>
+          <v-col cols="4"></v-col>
+        </v-row>
+      </v-container>
+
       <v-snackbar
         top
         v-model="snackbar.show"
@@ -42,150 +155,104 @@
 </template>
 <style>
 @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+html,
 body {
-  background-color: transparent;
+  margin: 0;
+  height: 100%;
+  background: url('../assets/bg_main.png');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+body {
   font-family: 'Exo', sans-serif;
 }
-
-.area {
-  background: white;
-  background: -webkit-linear-gradient(to left, #8f94fb, #ffffff);
-  width: 100%;
-  height: 100vh;
-  position: absolute;
+.transparent_bg {
+  background-color: transparent !important;
+}
+.logo {
+  font-family: Gilroy;
+  font-size: 100px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 125px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.logo::after {
+  content: attr(data-end);
+  color: #fea116;
+}
+.cursor {
+  cursor: pointer;
+}
+.profile_form_text {
+  font-family: Gilroy;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 35px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.v-text-field input {
+  color: white !important;
+  font-size: 18px;
+  line-height: 21px;
 }
 
-.circles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.circles li {
-  position: absolute;
-  display: block;
-  list-style: none;
-  width: 20px;
-  height: 20px;
-  background: rgba(255, 120, 255, 0.2);
-  animation: animate 10s linear infinite;
-  bottom: -150px;
-}
-
-.circles li:nth-child(1) {
-  left: 25%;
-  width: 80px;
-  height: 80px;
-  animation-delay: 0s;
-  animation-duration: infinite;
-}
-
-.circles li:nth-child(2) {
-  left: 10%;
-  width: 20px;
-  height: 20px;
-  animation-delay: 2s;
-  animation-duration: infinite;
-}
-
-.circles li:nth-child(3) {
-  left: 70%;
-  width: 20px;
-  height: 20px;
-  animation-delay: 0s;
-  animation-duration: infinite;
-}
-
-.circles li:nth-child(4) {
-  left: 40%;
-  width: 60px;
-  height: 60px;
-  animation-delay: 0s;
-  animation-duration: infinite;
-}
-
-.circles li:nth-child(5) {
-  left: 65%;
-  width: 20px;
-  height: 20px;
-  animation-delay: 0s;
-  animation-duration: infinite;
-}
-
-.circles li:nth-child(6) {
-  left: 75%;
-  width: 110px;
-  height: 110px;
-  animation-delay: 3s;
-  animation-duration: infinite;
-}
-
-.circles li:nth-child(7) {
-  left: 35%;
-  width: 150px;
-  height: 150px;
-  animation-delay: 7s;
-  animation-duration: infinite;
-}
-
-.circles li:nth-child(8) {
-  left: 50%;
-  width: 25px;
-  height: 25px;
-  animation-delay: 15s;
-  animation-duration: infinite;
-}
-
-.circles li:nth-child(9) {
-  left: 20%;
-  width: 15px;
-  height: 15px;
-  animation-delay: 2s;
-  animation-duration: infinite;
-}
-
-.circles li:nth-child(10) {
-  left: 85%;
-  width: 150px;
-  height: 150px;
-  animation-delay: 0s;
-  animation-duration: infinite;
-}
-
-@keyframes animate {
-  0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 1;
-    border-radius: 0;
-  }
-
-  100% {
-    transform: translateY(-1000px) rotate(720deg);
-    opacity: 0;
-    border-radius: 50%;
+@media only screen and (max-width: 600px) {
+  .main_login_form {
+    border-radius: 10px !important;
   }
 }
 </style>
 <script lang="ts">
-import router from '@/router';
 import { Snackbar } from '@/shared/model/snackbar';
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { State } from 'vuex-class';
-import EmptyLayout from './EmptyLayout.vue';
-@Component({
-  components: {
-    'empty-layout': EmptyLayout,
-  },
-})
+import { Action, namespace, State } from 'vuex-class';
+import i18n from '../i18n';
+import { localize } from 'vee-validate';
+import { Credentials } from '@/shared/model/credentials';
+
+const authModule = namespace('authManagement');
+
+@Component
 export default class MainLayout extends Vue {
   @State('snackbar') public stateSnackbar!: Snackbar;
   // computed
   get snackbar() {
     return this.stateSnackbar;
+  }
+  @Action('setLocale') public setLocaleForVuex!: any;
+
+  private setLocale(locale: string) {
+    this.$i18n.locale = locale;
+    i18n.locale = locale;
+    localStorage.setItem('locale', locale);
+    localize(locale);
+    this.setLocaleForVuex();
+  }
+  get isMobile() {
+    return this.$vuetify.breakpoint.xsOnly;
+  }
+  @authModule.Action('logout') private actionLogout: any;
+  @authModule.Getter('getUser') private currentUser!: Credentials;
+
+  get message() {
+    return {
+      name: `${this.currentUser.lastName}, ${this.currentUser.firstName}`,
+      title: 'Welcome to Vuetify!',
+    };
+  }
+  private window = 0;
+
+  private logout() {
+    this.actionLogout().then((result: any) => {
+      this.$router.push('/login');
+    });
   }
 }
 </script>

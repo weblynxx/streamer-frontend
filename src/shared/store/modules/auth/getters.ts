@@ -27,6 +27,9 @@ export const getters: GetterTree<AuthState, RootState> = {
   isStreamer(state): boolean {
     return state.isStreamer;
   },
+  isAdmin(state): boolean {
+    return state.isAdmin;
+  },
   isCustomer(state): boolean {
     return state.isCustomer;
   },

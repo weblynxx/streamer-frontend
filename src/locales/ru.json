@@ -1,0 +1,95 @@
+{
+  "app": {
+    "dialogs": {
+      "alert": "Предупрждение",
+      "confirm": "Подтврждение",
+      "error": "Ошибка",
+      "save": "Вы действительно хотите сохранить?",
+      "update": "Вы действиельно хотите обновить?"
+    },
+    "actions": {
+      "save": "Сохранить",
+      "cancel": "Отмена"
+    }
+  },
+  "auth_management": {
+    "login": "Логин",
+    "email": "E-Mail",
+    "password": "Пароль",
+    "first_name": "Имя",
+    "last_name": "Фамилия",
+    "log_in": "Войти",
+    "register": "Регистрация",
+    "logout": "Выход"
+  },
+  "home_management": {
+    "profile": "Профиль",
+    "integrations": "Интеграции",
+    "contact_data": "Контактные данные",
+    "my_restaurants": "Мои рестораны",
+    "delivery_time": "Время доставки"
+  },
+  "editProfile_management": {
+    "profile": "Профиль",
+    "your_uniq_id": "Ваш уникальный ID:",
+    "update": "Обновить",
+    "update_streamer_id": "Хотите обновить StreamerId?",
+    "uniq_id_info": "Вы можете обновить свой ID, тем самым сделав предыдущий ID недоступным для использования",
+    "food_preference": "Предпочтение в еде",
+    "clothes_preference": "Предпочтение в одежде",
+    "food_category": {
+      "pizza": "Пицца",
+      "sushi": "Суши",
+      "steaks": "Стейки",
+      "hot_dogs": "Хот доги",
+      "vietnamese_food": "Вьетнамская еда",
+      "georgian_food": "Грузинская еда",
+      "seafood": "Морепродукты",
+      "bakery_products": "Выпечка",
+      "burgers": "Бургеры"
+    },
+    "error": {
+      "update_profile": "Ошибка при обновлении профиля.",
+      "update_streamerId": "Ошибка при обновлении StreamerId."
+    },
+    "success": {
+      "update_profile": "Профиль был успешно обновлен.",
+      "update_streamerId": "StreamerId был усешно обновлен."
+    }
+  },
+  "editServices_management": {
+    "integrations": "Интеграции в соц. сети",
+    "link": "Привязать"
+  },
+  "editContactData_management": {
+    "title": "Информация для доставки:",
+    "city": "Город",
+    "street": "Улица",
+    "house": "Дом",
+    "houseBuilding": "Корпус",
+    "entrance": "Подъезд",
+    "floor": "Этаж",
+    "flat": "Квартира",
+    "phone_number": "Телефон",
+    "intercom_code": "Домофон/Код",
+    "error": {
+      "update_contact_data": "Ошибка при обновлении информации"
+    },
+    "success": {
+      "update_contact_data": "Контактные данные обновлены успешно"
+    }
+  },
+  "timeDelivery_management": {
+    "allowed_period": "Разрешенный период доставки",
+    "allowed_period_info": "Вы подтверждаете, что в данный период времени вы можете принимать заказы по указанному вами адресу, если в указанный промежуток времени принять заказ нет возможности — воспользуйтесь функцией приостановки заказа ниже",
+    "edit": "Edit",
+    "stop_delivery": "Stop delivery"
+  },
+
+  "messages": {
+    "verify_password": "Пароль должен содержать хотя бы одну букву в нижнем и верхнем регистре, цифру, а также спец. символ (.!_?...)",
+    "_default": "default_message",
+    "verify_already_exist_username": "Пользователь с таким именем уже существует",
+    "verify_already_exist_email": "Пользователь с таким email уже существует"
+  }
+}

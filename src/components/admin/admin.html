@@ -1,0 +1,161 @@
+<div>
+  <v-dialog
+    persistent
+    v-model="dialog"
+    @keydown.esc="close"
+    max-width="700px"
+    :fullscreen="!$vuetify.breakpoint.smAndUp"
+  >
+    <v-card
+      class="ml-auto mr-auto elevation-0"
+      style="background-color: black;"
+    >
+      <v-card-title class="white--text profile_font">
+        <v-spacer></v-spacer>
+        Add partner
+        <v-spacer></v-spacer>
+      </v-card-title>
+      <validation-observer ref="observer-add-partner-form" v-slot="v">
+        <v-form id="editContactData" data-vv-scope="addPartnerData">
+          <v-card-text class="elevation-0">
+            <v-container grid-list-md>
+              <v-layout wrap>
+                <v-flex xs6 md6>
+                  <validation-provider
+                    name="username"
+                    rules="required"
+                    v-slot="{ errors }"
+                  >
+                    <v-text-field
+                      label="username"
+                      outlined
+                      dense
+                      background-color="#14182E"
+                      dark
+                      class="rounded-lg "
+                      v-model="partner.userName"
+                      :error-messages="errors[0]"
+                    ></v-text-field>
+                  </validation-provider>
+                </v-flex>
+                <v-flex xs6 md6>
+                  <validation-provider
+                    name="password"
+                    rules="required"
+                    v-slot="{ errors }"
+                  >
+                    <v-text-field
+                      label="password"
+                      outlined
+                      dense
+                      background-color="#14182E"
+                      dark
+                      class="rounded-lg "
+                      v-model="partner.password"
+                      :error-messages="errors[0]"
+                    ></v-text-field>
+                  </validation-provider>
+                </v-flex>
+                <v-flex xs6 md6>
+                  <validation-provider
+                    name="email"
+                    rules="required"
+                    v-slot="{ errors }"
+                  >
+                    <v-text-field
+                      label="email"
+                      outlined
+                      dense
+                      background-color="#14182E"
+                      dark
+                      class="rounded-lg "
+                      v-model="partner.email"
+                      :error-messages="errors[0]"
+                    ></v-text-field>
+                  </validation-provider>
+                </v-flex>
+                <v-flex xs6 md6>
+                  <validation-provider
+                    name="deliverName"
+                    rules="required"
+                    v-slot="{ errors }"
+                  >
+                    <v-text-field
+                      label="deliverName"
+                      outlined
+                      dense
+                      background-color="#14182E"
+                      dark
+                      class="rounded-lg "
+                      v-model="partner.deliveryName"
+                      :error-messages="errors[0]"
+                    ></v-text-field>
+                  </validation-provider>
+                </v-flex>
+                <v-flex xs6 md6>
+                  <validation-provider
+                    name="icon"
+                    rules="required"
+                    v-slot="{ errors }"
+                  >
+                    <v-select
+                      label="DelivreryType"
+                      outlined
+                      dense
+                      background-color="#14182E"
+                      dark
+                      :items="deliveryType"
+                      class="rounded-lg "
+                      v-model="partner.deliveryType"
+                      :error-messages="errors[0]"
+                    ></v-select>
+                  </validation-provider>
+                </v-flex>
+                <v-flex xs12 md12 class="d-flex">
+                  <v-spacer> </v-spacer>
+                  <v-btn
+                    v-t="$t('app.actions.save')"
+                    @click="addPartner"
+                    :disabled="isLoading"
+                    :loading="isLoading"
+                    class="px-10 rounded-lg"
+                    dark
+                    color="#FEA116"
+                  ></v-btn>
+                </v-flex>
+              </v-layout>
+            </v-container>
+          </v-card-text>
+        </v-form>
+      </validation-observer>
+    </v-card>
+  </v-dialog>
+  <v-row>
+    <v-col>
+      <v-card>
+        <v-card-title>Our partners </v-card-title>
+
+        <v-data-table
+          :headers="headers"
+          :items="statePartners"
+          :footer-props="{itemsPerPageOptions: [5, 10, 15, 20, 25]}"
+          :loading="stateIsLoadingPartners"
+          :options.sync="options"
+          :server-items-length="stateTotalPartners"
+          show-select
+          item-key="id"
+          :single-select="true"
+          class="elevation-1"
+        >
+          <template v-slot:item.actionEdit="{ item }">
+            <v-btn icon :class="$vuetify.breakpoint.xs ? '': 'mr-n5'">
+              <v-icon size="32" color="blue" @click="editItem(item)">
+                mdi-file-edit
+              </v-icon>
+            </v-btn>
+          </template>
+        </v-data-table>
+      </v-card>
+    </v-col>
+  </v-row>
+</div>

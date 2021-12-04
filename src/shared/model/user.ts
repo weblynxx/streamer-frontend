@@ -1,4 +1,4 @@
-export interface User {
+export interface Streamer {
   id: string;
   firstName: string;
   lastName: string;
@@ -11,8 +11,17 @@ export interface User {
   emailConfirmed: boolean;
   role: string;
   token: string;
+  streamerId: string;
+  city: string;
+  street: string;
+  house: string;
+  houseBuilding: string;
+  entrance: string;
+  floor: number;
+  flat: string;
+  intercomCode: string;
 }
-export const UserEmpty: User = {
+export const StreamerEmpty: Streamer = {
   id: '',
   firstName: '',
   lastName: '',
@@ -25,6 +34,15 @@ export const UserEmpty: User = {
   emailConfirmed: false,
   role: '',
   token: '',
+  streamerId: '',
+  city: '',
+  entrance: '',
+  flat: '',
+  floor: 1,
+  house: '',
+  houseBuilding: '',
+  street: '',
+  intercomCode: '',
 };
 
 export interface Password {

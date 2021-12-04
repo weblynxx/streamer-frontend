@@ -1,10 +1,12 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { User, UserEmpty } from '../../shared/model/user';
-import { namespace } from 'vuex-class';
+import { Streamer, StreamerEmpty } from '../../shared/model/user';
+import { Action, namespace } from 'vuex-class';
 import { Logger } from 'fsts';
 import { DefaultViewHelper } from '../ViewHelper';
 import { Ref } from 'vue-property-decorator';
+import i18n from '../../i18n';
+import { localize } from 'vee-validate';
 
 const logger = new Logger('authorization');
 const authModule = namespace('authManagement');
@@ -15,6 +17,7 @@ export default class LoginComponent extends Vue {
   @authModule.Action('login') private actionLogin!: any;
   @authModule.Action('loadAccountDetails')
   private actionLoadAccountDetails!: any;
+  @authModule.State('isAdmin') private isAdmin!: boolean;
   @Ref('observer-login-form') private observerLoginForm!: any;
   @Ref('observer-register-form') private observerRegisterForm!: any;
 
@@ -23,8 +26,8 @@ export default class LoginComponent extends Vue {
   private isLoading = false;
   private tab = 0;
 
-  private newUser: User = {
-    ...UserEmpty,
+  private newUser: Streamer = {
+    ...StreamerEmpty,
   };
 
   emailChanged() {
@@ -59,6 +62,7 @@ export default class LoginComponent extends Vue {
       password: this.newUser.password,
       rememberMe: true,
     };
+    var redirect = this.$route.query.redirect as string;
     await this.actionLogin(credentialPayload)
       .then(() => {
         this.isLoading = false;
@@ -93,7 +97,12 @@ export default class LoginComponent extends Vue {
         this.actionLoadAccountDetails()
           .then(() => {
             this.isLoading = false;
-            redirect = redirect && redirect != '/' ? redirect : '/';
+            redirect =
+              redirect && redirect != '/' //contain not empty and not base ur
+                ? redirect
+                : this.isAdmin
+                ? '/adminHome'
+                : '/';
             this.$router.push({ path: redirect }).catch((e: any) => {
               console.log(e);
             });
@@ -116,5 +125,15 @@ export default class LoginComponent extends Vue {
   }
   get isMobile() {
     return this.$vuetify.breakpoint.xsOnly;
+  }
+
+  @Action('setLocale') public setLocaleForVuex!: any;
+
+  private setLocale(locale: string) {
+    this.$i18n.locale = locale;
+    i18n.locale = locale;
+    localStorage.setItem('locale', locale);
+    localize(locale);
+    this.setLocaleForVuex();
   }
 }

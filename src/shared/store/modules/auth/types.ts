@@ -1,4 +1,4 @@
-import { User } from "../../../model/user";
+import { Streamer } from "../../../model/user";
 import { Credentials } from "../../../model/credentials";
 
 export interface AuthState {

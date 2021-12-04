@@ -1,8 +1,8 @@
-﻿import { User } from '../../../model/user';
+﻿import { Streamer } from '../../../model/user';
 
 export interface EditProfileManagementState {
   [key: string]: any;
-  currentUser: User;
+  currentUser: Streamer;
   newPassword: string;
   isLoadingCurrentUser: boolean;
 }

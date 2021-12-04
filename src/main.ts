@@ -7,6 +7,7 @@ import store from './shared/store';
 import { Logger } from 'fsts';
 import './plugins/vee-validate';
 import Vuetify from 'vuetify';
+import i18n from './i18n';
 
 var moment = require('moment-timezone');
 var timezone = moment.tz.guess();
@@ -20,6 +21,7 @@ new Vue({
   el: '#app',
   router: router,
   store,
+  i18n,
   vuetify,
   render: h => h(App),
 });

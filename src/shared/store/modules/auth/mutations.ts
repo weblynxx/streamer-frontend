@@ -2,7 +2,7 @@ import { MutationTree } from 'vuex';
 import axios from 'axios';
 import { AuthState } from './types';
 import { initialState } from './state';
-import { User } from '../../../model/user';
+import { Streamer } from '../../../model/user';
 import { AUTHORITIES } from './index';
 import { Credentials } from '../../../model/credentials';
 import LSService from '../../../backend/LocalStorageService';
@@ -34,6 +34,7 @@ export const mutations: MutationTree<AuthState> = {
       state.isStreamer = state.account.authorities.includes(
         AUTHORITIES.STREAMER
       );
+      state.isAdmin = state.account.authorities.includes(AUTHORITIES.ADMIN);
       state.isCustomer = state.account.authorities.includes(
         AUTHORITIES.CUSTOMER
       );

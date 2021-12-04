@@ -1,21 +1,11 @@
-﻿import { EditProfileManagementState } from './types';
+﻿import { StreamerEmpty } from '@/shared/model/user';
+import { EditProfileManagementState } from './types';
 
 export const state = (): EditProfileManagementState => initialState();
 
 export const initialState = (): EditProfileManagementState => ({
   currentUser: {
-    id: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    userName: '',
-    password: '',
-    authorities: '',
-    emailConfirmed: false,
-    role: '',
-    token: '',
-    fullName: '',
+    ...StreamerEmpty,
   },
   isLoadingCurrentUser: false,
   newPassword: '',

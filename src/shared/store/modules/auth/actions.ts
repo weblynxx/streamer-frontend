@@ -3,7 +3,7 @@ import { AuthState } from './types';
 import { RootState } from '../../types';
 import { defaultBackendAccount } from '../../../backend/account'; //TODO @/shared/backend/account
 import { Credentials } from '../../../model/credentials';
-import { User } from '../../../model/user';
+import { Streamer } from '../../../model/user';
 import store from '../..';
 import { Logger } from 'fsts';
 

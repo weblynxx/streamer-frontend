@@ -1,10 +1,10 @@
 ﻿import { MutationTree } from 'vuex';
 import { EditProfileManagementState } from './types';
 import { initialState } from './state';
-import { User } from '../../../model/user';
+import { Streamer } from '../../../model/user';
 
 export const mutations: MutationTree<EditProfileManagementState> = {
-  setProfile(state: EditProfileManagementState, payload: User) {
+  setProfile(state: EditProfileManagementState, payload: Streamer) {
     state.currentUser = Object.assign({}, payload);
     state.isLoadingCurrentUser = true;
   },

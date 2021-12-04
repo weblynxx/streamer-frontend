@@ -1,10 +1,10 @@
 import store from '../store';
-import { User } from '../model/user';
+import { Streamer } from '../model/user';
 
 export default class AuthorityUtils {
   public static hasAnyRole(roles: string[]) {
-    const user: User = store.getters['authManagement/user'];
-    return user && user.authorities != '';
+    const user: Streamer = store.getters['authManagement/user'];
+    return user && roles.includes(user.authorities);
   }
   public static isEmptyAccount() {
     return !store.getters['authManagement/isLoggedIn'];
@@ -33,12 +33,18 @@ export default class AuthorityUtils {
   public static getCurrentRole() {
     if (this.isStreamer()) {
       return 'ROLE_STREAMER';
+    } else if (this.isAdmin()) {
+      return 'ROLE_ADMIN';
     }
     return 'ROLE_CUSTOMER';
   }
 
   public static isStreamer() {
     return store.getters['authManagement/isStreamer'];
+  }
+
+  public static isAdmin() {
+    return store.getters['authManagement/isAdmin'];
   }
 
   public static isCustomer() {

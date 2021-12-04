@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import { Component, Watch, Ref } from 'vue-property-decorator';
-import { User, UserEmpty } from '../../shared/model/user';
+import { Streamer, StreamerEmpty } from '../../shared/model/user';
 import { namespace } from 'vuex-class';
 import { Logger } from 'fsts';
 
@@ -10,7 +10,7 @@ const authModule = namespace('authManagement');
 @Component
 export default class EditProfileComponent extends Vue {
   @editProfileManagementModule.State('currentUser')
-  private stateCurrentUser!: User;
+  private stateCurrentUser!: Streamer;
   @editProfileManagementModule.Action('getprofile')
   private actionGetProfile!: any;
   @editProfileManagementModule.Action('updateProfile')
@@ -22,11 +22,25 @@ export default class EditProfileComponent extends Vue {
 
   created() {
     this.actionGetProfile().then(() => {
-      this.updateProfile = Object.assign({}, this.stateCurrentUser);
+      this.editedProfile = Object.assign({}, this.stateCurrentUser);
     });
   }
 
-  updateProfile: User = {
-    ...UserEmpty,
+  editedProfile: Streamer = {
+    ...StreamerEmpty,
   };
+
+  private isLoading = false;
+
+  @editProfileManagementModule.Action('generateNewStreamerId')
+  private actionGenerateNewStreamerId!: any;
+  generateNewStreamerId() {
+    this.isLoading = true;
+    this.actionGenerateNewStreamerId().then(() => {
+      this.actionGetProfile().then(() => {
+        this.editedProfile = Object.assign({}, this.stateCurrentUser);
+        this.isLoading = false;
+      });
+    });
+  }
 }

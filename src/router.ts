@@ -24,7 +24,29 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('@/components/home/home.vue'),
+      component: () => import('@/components/editProfile/editProfile.vue'),
+      meta: {
+        title: 'Home Page',
+        layout: 'main',
+        requiresAuth: true,
+        requiresRole: [AUTHORITIES.ADMIN],
+      },
+    },
+    {
+      path: '/adminHome',
+      name: 'home',
+      component: () => import('@/components/admin/admin.vue'),
+      meta: {
+        title: 'Home Page',
+        layout: 'admin',
+        requiresAuth: true,
+        requiresRole: [AUTHORITIES.ADMIN],
+      },
+    },
+    {
+      path: '/services',
+      name: 'Services',
+      component: () => import('@/components/editServices/editServices.vue'),
       meta: {
         title: 'Home Page',
         layout: 'main',
@@ -32,7 +54,30 @@ const router = new VueRouter({
         requiresRole: [AUTHORITIES.STREAMER],
       },
     },
-
+    {
+      path: '/editContactData',
+      name: 'ContactData',
+      component: () =>
+        import('@/components/editContactData/editContactData.vue'),
+      meta: {
+        title: 'Contact data',
+        layout: 'main',
+        requiresAuth: true,
+        requiresRole: [AUTHORITIES.STREAMER],
+      },
+    },
+    {
+      path: '/editTimeDelivery',
+      name: 'TimeDelivery',
+      component: () =>
+        import('@/components/editTimeDelivery/editTimeDelivery.vue'),
+      meta: {
+        title: 'Time delivery',
+        layout: 'main',
+        requiresAuth: true,
+        requiresRole: [AUTHORITIES.STREAMER],
+      },
+    },
     {
       path: '/oauth/twitch',
       name: 'TwitchOAuth',
@@ -80,6 +125,7 @@ router.beforeEach(async (to: any, from, next) => {
         !AuthorityUtils.isStreamer() &&
         !AuthorityUtils.hasAnyRole(to.meta.requiresRole)
       ) {
+        alert("You can't access to service");
         next('error-access-view');
         return;
       }

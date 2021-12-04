@@ -5,6 +5,9 @@ import { RootState } from './types';
 import { authManagement } from './modules/auth';
 import { editProfileManagement } from './modules/editProfileManagement';
 import { editServiceManagement } from './modules/editServiceManagement';
+import { partnerManagement } from './modules/partnerManagement';
+
+import i18n from '../../i18n';
 
 import createPersistedState from 'vuex-persistedstate';
 import { instance } from '../backend';
@@ -19,6 +22,10 @@ export const actions: ActionTree<State, RootState> = {
         commit('set_info', value.data);
       }
     });
+  },
+  setLocale({ commit }) {
+    i18n.locale = localStorage.getItem('locale')!;
+    commit('set_currentLanguage', i18n.locale);
   },
   async releaseSnackbar({ commit }) {
     commit('setSnackbarVisibility', false);
@@ -55,6 +62,9 @@ export const mutations: MutationTree<State> = {
     s.snackbar.text = payload.message;
     s.snackbar.duration = payload.duration;
   },
+  ['set_currentLanguage']: (s: State, currentLanguage: string) => {
+    s.currentLanguage = currentLanguage;
+  },
   setSnackbarSuccess: (s: State, payload: any) => {
     s.snackbar.show = true;
     s.snackbar.color = 'success';
@@ -71,11 +81,13 @@ export const mutations: MutationTree<State> = {
 
 export const getters: GetterTree<State, RootState> = {
   ['info']: (s: State) => s.apiInfo,
+  ['currentLanguage']: (s: State) => s.currentLanguage,
 };
 
 export interface State {
   apiInfo: string | null;
   snackbar: Snackbar;
+  currentLanguage: string;
 }
 export const state = (): State => ({
   apiInfo: null,
@@ -85,6 +97,7 @@ export const state = (): State => ({
     text: '',
     duration: 5000,
   },
+  currentLanguage: '',
 });
 
 const storeOptions: StoreOptions<RootState> = {
@@ -96,6 +109,7 @@ const storeOptions: StoreOptions<RootState> = {
     authManagement,
     editProfileManagement,
     editServiceManagement,
+    partnerManagement,
   },
   plugins: [],
 };
