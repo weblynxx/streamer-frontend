@@ -1,197 +1,194 @@
-<div>
-  <v-row>
-    <v-col>
-      <v-card class="ml-auto mr-auto elevation-0 transparent_bg">
-        <v-card-title class="white--text profile_font">
-          <v-spacer></v-spacer>
-          {{ $t('editContactData_management.title') }}
-          <v-spacer></v-spacer>
-        </v-card-title>
-        <validation-observer ref="observer-edit-contact-data-form" v-slot="v">
-          <v-form id="editContactData" data-vv-scope="editContactData">
-            <v-card-text class="elevation-0">
-              <v-container grid-list-md>
-                <v-layout wrap>
-                  <v-flex xs6 md6>
-                    <validation-provider
-                      :name="$t('editContactData_management.city')"
-                      rules="required"
-                      v-slot="{ errors }"
-                    >
-                      <v-text-field
-                        :label="$t('editContactData_management.city')"
-                        outlined
-                        dense
-                        background-color="#14182E"
-                        dark
-                        class="rounded-lg "
-                        v-model="editedProfile.city"
-                        :error-messages="errors[0]"
-                      ></v-text-field>
-                    </validation-provider>
-                  </v-flex>
-                  <v-flex xs6 md6>
-                    <validation-provider
-                      :name="$t('editContactData_management.street')"
-                      rules="required"
-                      v-slot="{ errors }"
-                    >
-                      <v-text-field
-                        :label="$t('editContactData_management.street')"
-                        outlined
-                        dense
-                        background-color="#14182E"
-                        dark
-                        class="rounded-lg "
-                        v-model="editedProfile.street"
-                        :error-messages="errors[0]"
-                      ></v-text-field>
-                    </validation-provider>
-                  </v-flex>
-                  <v-flex xs6 md6>
-                    <validation-provider
-                      :name="$t('editContactData_management.house')"
-                      rules="required"
-                      v-slot="{ errors }"
-                    >
-                      <v-text-field
-                        :label="$t('editContactData_management.house')"
-                        outlined
-                        dense
-                        background-color="#14182E"
-                        dark
-                        class="rounded-lg "
-                        v-model="editedProfile.house"
-                        :error-messages="errors[0]"
-                      ></v-text-field>
-                    </validation-provider>
-                  </v-flex>
-                  <v-flex xs6 md6>
-                    <validation-provider
-                      :name="$t('editContactData_management.houseBuilding')"
-                      rules=""
-                      v-slot="{ errors }"
-                    >
-                      <v-text-field
-                        :label="$t('editContactData_management.houseBuilding')"
-                        outlined
-                        dense
-                        background-color="#14182E"
-                        dark
-                        class="rounded-lg "
-                        v-model="editedProfile.houseBuilding"
-                        :error-messages="errors[0]"
-                      ></v-text-field>
-                    </validation-provider>
-                  </v-flex>
-                  <v-flex xs6 md6>
-                    <validation-provider
-                      :name="$t('editContactData_management.entrance')"
-                      rules=""
-                      v-slot="{ errors }"
-                    >
-                      <v-text-field
-                        :label="$t('editContactData_management.entrance')"
-                        outlined
-                        dense
-                        background-color="#14182E"
-                        dark
-                        class="rounded-lg "
-                        v-model="editedProfile.entrance"
-                        :error-messages="errors[0]"
-                      ></v-text-field>
-                    </validation-provider>
-                  </v-flex>
-                  <v-flex xs6 md6>
-                    <validation-provider
-                      :name="$t('editContactData_management.floor')"
-                      rules=""
-                      v-slot="{ errors }"
-                    >
-                      <v-text-field
-                        :label="$t('editContactData_management.floor')"
-                        outlined
-                        dense
-                        background-color="#14182E"
-                        dark
-                        class="rounded-lg "
-                        v-model="editedProfile.floor"
-                        :error-messages="errors[0]"
-                      ></v-text-field>
-                    </validation-provider>
-                  </v-flex>
-                  <v-flex xs6 md6>
-                    <validation-provider
-                      :name="$t('editContactData_management.flat')"
-                      rules="required"
-                      v-slot="{ errors }"
-                    >
-                      <v-text-field
-                        :label="$t('editContactData_management.flat')"
-                        outlined
-                        dense
-                        background-color="#14182E"
-                        dark
-                        class="rounded-lg "
-                        v-model="editedProfile.flat"
-                        :error-messages="errors[0]"
-                      ></v-text-field>
-                    </validation-provider>
-                  </v-flex>
-                  <v-flex xs6 md6>
-                    <validation-provider
-                      :name="$t('editContactData_management.intercom_code')"
-                      rules=""
-                      v-slot="{ errors }"
-                    >
-                      <v-text-field
-                        :label="$t('editContactData_management.intercom_code')"
-                        outlined
-                        dense
-                        background-color="#14182E"
-                        dark
-                        class="rounded-lg "
-                        v-model="editedProfile.intercomCode"
-                        :error-messages="errors[0]"
-                      ></v-text-field>
-                    </validation-provider>
-                  </v-flex>
-                  <v-flex xs6 md6>
-                    <validation-provider
-                      :name="$t('editContactData_management.phone_number')"
-                      rules="required"
-                      v-slot="{ errors }"
-                    >
-                      <v-text-field
-                        :label="$t('editContactData_management.phone_number')"
-                        outlined
-                        dense
-                        background-color="#14182E"
-                        dark
-                        class="rounded-lg"
-                        v-model="editedProfile.phone"
-                        :error-messages="errors[0]"
-                      ></v-text-field>
-                    </validation-provider>
-                  </v-flex>
-                  <v-flex xs12 md12 class="d-flex">
-                    <v-spacer> </v-spacer>
-                    <v-btn
-                      v-t="$t('app.actions.save')"
-                      @click="save"
-                      :disabled="isLoading"
-                      :loading="isLoading"
-                      class="px-10 rounded-lg"
-                      dark
-                      color="#FEA116"
-                    ></v-btn>
-                  </v-flex>
-                </v-layout>
-              </v-container>
-            </v-card-text>
-          </v-form>
-        </validation-observer>
-      </v-card>
-    </v-col>
-  </v-row>
-</div>
+<v-card
+  class="ml-auto mr-auto elevation-0 "
+  :img="require(`../../assets/bg_main_profile.png`)"
+>
+  <v-card-title class="white--text profile_font">
+    <v-spacer></v-spacer>
+    {{ $t('editContactData_management.title') }}
+    <v-spacer></v-spacer>
+  </v-card-title>
+  <validation-observer ref="observer-edit-contact-data-form" v-slot="v">
+    <v-form id="editContactData" data-vv-scope="editContactData">
+      <v-card-text class="elevation-0">
+        <v-container grid-list-md>
+          <v-layout wrap>
+            <v-flex xs6 md6>
+              <validation-provider
+                :name="$t('editContactData_management.city')"
+                rules="required"
+                v-slot="{ errors }"
+              >
+                <v-text-field
+                  :label="$t('editContactData_management.city')"
+                  outlined
+                  dense
+                  background-color="#14182E"
+                  dark
+                  class="rounded-lg "
+                  v-model="editedProfile.city"
+                  :error-messages="errors[0]"
+                ></v-text-field>
+              </validation-provider>
+            </v-flex>
+            <v-flex xs6 md6>
+              <validation-provider
+                :name="$t('editContactData_management.street')"
+                rules="required"
+                v-slot="{ errors }"
+              >
+                <v-text-field
+                  :label="$t('editContactData_management.street')"
+                  outlined
+                  dense
+                  background-color="#14182E"
+                  dark
+                  class="rounded-lg "
+                  v-model="editedProfile.street"
+                  :error-messages="errors[0]"
+                ></v-text-field>
+              </validation-provider>
+            </v-flex>
+            <v-flex xs6 md6>
+              <validation-provider
+                :name="$t('editContactData_management.house')"
+                rules="required"
+                v-slot="{ errors }"
+              >
+                <v-text-field
+                  :label="$t('editContactData_management.house')"
+                  outlined
+                  dense
+                  background-color="#14182E"
+                  dark
+                  class="rounded-lg "
+                  v-model="editedProfile.house"
+                  :error-messages="errors[0]"
+                ></v-text-field>
+              </validation-provider>
+            </v-flex>
+            <v-flex xs6 md6>
+              <validation-provider
+                :name="$t('editContactData_management.houseBuilding')"
+                rules=""
+                v-slot="{ errors }"
+              >
+                <v-text-field
+                  :label="$t('editContactData_management.houseBuilding')"
+                  outlined
+                  dense
+                  background-color="#14182E"
+                  dark
+                  class="rounded-lg "
+                  v-model="editedProfile.houseBuilding"
+                  :error-messages="errors[0]"
+                ></v-text-field>
+              </validation-provider>
+            </v-flex>
+            <v-flex xs6 md6>
+              <validation-provider
+                :name="$t('editContactData_management.entrance')"
+                rules=""
+                v-slot="{ errors }"
+              >
+                <v-text-field
+                  :label="$t('editContactData_management.entrance')"
+                  outlined
+                  dense
+                  background-color="#14182E"
+                  dark
+                  class="rounded-lg "
+                  v-model="editedProfile.entrance"
+                  :error-messages="errors[0]"
+                ></v-text-field>
+              </validation-provider>
+            </v-flex>
+            <v-flex xs6 md6>
+              <validation-provider
+                :name="$t('editContactData_management.floor')"
+                rules=""
+                v-slot="{ errors }"
+              >
+                <v-text-field
+                  :label="$t('editContactData_management.floor')"
+                  outlined
+                  dense
+                  background-color="#14182E"
+                  dark
+                  class="rounded-lg "
+                  v-model="editedProfile.floor"
+                  :error-messages="errors[0]"
+                ></v-text-field>
+              </validation-provider>
+            </v-flex>
+            <v-flex xs6 md6>
+              <validation-provider
+                :name="$t('editContactData_management.flat')"
+                rules="required"
+                v-slot="{ errors }"
+              >
+                <v-text-field
+                  :label="$t('editContactData_management.flat')"
+                  outlined
+                  dense
+                  background-color="#14182E"
+                  dark
+                  class="rounded-lg "
+                  v-model="editedProfile.flat"
+                  :error-messages="errors[0]"
+                ></v-text-field>
+              </validation-provider>
+            </v-flex>
+            <v-flex xs6 md6>
+              <validation-provider
+                :name="$t('editContactData_management.intercom_code')"
+                rules=""
+                v-slot="{ errors }"
+              >
+                <v-text-field
+                  :label="$t('editContactData_management.intercom_code')"
+                  outlined
+                  dense
+                  background-color="#14182E"
+                  dark
+                  class="rounded-lg "
+                  v-model="editedProfile.intercomCode"
+                  :error-messages="errors[0]"
+                ></v-text-field>
+              </validation-provider>
+            </v-flex>
+            <v-flex xs6 md6>
+              <validation-provider
+                :name="$t('editContactData_management.phone_number')"
+                rules="required"
+                v-slot="{ errors }"
+              >
+                <v-text-field
+                  :label="$t('editContactData_management.phone_number')"
+                  outlined
+                  dense
+                  background-color="#14182E"
+                  dark
+                  class="rounded-lg"
+                  v-model="editedProfile.phone"
+                  :error-messages="errors[0]"
+                ></v-text-field>
+              </validation-provider>
+            </v-flex>
+            <v-flex xs12 md12 class="d-flex">
+              <v-spacer> </v-spacer>
+              <v-btn
+                v-t="$t('app.actions.save')"
+                @click="save"
+                :disabled="isLoading"
+                :loading="isLoading"
+                class="px-10 rounded-lg"
+                dark
+                color="#FEA116"
+              ></v-btn>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-card-text>
+    </v-form>
+  </validation-observer>
+</v-card>

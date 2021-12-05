@@ -34,7 +34,10 @@
       <v-container class="mb-10">
         <v-row>
           <v-col cols="3">
-            <v-card color="#1F2340" class="profile_form" rounded="lg">
+            <v-card
+              rounded="lg"
+              :img="require(`../assets/bg_main_profile.png`)"
+            >
               <v-card-text>
                 <v-row align="center" justify="center">
                   <v-col>
@@ -45,7 +48,7 @@
                         </v-icon>
                       </v-avatar>
                       <v-flex
-                        class="d-flex white--text profile_form_text ml-4 mt-2"
+                        class="d-flex black--text profile_form_text ml-4 mt-2"
                       >
                         {{
                           currentUser.lastName + ', ' + currentUser.firstName
@@ -64,14 +67,18 @@
                 </v-row>
               </v-card-text>
             </v-card>
-            <v-card color="#1F2340" class="profile_form mt-2" rounded="lg">
+            <v-card
+              class="profile_form mt-2"
+              rounded="lg"
+              :img="require(`../assets/bg_main_profile.png`)"
+            >
               <v-card-text>
                 <v-list color="transparent">
                   <v-list-item link to="/">
                     <v-list-item-action>
                       <v-img :src="require(`../assets/Profile.png`)"></v-img>
                     </v-list-item-action>
-                    <v-list-item-title class="white--text">
+                    <v-list-item-title class="black--text">
                       {{ $t('home_management.profile') }}
                     </v-list-item-title>
                   </v-list-item>
@@ -79,7 +86,7 @@
                     <v-list-item-action>
                       <v-img :src="require(`../assets/Send.png`)"></v-img>
                     </v-list-item-action>
-                    <v-list-item-title class="white--text">
+                    <v-list-item-title class="black--text">
                       {{ $t('home_management.integrations') }}
                     </v-list-item-title>
                   </v-list-item>
@@ -89,7 +96,7 @@
                         :src="require(`../assets/Contact_data.png`)"
                       ></v-img>
                     </v-list-item-action>
-                    <v-list-item-title class="white--text">
+                    <v-list-item-title class="black--text">
                       {{ $t('home_management.contact_data') }}
                     </v-list-item-title>
                   </v-list-item>
@@ -97,7 +104,7 @@
                     <v-list-item-action>
                       <v-img :src="require(`../assets/restorants.png`)"></v-img>
                     </v-list-item-action>
-                    <v-list-item-title class="white--text">
+                    <v-list-item-title class="black--text">
                       {{ $t('home_management.my_restaurants') }}
                     </v-list-item-title>
                   </v-list-item>
@@ -107,7 +114,7 @@
                         :src="require(`../assets/delivery_time.png`)"
                       ></v-img>
                     </v-list-item-action>
-                    <v-list-item-title class="white--text">
+                    <v-list-item-title class="black--text">
                       {{ $t('home_management.delivery_time') }}
                     </v-list-item-title>
                   </v-list-item>
@@ -188,9 +195,7 @@ body {
   cursor: pointer;
 }
 .profile_form_text {
-  font-family: Gilroy;
   font-size: 20px;
-  font-style: normal;
   font-weight: 500;
   line-height: 35px;
   letter-spacing: 0em;

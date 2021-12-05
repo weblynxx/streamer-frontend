@@ -1,92 +1,85 @@
-<div>
-  <v-row>
-    <v-col>
-      <v-card class="ml-auto mr-auto elevation-0 transparent_bg">
-        <v-card-title class="white--text profile_font">
-          <v-spacer></v-spacer>
-          {{ $t('editProfile_management.profile') }}
-          <v-spacer></v-spacer>
-        </v-card-title>
-        <validation-observer ref="observer-edit-profile-form" v-slot="v">
-          <v-form
-            id="editProfile"
-            class="form__edit"
-            data-vv-scope="editProfile"
-          >
-            <v-card-text class="elevation-0">
-              <v-container grid-list-md>
-                <v-layout wrap class="white--text">
-                  <v-flex xs12 md12>
-                    <span class="white--text your_uniq_id_font">
-                      {{$t('editProfile_management.your_uniq_id')}}
-                    </span>
-                  </v-flex>
-                  <v-flex xs8 sm8 md8>
-                    <v-text-field
-                      class="rounded-lg white--text"
-                      readonly
-                      dark
-                      dense
-                      background-color="#14182E"
-                      v-model="editedProfile.streamerId"
-                      outlined
-                    >
-                    </v-text-field>
-                  </v-flex>
-                  <v-flex xs4 sm4 md4>
-                    <v-btn
-                      v-t="'editProfile_management.update'"
-                      color="#FEA116"
-                      class="white--text rounded-lg px-10  ml-2"
-                      @click="generateNewStreamerId"
-                      :disabled="isLoading"
-                      :loading="isLoading"
-                    ></v-btn>
-                  </v-flex>
+<v-card
+  class="ml-auto mr-auto elevation-0"
+  :img="require(`../../assets/bg_main_profile.png`)"
+>
+  <v-card-title class="black--text profile_font">
+    <v-spacer></v-spacer>
+    {{ $t('editProfile_management.profile') }}
+    <v-spacer></v-spacer>
+  </v-card-title>
+  <validation-observer ref="observer-edit-profile-form" v-slot="v">
+    <v-form id="editProfile" class="form__edit" data-vv-scope="editProfile">
+      <v-card-text class="elevation-0">
+        <v-container grid-list-md>
+          <v-layout wrap class="white--text">
+            <v-flex xs12 md12>
+              <span class="black--text your_uniq_id_font">
+                {{$t('editProfile_management.your_uniq_id')}}
+              </span>
+            </v-flex>
+            <v-flex xs8 sm8 md8>
+              <v-text-field
+                class="rounded-lg white--text"
+                readonly
+                dark
+                dense
+                background-color="#14182E"
+                v-model="editedProfile.streamerId"
+                outlined
+              >
+              </v-text-field>
+            </v-flex>
+            <v-flex xs4 sm4 md4>
+              <v-btn
+                v-t="'editProfile_management.update'"
+                color="#FEA116"
+                class="white--text rounded-lg px-10  ml-2"
+                @click="generateNewStreamerId"
+                :disabled="isLoading"
+                :loading="isLoading"
+              ></v-btn>
+            </v-flex>
 
-                  <v-flex xs12 md6 class="mt-n8">
-                    <div
-                      class="uniq_id_info"
-                      v-t="'editProfile_management.uniq_id_info'"
-                    ></div>
-                  </v-flex>
-                  <v-flex xs12 md12>
-                    <validation-provider rules="max:255" v-slot="{ errors }">
-                      <v-textarea
-                        outlined
-                        background-color="#14182E"
-                        dark
-                        rows="6"
-                        no-resize
-                        counter="255"
-                        class="rounded-lg"
-                        :error-messages="errors[0]"
-                      ></v-textarea>
-                    </validation-provider>
-                  </v-flex>
-                  <!-- <v-flex xs12 sm8 md8>
-                    <validation-provider
-                      name="lastName"
-                      rules="required|max:32"
-                      v-slot="{ errors }"
-                    >
-                      <v-text-field
-                        dense
-                        v-model="updateProfile.lastName"
-                        label="Фамилия"
-                        name="lastName"
-                        outlined
-                        :error-messages="errors[0]"
-                      >
-                      </v-text-field>
-                    </validation-provider>
-                  </v-flex> -->
-                </v-layout>
-              </v-container>
-            </v-card-text>
-          </v-form>
-        </validation-observer>
-      </v-card>
-    </v-col>
-  </v-row>
-</div>
+            <v-flex xs12 md6 class="mt-n8">
+              <div
+                class="uniq_id_info"
+                v-t="'editProfile_management.uniq_id_info'"
+              ></div>
+            </v-flex>
+            <v-flex xs12 md12>
+              <validation-provider rules="max:255" v-slot="{ errors }">
+                <v-textarea
+                  outlined
+                  background-color="#14182E"
+                  dark
+                  rows="6"
+                  no-resize
+                  counter="255"
+                  class="rounded-lg"
+                  :error-messages="errors[0]"
+                ></v-textarea>
+              </validation-provider>
+            </v-flex>
+            <!-- <v-flex xs12 sm8 md8>
+            <validation-provider
+              name="lastName"
+              rules="required|max:32"
+              v-slot="{ errors }"
+            >
+              <v-text-field
+                dense
+                v-model="updateProfile.lastName"
+                label="Фамилия"
+                name="lastName"
+                outlined
+                :error-messages="errors[0]"
+              >
+              </v-text-field>
+            </validation-provider>
+          </v-flex> -->
+          </v-layout>
+        </v-container>
+      </v-card-text>
+    </v-form>
+  </validation-observer>
+</v-card>

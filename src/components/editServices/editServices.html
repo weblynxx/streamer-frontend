@@ -1,50 +1,47 @@
-<div>
-  <v-row>
-    <v-col>
-      <v-card class="ml-auto mr-auto elevation-0  transparent_bg">
-        <v-card-title class="white--text profile_font">
-          <v-spacer></v-spacer>
-          {{ $t('editServices_management.integrations') }}
-          <v-spacer></v-spacer>
-        </v-card-title>
-        <v-card-text class="elevation-0">
-          <v-container grid-list-md>
-            <v-layout wrap>
-              <v-flex xs12 md12 class="d-flex justify-space-between">
-                <v-flex md1>
-                  <v-img
-                    :src="require(`../../assets/Twitch.png`)"
-                    max-width="40"
-                    max-height="40"
-                  ></v-img>
-                </v-flex>
+<v-card
+  class="ml-auto mr-auto elevation-0"
+  :img="require(`../../assets/bg_main_profile.png`)"
+>
+  <v-card-title class="white--text profile_font">
+    <v-spacer></v-spacer>
+    {{ $t('editServices_management.integrations') }}
+    <v-spacer></v-spacer>
+  </v-card-title>
+  <v-card-text class="elevation-0">
+    <v-container grid-list-md>
+      <v-layout wrap>
+        <v-flex xs12 md12 class="d-flex justify-space-between">
+          <v-flex md1>
+            <v-img
+              :src="require(`../../assets/Twitch.png`)"
+              max-width="40"
+              max-height="40"
+            ></v-img>
+          </v-flex>
 
-                <v-flex md8>
-                  <v-text-field
-                    outlined
-                    dense
-                    dark
-                    readonly
-                    background-color="#14182E"
-                    class="rounded-lg"
-                    :value="getTwitchFullUrl"
-                  ></v-text-field>
-                </v-flex>
-                <v-flex md2>
-                  <v-btn
-                    v-t="'editServices_management.link'"
-                    :href="twitchOauthUrl()"
-                    color="#FEA116"
-                    dark
-                    :disabled="isLoading || isTwitchLinkDisabled"
-                    :loading="isLoading"
-                  ></v-btn>
-                </v-flex>
-              </v-flex>
-            </v-layout>
-          </v-container>
-        </v-card-text>
-      </v-card>
-    </v-col>
-  </v-row>
-</div>
+          <v-flex md8>
+            <v-text-field
+              outlined
+              dense
+              dark
+              readonly
+              background-color="#14182E"
+              class="rounded-lg"
+              :value="getTwitchFullUrl"
+            ></v-text-field>
+          </v-flex>
+          <v-flex md2>
+            <v-btn
+              v-t="'editServices_management.link'"
+              :href="twitchOauthUrl()"
+              color="#FEA116"
+              dark
+              :disabled="isLoading || isTwitchLinkDisabled"
+              :loading="isLoading"
+            ></v-btn>
+          </v-flex>
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </v-card-text>
+</v-card>
