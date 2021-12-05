@@ -12,21 +12,23 @@
 }
 .logo::after {
   content: attr(data-end);
-  color: #fea116;
+  color: #f12c5e;
 }
 .main_login_form {
-  border-radius: 20px !important;
+  border-radius: 8, 33px !important;
 }
 .btn_log_in span {
   text-transform: capitalize;
 }
 .v-tabs-font-style {
+  font-size: 18px;
   font-weight: 400;
   letter-spacing: 0em;
   text-transform: capitalize;
 }
 .v-tabs-font-style.v-tab--active {
-  color: white !important;
+  color: #44413b !important;
+  font-weight: 600;
 }
 
 .theme--light.v-tabs > .v-tabs-bar {
@@ -40,6 +42,10 @@
 }
 .v-slide-group__prev.v-slide-group__prev--disabled {
   display: none !important;
+}
+.v-text-field label {
+  color: black !important;
+  opacity: 1;
 }
 
 @media only screen and (max-width: 1264px) {

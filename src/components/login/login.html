@@ -7,7 +7,7 @@
         offset-sm-3 offset-md-3 offset-lg-3"
       >
         <v-flex md6 class="d-flex justify-center offset-1">
-          <div class="white--text logo" data-end="AD">Send</div>
+          <div class="white--text logo" data-end="Fans  ">From</div>
         </v-flex>
         <v-row align="center" justify="end">
           <v-col cols="12">
@@ -29,18 +29,22 @@
           </v-col>
         </v-row>
       </v-flex>
+    </v-col>
+  </v-row>
+  <v-row>
+    <v-col>
       <v-row justify="center">
-        <v-col cols="12" xs="12" sm="8" md="5" lg="5">
-          <v-card class="ml-auto mr-auto main_login_form" color="#1F2340">
+        <v-col cols="12" xs="12" sm="8" md="5" lg="4">
+          <v-card class="ml-auto mr-auto main_login_form" color="#E8E8E8">
             <v-card-text>
               <v-tabs
                 v-model="tab"
-                :class="!isMobile ? 'mb-2' :'mx-5'"
+                :class="!isMobile ? 'mb-2 ml-4' :'mx-5'"
                 :fixed-tabs="isMobile"
                 slider-size="2"
-                style="border-bottom: 1px solid #373A5F; width: 92%;"
+                style="border-bottom: 1px solid #5F5F5F; width: 92%;"
               >
-                <v-tabs-slider color="#FEA116"></v-tabs-slider>
+                <v-tabs-slider color="#F12C5E"></v-tabs-slider>
                 <v-tab
                   class="v-tabs-font-style"
                   active-class="v-tabs-font-style-active"
@@ -66,13 +70,10 @@
                     >
                       <v-text-field
                         :label="$t('auth_management.login')"
-                        color="#55597D"
                         class="rounded-lg"
-                        dark
                         outlined
-                        dense
                         v-model="newUser.userName"
-                        background-color="#14182E"
+                        background-color="rgba(169, 162, 164, 0.3)"
                         :error-messages="errors[0]"
                       >
                       </v-text-field>
@@ -84,16 +85,13 @@
                     >
                       <v-text-field
                         :label="$t('auth_management.password')"
-                        dark
                         :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                         :type="showPassword ? 'text' : 'password'"
                         @click:append="showPassword = !showPassword"
                         v-model="newUser.password"
-                        color="#55597D"
                         outlined
                         class="rounded-lg"
-                        dense
-                        background-color="#14182E"
+                        background-color="rgba(169, 162, 164, 0.3)"
                         v-on:keyup.enter="login"
                         :error-messages="errors[0]"
                       ></v-text-field>
@@ -103,8 +101,8 @@
                         :disabled="isLoading"
                         :loading="isLoading"
                         dense
-                        class="btn_log_in ml-auto mr-auto white--text px-8"
-                        color="#fea116"
+                        class="btn_log_in ml-auto mr-auto white--text px-12 py-5 mb-6 mt-2"
+                        color="#F12C5E"
                         @click="login"
                         >{{$t('auth_management.log_in') }}</v-btn
                       >
@@ -125,12 +123,10 @@
                         label="E-mail"
                         @change="emailChanged"
                         color="#55597D"
-                        dark
                         outlined
-                        dense
                         class="rounded-lg"
                         v-model="newUser.email"
-                        background-color="#14182E"
+                        background-color="rgba(169, 162, 164, 0.3)"
                         :error-messages="errors[0]"
                       ></v-text-field>
                     </validation-provider>
@@ -143,12 +139,10 @@
                       <v-text-field
                         :label="$t('auth_management.login')"
                         color="#55597D"
-                        dark
                         outlined
-                        dense
                         class="rounded-lg"
                         v-model="newUser.userName"
-                        background-color="#14182E"
+                        background-color="rgba(169, 162, 164, 0.3)"
                         :error-messages="errors[0]"
                       ></v-text-field>
                     </validation-provider>
@@ -160,14 +154,11 @@
                     >
                       <v-text-field
                         :label="$t('auth_management.first_name')"
-                        dark
                         v-model="newUser.firstName"
-                        dark
                         outlined
-                        dense
                         class="rounded-lg"
                         color="#55597D"
-                        background-color="#14182E"
+                        background-color="rgba(169, 162, 164, 0.3)"
                         :error-messages="errors[0]"
                       ></v-text-field>
                     </validation-provider>
@@ -178,14 +169,11 @@
                     >
                       <v-text-field
                         :label="$t('auth_management.last_name')"
-                        dark
                         v-model="newUser.lastName"
-                        dark
                         outlined
-                        dense
                         class="rounded-lg"
                         color="#55597D"
-                        background-color="#14182E"
+                        background-color="rgba(169, 162, 164, 0.3)"
                         :error-messages="errors[0]"
                       ></v-text-field>
                     </validation-provider>
@@ -200,12 +188,10 @@
                         :type="showPassword ? 'text' : 'password'"
                         @click:append="showPassword = !showPassword"
                         v-model="newUser.password"
-                        dark
                         outlined
-                        dense
                         class="rounded-lg"
                         color="#55597D"
-                        background-color="#14182E"
+                        background-color="rgba(169, 162, 164, 0.3)"
                         :error-messages="errors[0]"
                       ></v-text-field>
                     </validation-provider>
@@ -214,8 +200,8 @@
                       <v-btn
                         :disabled="isLoading"
                         :loading="isLoading"
-                        class="btn_log_in ml-auto mr-auto white--text "
-                        color="#fea116"
+                        class="btn_log_in ml-auto mr-auto white--text px-12 py-5 mb-6 mt-2"
+                        color="#F12C5E"
                         @click="create"
                         >{{$t('auth_management.register')}}</v-btn
                       >
@@ -228,5 +214,15 @@
         </v-col>
       </v-row>
     </v-col>
+  </v-row>
+  <!-- Emty rows -->
+  <v-row>
+    <v-col></v-col>
+  </v-row>
+  <v-row>
+    <v-col></v-col>
+  </v-row>
+  <v-row>
+    <v-col></v-col>
   </v-row>
 </v-container>

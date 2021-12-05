@@ -196,11 +196,11 @@ body {
   letter-spacing: 0em;
   text-align: left;
 }
-.v-text-field input {
+/* .v-text-field input {
   color: white !important;
   font-size: 18px;
   line-height: 21px;
-}
+} */
 
 @media only screen and (max-width: 600px) {
   .main_login_form {

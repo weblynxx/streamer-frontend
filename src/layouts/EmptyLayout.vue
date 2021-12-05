@@ -35,6 +35,9 @@ body {
   font-family: 'Gilroy', sans-serif !important;
   font: optional;
 }
+.v-text-field fieldset {
+  border: none !important;
+}
 </style>
 <style>
 @font-face {
