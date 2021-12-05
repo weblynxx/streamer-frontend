@@ -33,7 +33,7 @@
     <v-main>
       <v-container class="mb-10">
         <v-row>
-          <v-col cols="3">
+          <v-col cols="12" xs="12" sm="4" md="4" lg="3">
             <v-card
               rounded="lg"
               :img="require(`../assets/bg_main_profile.png`)"
@@ -121,19 +121,23 @@
                 </v-list>
               </v-card-text>
             </v-card>
-            <v-flex class="d-flex mt-12 ml-n12 cursor" @click="logout">
+            <v-flex
+              class="d-flex mt-12  cursor"
+              @click="logout"
+              style="align-items:center"
+            >
               <v-img
                 :src="require(`../assets/Logout.png`)"
                 max-width="48"
                 max-height="48"
               >
               </v-img>
-              <v-flex class="ml-2 mt-1 white--text" style="font-size: 25px;">
+              <v-flex class=" white--text logout">
                 {{ $t('auth_management.logout') }}
               </v-flex>
             </v-flex>
           </v-col>
-          <v-col cols="6">
+          <v-col cols="12" xs="12" sm="8" md="8" lg="6">
             <v-card min-height="50vh" rounded="lg" color="#1F2340">
               <router-view></router-view>
             </v-card>
@@ -198,18 +202,27 @@ body {
   font-size: 20px;
   font-weight: 500;
   line-height: 35px;
-  letter-spacing: 0em;
   text-align: left;
 }
+.logout {
+  font-size: 25px;
+}
+
 /* .v-text-field input {
   color: white !important;
   font-size: 18px;
   line-height: 21px;
 } */
 
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 600px) and (max-width: 960px) {
   .main_login_form {
     border-radius: 10px !important;
+  }
+  .profile_form_text {
+    font-size: 15px !important;
+  }
+  .logout {
+    font-size: 15px;
   }
 }
 </style>
