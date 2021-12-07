@@ -50,7 +50,7 @@
     "vue-property-decorator": "8.5.1",
     "vue-qrcode-reader": "^2.3.17",
     "vue-qriously": "^1.1.1",
-    "vue-the-mask": "0.11.1",
+    "vue-the-mask": "^0.11.1",
     "vue-tour": "1.4.0",
     "vuetify": "^2.3.10",
     "vuetify-upload-button": "2.0.0",
