@@ -207,6 +207,9 @@ body {
 .logout {
   font-size: 25px;
 }
+.v-text-field fieldset {
+  border: none !important;
+}
 
 /* .v-text-field input {
   color: white !important;

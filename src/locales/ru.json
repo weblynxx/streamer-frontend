@@ -35,8 +35,8 @@
     "update": "Обновить",
     "update_streamer_id": "Хотите обновить StreamerId?",
     "uniq_id_info": "Вы можете обновить свой ID, тем самым сделав предыдущий ID недоступным для использования",
-    "food_preference": "Предпочтение в еде",
-    "clothes_preference": "Предпочтение в одежде",
+    "food_preference": "Предпочтения в еде",
+    "clothes_preference": "Предпочтения в одежде",
     "food_category": {
       "pizza": "Пицца",
       "sushi": "Суши",

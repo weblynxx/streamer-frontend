@@ -19,11 +19,9 @@
             </v-flex>
             <v-flex xs8 sm8 md8>
               <v-text-field
-                class="rounded-lg white--text"
+                class="rounded-lg black--text"
                 readonly
-                dark
-                dense
-                background-color="#14182E"
+                background-color="rgba(169, 162, 164, 0.3)"
                 v-model="editedProfile.streamerId"
                 outlined
               >
@@ -32,8 +30,8 @@
             <v-flex xs4 sm4 md4>
               <v-btn
                 v-t="'editProfile_management.update'"
-                color="#FEA116"
-                class="white--text rounded-lg px-10  ml-2"
+                x-large
+                class="btn_update white--text rounded-lg px-10  ml-2"
                 @click="generateNewStreamerId"
                 :disabled="isLoading"
                 :loading="isLoading"
@@ -47,10 +45,28 @@
               ></div>
             </v-flex>
             <v-flex xs12 md12>
+              <v-tabs
+                v-model="tab"
+                slider-size="2"
+                background-color="transparent"
+                style="border-bottom: 1px solid #5F5F5F; width: 92%; "
+              >
+                <v-tabs-slider color="#F12C5E"></v-tabs-slider>
+                <v-tab class="v-tabs-font-style">
+                  <span>{{ $t('editProfile_management.food_preference')}}</span>
+                </v-tab>
+                <v-tab class="v-tabs-font-style">
+                  <span>
+                    {{ $t('editProfile_management.clothes_preference')}}
+                  </span>
+                </v-tab>
+              </v-tabs>
+            </v-flex>
+            <v-flex xs12 md12>
               <validation-provider rules="max:255" v-slot="{ errors }">
                 <v-textarea
                   outlined
-                  background-color="#14182E"
+                  background-color="rgba(169, 162, 164, 0.3)"
                   dark
                   rows="6"
                   no-resize

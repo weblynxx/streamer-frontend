@@ -43,4 +43,8 @@ export default class EditProfileComponent extends Vue {
       });
     });
   }
+
+  //#region tab
+  private tab = 0;
+  //#endregion
 }
