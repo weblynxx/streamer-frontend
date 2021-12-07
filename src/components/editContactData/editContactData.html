@@ -1,8 +1,9 @@
 <v-card
   class="ml-auto mr-auto elevation-0 "
   :img="require(`../../assets/bg_main_profile.png`)"
+  min-height="550"
 >
-  <v-card-title class="white--text profile_font">
+  <v-card-title class="black--text profile_font">
     <v-spacer></v-spacer>
     {{ $t('editContactData_management.title') }}
     <v-spacer></v-spacer>
@@ -19,11 +20,10 @@
                 v-slot="{ errors }"
               >
                 <v-text-field
+                  style="font-weight: 500;"
                   :label="$t('editContactData_management.city')"
                   outlined
-                  dense
-                  background-color="#14182E"
-                  dark
+                  background-color="rgba(169, 162, 164, 0.3)"
                   class="rounded-lg "
                   v-model="editedProfile.city"
                   :error-messages="errors[0]"
@@ -37,11 +37,10 @@
                 v-slot="{ errors }"
               >
                 <v-text-field
+                  style="font-weight: 500;"
                   :label="$t('editContactData_management.street')"
                   outlined
-                  dense
-                  background-color="#14182E"
-                  dark
+                  background-color="rgba(169, 162, 164, 0.3)"
                   class="rounded-lg "
                   v-model="editedProfile.street"
                   :error-messages="errors[0]"
@@ -55,11 +54,10 @@
                 v-slot="{ errors }"
               >
                 <v-text-field
+                  style="font-weight: 500;"
                   :label="$t('editContactData_management.house')"
                   outlined
-                  dense
-                  background-color="#14182E"
-                  dark
+                  background-color="rgba(169, 162, 164, 0.3)"
                   class="rounded-lg "
                   v-model="editedProfile.house"
                   :error-messages="errors[0]"
@@ -73,11 +71,10 @@
                 v-slot="{ errors }"
               >
                 <v-text-field
+                  style="font-weight: 500;"
                   :label="$t('editContactData_management.houseBuilding')"
                   outlined
-                  dense
-                  background-color="#14182E"
-                  dark
+                  background-color="rgba(169, 162, 164, 0.3)"
                   class="rounded-lg "
                   v-model="editedProfile.houseBuilding"
                   :error-messages="errors[0]"
@@ -91,11 +88,10 @@
                 v-slot="{ errors }"
               >
                 <v-text-field
+                  style="font-weight: 500;"
                   :label="$t('editContactData_management.entrance')"
                   outlined
-                  dense
-                  background-color="#14182E"
-                  dark
+                  background-color="rgba(169, 162, 164, 0.3)"
                   class="rounded-lg "
                   v-model="editedProfile.entrance"
                   :error-messages="errors[0]"
@@ -105,15 +101,14 @@
             <v-flex xs6 md6>
               <validation-provider
                 :name="$t('editContactData_management.floor')"
-                rules=""
+                rules="numeric"
                 v-slot="{ errors }"
               >
                 <v-text-field
+                  style="font-weight: 500;"
                   :label="$t('editContactData_management.floor')"
                   outlined
-                  dense
-                  background-color="#14182E"
-                  dark
+                  background-color="rgba(169, 162, 164, 0.3)"
                   class="rounded-lg "
                   v-model="editedProfile.floor"
                   :error-messages="errors[0]"
@@ -127,11 +122,10 @@
                 v-slot="{ errors }"
               >
                 <v-text-field
+                  style="font-weight: 500;"
                   :label="$t('editContactData_management.flat')"
                   outlined
-                  dense
-                  background-color="#14182E"
-                  dark
+                  background-color="rgba(169, 162, 164, 0.3)"
                   class="rounded-lg "
                   v-model="editedProfile.flat"
                   :error-messages="errors[0]"
@@ -145,11 +139,10 @@
                 v-slot="{ errors }"
               >
                 <v-text-field
+                  style="font-weight: 500;"
                   :label="$t('editContactData_management.intercom_code')"
                   outlined
-                  dense
-                  background-color="#14182E"
-                  dark
+                  background-color="rgba(169, 162, 164, 0.3)"
                   class="rounded-lg "
                   v-model="editedProfile.intercomCode"
                   :error-messages="errors[0]"
@@ -163,12 +156,11 @@
                 v-slot="{ errors }"
               >
                 <v-text-field
+                  style="font-weight: 500;"
                   :label="$t('editContactData_management.phone_number')"
                   outlined
-                  dense
-                  background-color="#14182E"
-                  dark
-                  class="rounded-lg"
+                  background-color="rgba(169, 162, 164, 0.3)"
+                  class="rounded-lg bold--text"
                   v-model="editedProfile.phone"
                   :error-messages="errors[0]"
                 ></v-text-field>
