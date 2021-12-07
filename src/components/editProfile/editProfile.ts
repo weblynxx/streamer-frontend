@@ -44,6 +44,10 @@ export default class EditProfileComponent extends Vue {
     });
   }
 
+  get isMobile() {
+    return this.$vuetify.breakpoint.xsOnly;
+  }
+
   //#region tab
   private tab = 0;
   //#endregion

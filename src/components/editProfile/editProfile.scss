@@ -2,7 +2,6 @@
   background-color: transparent !important;
 }
 .profile_font {
-  font-size: 25px;
   line-height: 30, 22px;
   font-weight: 700 !important;
 }
@@ -23,7 +22,6 @@
   letter-spacing: 0em;
 }
 .v-tabs-font-style {
-  font-size: 18px;
   font-weight: 500;
   line-height: 23, 54px;
   letter-spacing: 0em;
@@ -38,4 +36,7 @@
 }
 .v-tabs div[role='tablist'] {
   background-color: transparent;
+}
+.v-slide-group__prev.v-slide-group__prev--disabled {
+  display: none !important;
 }
