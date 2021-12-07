@@ -43,6 +43,26 @@ export default class EditServiceComponent extends Vue {
     }
     return resultUrl;
   }
+  get getVkFullUrl() {
+    let resultUrl = 'https://vk.com';
+    // let twitch = this.getterLinkedServices.find(
+    //   (x: LinkedServices) => x.serviceName == 'Twitch'
+    // );
+    // if (twitch != undefined) {
+    //   return resultUrl + '/' + twitch.userName;
+    // }
+    return resultUrl;
+  }
+  get getYoutubeFullUrl() {
+    let resultUrl = 'https://youtube.com';
+    // let twitch = this.getterLinkedServices.find(
+    //   (x: LinkedServices) => x.serviceName == 'Twitch'
+    // );
+    // if (twitch != undefined) {
+    //   return resultUrl + '/' + twitch.userName;
+    // }
+    return resultUrl;
+  }
   get isTwitchLinkDisabled() {
     let twitch = this.getterLinkedServices.find(
       (x: LinkedServices) => x.serviceName == 'Twitch'

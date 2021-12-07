@@ -1,6 +1,7 @@
 <v-card
   class="ml-auto mr-auto elevation-0"
   :img="require(`../../assets/bg_main_profile.png`)"
+  min-height="550"
 >
   <v-card-title class="black--text profile_font">
     <v-spacer></v-spacer>
@@ -67,11 +68,10 @@
                 <v-textarea
                   outlined
                   background-color="rgba(169, 162, 164, 0.3)"
-                  dark
                   rows="6"
                   no-resize
                   counter="255"
-                  class="rounded-lg"
+                  class="rounded-lg black--text"
                   :error-messages="errors[0]"
                 ></v-textarea>
               </validation-provider>

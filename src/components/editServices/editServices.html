@@ -1,32 +1,32 @@
 <v-card
   class="ml-auto mr-auto elevation-0"
   :img="require(`../../assets/bg_main_profile.png`)"
+  min-height="550"
 >
-  <v-card-title class="white--text profile_font">
+  <v-card-title class="black--text profile_font">
     <v-spacer></v-spacer>
     {{ $t('editServices_management.integrations') }}
     <v-spacer></v-spacer>
   </v-card-title>
-  <v-card-text class="elevation-0">
+  <v-card-text class="elevation-0 py-12">
     <v-container grid-list-md>
       <v-layout wrap>
         <v-flex xs12 md12 class="d-flex justify-space-between">
           <v-flex md1>
             <v-img
+              class="mt-2"
               :src="require(`../../assets/Twitch.png`)"
-              max-width="40"
-              max-height="40"
+              max-width="45"
+              max-height="45"
             ></v-img>
           </v-flex>
 
           <v-flex md8>
             <v-text-field
               outlined
-              dense
-              dark
               readonly
-              background-color="#14182E"
-              class="rounded-lg"
+              background-color="rgba(169, 162, 164, 0.3)"
+              class="rounded-lg black--text"
               :value="getTwitchFullUrl"
             ></v-text-field>
           </v-flex>
@@ -34,7 +34,65 @@
             <v-btn
               v-t="'editServices_management.link'"
               :href="twitchOauthUrl()"
-              color="#FEA116"
+              color="#F12C5E"
+              dark
+              :disabled="isLoading || isTwitchLinkDisabled"
+              :loading="isLoading"
+            ></v-btn>
+          </v-flex>
+        </v-flex>
+        <v-flex xs12 md12 class="d-flex justify-space-between">
+          <v-flex md1>
+            <v-img
+              class="mt-2"
+              :src="require(`../../assets/Youtube.png`)"
+              max-width="45"
+              max-height="45"
+            ></v-img>
+          </v-flex>
+
+          <v-flex md8>
+            <v-text-field
+              outlined
+              readonly
+              background-color="rgba(169, 162, 164, 0.3)"
+              class="rounded-lg black--text"
+              :value="getYoutubeFullUrl"
+            ></v-text-field>
+          </v-flex>
+          <v-flex md2>
+            <v-btn
+              v-t="'editServices_management.link'"
+              color="#F12C5E"
+              dark
+              :disabled="isLoading || isTwitchLinkDisabled"
+              :loading="isLoading"
+            ></v-btn>
+          </v-flex>
+        </v-flex>
+        <v-flex xs12 md12 class="d-flex justify-space-between">
+          <v-flex md1>
+            <v-img
+              class="mt-2"
+              :src="require(`../../assets/Vk.png`)"
+              max-width="45"
+              max-height="45"
+            ></v-img>
+          </v-flex>
+
+          <v-flex md8>
+            <v-text-field
+              outlined
+              readonly
+              background-color="rgba(169, 162, 164, 0.3)"
+              class="rounded-lg black--text"
+              :value="getVkFullUrl"
+            ></v-text-field>
+          </v-flex>
+          <v-flex md2>
+            <v-btn
+              v-t="'editServices_management.link'"
+              color="#F12C5E"
               dark
               :disabled="isLoading || isTwitchLinkDisabled"
               :loading="isLoading"
