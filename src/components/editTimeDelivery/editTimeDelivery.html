@@ -13,23 +13,47 @@
       <v-card-text class="elevation-0">
         <v-container grid-list-md>
           <v-layout wrap>
-            <v-flex xs6 md6>
-              <!-- <validation-provider
-              :name="$t('editContactData_management.city')"
-              rules="required"
-              v-slot="{ errors }"
-            >
-              <v-text-field
-                :label="$t('editContactData_management.city')"
-                outlined
-                dense
-                background-color="#14182E"
-                dark
-                class="rounded-lg "
-                v-model="editedProfile.city"
-                :error-messages="errors[0]"
-              ></v-text-field>
-            </validation-provider> -->
+            <v-flex xs12 md8 class="ml-auto mr-auto">
+              <validation-provider
+                :name="$t('timeDelivery_management.delivery_period')"
+                rules="required|verify_time_interval"
+                mode="lazy"
+                v-slot="{ errors }"
+              >
+                <v-text-field
+                  v-mask="'##:## - ##:##'"
+                  outlined
+                  background-color="rgba(169, 162, 164, 0.3)"
+                  class="text-center rounded-lg black--text"
+                  v-model="timeInterval"
+                  :readonly="disabledInterval"
+                  data-vv-validate-on="change"
+                  :error-messages="errors[0]"
+                ></v-text-field>
+              </validation-provider>
+            </v-flex>
+            <v-flex xs12 sm12 md12 class="d-flex justify-center">
+              <v-btn
+                color="#F12C5E"
+                large
+                class="btn_update white--text rounded-lg"
+                @click="saveTime"
+              >
+                {{ titleForBtnTime}}
+              </v-btn>
+            </v-flex>
+            <v-flex xs12 md12 class="d-flex justify-center pa-12 text-center">
+              {{ $t('timeDelivery_management.stop_delivery_info') }}
+            </v-flex>
+            <v-flex xs12 sm12 md12 class="d-flex justify-center">
+              <v-btn
+                color="#F12C5E"
+                large
+                @click="turnOffOnDelivery"
+                class="btn_update white--text rounded-lg"
+              >
+                {{ titleForBtnDelivery}}
+              </v-btn>
             </v-flex>
           </v-layout>
         </v-container>

@@ -80,12 +80,22 @@
     }
   },
   "timeDelivery_management": {
+    "delivery_period": "Delivery period",
     "allowed_period": "Allowed delivery period",
     "allowed_period_info": "You confirm that during this period of time you can accept orders at the address you specified, if it is not possible to accept an order during the specified period of time, use the order suspension function below",
     "edit": "Edit",
-    "stop_delivery": "Stop delivery"
+    "stop_delivery": "Stop delivery",
+    "stop_delivery_info": "You can suspend the processing of orders manually. Orders placed during the allowed delivery period, but with the \"Stop Delivery\" function active, will not be processed",
+    "start_delivery": "Start delivery",
+    "error": {
+      "update_time_delivery": "Updating data failed."
+    },
+    "success": {
+      "update_time_delivery": "Updating has been successfully."
+    }
   },
   "messages": {
+    "verify_time_interval": "Enter the time interval in the format - 18:00 - 23:00",
     "verify_password": "The password must contain at least: 1 uppercase letter, 1 lowercase letter, 1 number, and one special character (E.g. , . _ & ? etc.)",
     "_default": "default_message",
     "verify_already_exist_username": "User with the same username already exist.",

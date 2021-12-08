@@ -168,3 +168,21 @@ extend('verify_after', {
     return diff;
   },
 });
+
+extend('verify_time_interval', {
+  validate: (value: string) => {
+    let split = value.split(' - ');
+    if (split.length != 2) {
+      return false;
+    }
+    if (split[0].length != 5 || split[1].length != 5) {
+      return false;
+    }
+    let first = moment(split[0], 'hh:mm');
+    let second = moment(split[1], 'hh:mm');
+    if (!first.isValid() || !second.isValid()) {
+      return false;
+    }
+    return true;
+  },
+});

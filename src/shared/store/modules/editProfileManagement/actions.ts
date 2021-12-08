@@ -57,6 +57,36 @@ export const actions: ActionTree<EditProfileManagementState, RootState> = {
     }
   },
 
+  async updateStreamerTimeDelivery({ commit }, payload: Streamer) {
+    try {
+      await defaultBackendStreamers
+        .updateStreamerTimeDelivery(payload)
+        .then(response => {
+          commit(
+            'setSnackbarSuccess',
+            {
+              message: i18n.tc(
+                `timeDelivery_management.success.update_time_delivery`
+              ),
+              duration: 5000,
+            },
+            { root: true }
+          );
+        });
+    } catch (e) {
+      console.log(e);
+      commit(
+        'setSnackbarError',
+        {
+          message: i18n.tc(
+            `timeDelivery_management.success.update_time_delivery`
+          ),
+          duration: 5000,
+        },
+        { root: true }
+      );
+    }
+  },
   async updateStreamerContactData({ commit }, payload: Streamer) {
     try {
       await defaultBackendStreamers

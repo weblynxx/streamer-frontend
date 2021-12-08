@@ -36,6 +36,7 @@
     "roboto-fontface": "0.10.0",
     "typeface-roboto": "0.0.54",
     "v-currency-field": "3.1.1",
+    "v-mask": "^2.3.0",
     "v-money": "0.8.1",
     "v-money-persian": "0.8.3",
     "vee-validate": "3.3.9",

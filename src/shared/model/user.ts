@@ -20,6 +20,9 @@ export interface Streamer {
   floor: number;
   flat: string;
   intercomCode: string;
+  from: string;
+  to: string;
+  isStoppedDelivery: boolean;
 }
 export const StreamerEmpty: Streamer = {
   id: '',
@@ -43,6 +46,9 @@ export const StreamerEmpty: Streamer = {
   houseBuilding: '',
   street: '',
   intercomCode: '',
+  from: '',
+  to: '',
+  isStoppedDelivery: false,
 };
 
 export interface Password {

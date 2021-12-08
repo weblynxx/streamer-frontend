@@ -6,6 +6,7 @@ import { Password, Streamer } from '../model/user';
 export interface BackendStreamers {
   updateStreamer(user: Streamer): AxiosPromise<Streamer>;
   updateStreamerContactData(user: Streamer): AxiosPromise;
+  updateStreamerTimeDelivery(user: Streamer): AxiosPromise;
   deleteStreamer(userId: number): AxiosPromise;
   generateNewPassword(userId: number): AxiosPromise;
   isUniqueEmail(email: string): AxiosPromise;
@@ -20,6 +21,15 @@ export const defaultBackendStreamers: BackendStreamers = {
   updateStreamer(user: Streamer): AxiosPromise<Streamer> {
     return instance.put<Streamer>(`${URLS.streamers}/${user.id}`, user);
   },
+
+  updateStreamerTimeDelivery(user: Streamer): AxiosPromise<Streamer> {
+    return instance.post(`${URLS.streamers}/UpdateTimeDelivery`, {
+      From: user.from,
+      To: user.to,
+      IsStoppedDelivery: user.isStoppedDelivery,
+    });
+  },
+
   updateStreamerContactData(user: Streamer): AxiosPromise<Streamer> {
     return instance.post(`${URLS.streamers}/UpdateContactData`, {
       City: user.city,
