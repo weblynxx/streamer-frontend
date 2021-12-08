@@ -8,11 +8,11 @@
     {{ $t('editServices_management.integrations') }}
     <v-spacer></v-spacer>
   </v-card-title>
-  <v-card-text class="elevation-0 py-12">
+  <v-card-text class="elevation-0 py-12 pl-0">
     <v-container grid-list-md>
       <v-layout wrap>
-        <v-flex xs12 md12 class="d-flex justify-space-between">
-          <v-flex md1>
+        <v-flex xs12 md12 class="d-flex">
+          <v-flex xs2 md1>
             <v-img
               class="mt-2"
               :src="require(`../../assets/Twitch.png`)"
@@ -21,7 +21,7 @@
             ></v-img>
           </v-flex>
 
-          <v-flex md8>
+          <v-flex xs10 md8>
             <v-text-field
               outlined
               readonly
@@ -30,18 +30,29 @@
               :value="getTwitchFullUrl"
             ></v-text-field>
           </v-flex>
-          <v-flex md2>
+          <v-flex md2 class="d-flex" v-if="!isMobile">
             <v-btn
+              x-large
               v-t="'editServices_management.link'"
               :href="twitchOauthUrl()"
-              color="#F12C5E"
+              class="btn_link"
               dark
               :disabled="isLoading || isTwitchLinkDisabled"
               :loading="isLoading"
             ></v-btn>
           </v-flex>
         </v-flex>
-        <v-flex xs12 md12 class="d-flex justify-space-between">
+        <v-flex md2 class="d-flex justify-end mt-n8 ml-n1" v-if="isMobile">
+          <v-btn
+            v-t="'editServices_management.link'"
+            :href="twitchOauthUrl()"
+            class="btn_link"
+            dark
+            :disabled="isLoading || isTwitchLinkDisabled"
+            :loading="isLoading"
+          ></v-btn>
+        </v-flex>
+        <v-flex xs12 md12 class="d-flex ">
           <v-flex md1>
             <v-img
               class="mt-2"
@@ -60,17 +71,27 @@
               :value="getYoutubeFullUrl"
             ></v-text-field>
           </v-flex>
-          <v-flex md2>
+          <v-flex md2 v-if="!isMobile">
             <v-btn
+              x-large
               v-t="'editServices_management.link'"
-              color="#F12C5E"
+              class="btn_link"
               dark
               :disabled="isLoading || isTwitchLinkDisabled"
               :loading="isLoading"
             ></v-btn>
           </v-flex>
         </v-flex>
-        <v-flex xs12 md12 class="d-flex justify-space-between">
+        <v-flex md2 class="d-flex justify-end mt-n8 ml-n1" v-if="isMobile">
+          <v-btn
+            v-t="'editServices_management.link'"
+            class="btn_link"
+            dark
+            :disabled="isLoading || isTwitchLinkDisabled"
+            :loading="isLoading"
+          ></v-btn>
+        </v-flex>
+        <v-flex xs12 md12 class="d-flex">
           <v-flex md1>
             <v-img
               class="mt-2"
@@ -89,15 +110,25 @@
               :value="getVkFullUrl"
             ></v-text-field>
           </v-flex>
-          <v-flex md2>
+          <v-flex md2 v-if="!isMobile">
             <v-btn
+              x-large
               v-t="'editServices_management.link'"
-              color="#F12C5E"
+              class="btn_link"
               dark
               :disabled="isLoading || isTwitchLinkDisabled"
               :loading="isLoading"
             ></v-btn>
           </v-flex>
+        </v-flex>
+        <v-flex md2 class="d-flex justify-end mt-n8 ml-n1" v-if="isMobile">
+          <v-btn
+            v-t="'editServices_management.link'"
+            class="btn_link"
+            dark
+            :disabled="isLoading || isTwitchLinkDisabled"
+            :loading="isLoading"
+          ></v-btn>
         </v-flex>
       </v-layout>
     </v-container>

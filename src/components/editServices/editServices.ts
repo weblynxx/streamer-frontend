@@ -73,4 +73,7 @@ export default class EditServiceComponent extends Vue {
     return false;
   }
   //#endregion
+  get isMobile() {
+    return this.$vuetify.breakpoint.xsOnly;
+  }
 }
