@@ -24,7 +24,7 @@ jobs:
     
     - name: Docker Build Frontend
       run: |
-        docker build -f Dockerfile.test -t smirnovskoe/streamad_frontend:dev
+        docker build -f Dockerfile.test -t smirnovskoe/streamad_frontend:dev .
         
     - name: Docker Push Frontend
       run: |
