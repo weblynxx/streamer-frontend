@@ -17,4 +17,8 @@ export default class AppComponent extends Vue {
     }
     return 'empty-layout';
   }
+
+  mounted () {
+    console.log(process.env.VUE_APP_TWITCH_REDIRECT);
+  }
 }
