@@ -24,8 +24,7 @@ jobs:
     
     - name: Docker Build Frontend
       run: |
-        docker build . -t smirnovskoe/streamad_frontend:dev 
-        
+        docker build -f Dockerfile.stage -t smirnovskoe/streamad_frontend:dev .
     - name: Docker Push Frontend
       run: |
         docker push smirnovskoe/streamad_frontend:dev  
