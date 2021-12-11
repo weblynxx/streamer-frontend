@@ -6,16 +6,16 @@
           <v-layout wrap class="white--text">
             <v-row no-gutters>
               <v-col xs="12" sm="12" md="10" lg="8">
-                <v-row class="ma-0 pa-0">
+                <v-row class="ma-0 py-0">
                   <v-col
                     v-for="(item, index) in getterPreferencesClothes"
                     xs="2"
                     sm="4"
-                    class="ma-0 pa-0"
+                    class="ma-0 py-0"
                     :key="item.id"
                   >
                     <v-checkbox
-                      class="ma-0 pa-0"
+                      class="ma-0 py-0"
                       v-model="selected"
                       color="#F12C5E"
                       on-icon="mdi-checkbox-intermediate"
@@ -27,7 +27,7 @@
                 </v-row>
               </v-col>
             </v-row>
-            <v-flex>
+            <v-flex xs12 md12>
               <validation-provider rules="max:255" v-slot="{ errors }">
                 <v-textarea
                   outlined
@@ -41,13 +41,12 @@
                 ></v-textarea>
               </validation-provider>
             </v-flex>
-            <v-flex md11 class="d-flex justify-end ">
+            <v-flex md12 class="d-flex justify-end ">
               <v-btn
                 v-t="'editProfile_management.update'"
                 x-large
                 @click="updateClothesData"
                 class="btn_update white--text rounded-lg"
-                :class="isMobile ? 'mt-n8 pa-0 px-6' :'px-10  ml-2'"
                 :disabled="isLoading"
                 :loading="isLoading"
               ></v-btn>
