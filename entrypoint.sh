@@ -5,6 +5,7 @@ do
     cp $file $file.tmpl.js
   fi
   envsubst '$VUE_APP_TWITCH_REDIRECT' < $file.tmpl.js > $file
+  echo '$VUE_APP_TWITCH_REDIRECT'
 done
 echo "Starting Nginx"
 nginx -g 'daemon off;'
