@@ -56,7 +56,62 @@ export const actions: ActionTree<EditProfileManagementState, RootState> = {
       );
     }
   },
-
+  async updateStreamerClothesPreferenceText({ commit }, payload: string) {
+    try {
+      await defaultBackendStreamers
+        .updateStreamerClothesPreferenceText(payload)
+        .then(response => {
+          commit(
+            'setSnackbarSuccess',
+            {
+              message: i18n.tc(
+                `preference_management.success.update_food_prefence`
+              ),
+              duration: 5000,
+            },
+            { root: true }
+          );
+        });
+    } catch (e) {
+      console.log(e);
+      commit(
+        'setSnackbarError',
+        {
+          message: i18n.tc(`preference_management.error.update_food_prefence`),
+          duration: 5000,
+        },
+        { root: true }
+      );
+    }
+  },
+  async updateStreamerFoodPreferenceText({ commit }, payload: string) {
+    try {
+      await defaultBackendStreamers
+        .updateStreamerFoodPreferenceText(payload)
+        .then(response => {
+          commit(
+            'setSnackbarSuccess',
+            {
+              message: i18n.tc(
+                `preference_management.success.update_food_prefence`
+              ),
+              duration: 5000,
+            },
+            { root: true }
+          );
+        });
+    } catch (e) {
+      console.log(e);
+      commit(
+        'setSnackbarError',
+        {
+          message: i18n.tc(`preference_management.error.update_food_prefence`),
+          duration: 5000,
+        },
+        { root: true }
+      );
+    }
+  },
   async updateStreamerTimeDelivery({ commit }, payload: Streamer) {
     try {
       await defaultBackendStreamers

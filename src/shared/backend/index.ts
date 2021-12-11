@@ -85,6 +85,12 @@ export enum URLS {
 
   partnersOData = '/odata/Partners',
   partners = '/api/Partners',
+
+  preferencesOData = '/odata/Preferences',
+  preferences = '/api/Preferences',
+
+  streamerPreferencesOData = '/odata/StreamerPreferences',
+  streamerPreferences = '/api/StreamerPreferences',
 }
 
 export enum URL_PARAMS {

@@ -6,6 +6,7 @@ import { authManagement } from './modules/auth';
 import { editProfileManagement } from './modules/editProfileManagement';
 import { editServiceManagement } from './modules/editServiceManagement';
 import { partnerManagement } from './modules/partnerManagement';
+import { preferenceManagement } from './modules/preferenceManagement';
 
 import i18n from '../../i18n';
 
@@ -110,6 +111,7 @@ const storeOptions: StoreOptions<RootState> = {
     editProfileManagement,
     editServiceManagement,
     partnerManagement,
+    preferenceManagement,
   },
   plugins: [],
 };

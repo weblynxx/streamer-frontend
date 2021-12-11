@@ -7,6 +7,8 @@ export interface BackendStreamers {
   updateStreamer(user: Streamer): AxiosPromise<Streamer>;
   updateStreamerContactData(user: Streamer): AxiosPromise;
   updateStreamerTimeDelivery(user: Streamer): AxiosPromise;
+  updateStreamerFoodPreferenceText(text: string): AxiosPromise;
+  updateStreamerClothesPreferenceText(text: string): AxiosPromise;
   deleteStreamer(userId: number): AxiosPromise;
   generateNewPassword(userId: number): AxiosPromise;
   isUniqueEmail(email: string): AxiosPromise;
@@ -27,6 +29,18 @@ export const defaultBackendStreamers: BackendStreamers = {
       From: user.from,
       To: user.to,
       IsStoppedDelivery: user.isStoppedDelivery,
+    });
+  },
+
+  updateStreamerFoodPreferenceText(text: string): AxiosPromise {
+    return instance.post(`${URLS.streamers}/UpdateFoodPreferenceText`, {
+      FoodPreferenceText: text,
+    });
+  },
+
+  updateStreamerClothesPreferenceText(text: string): AxiosPromise {
+    return instance.post(`${URLS.streamers}/UpdateClothesPreferenceText`, {
+      ClothesPreferenceText: text,
     });
   },
 

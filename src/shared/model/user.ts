@@ -23,6 +23,8 @@ export interface Streamer {
   from: string;
   to: string;
   isStoppedDelivery: boolean;
+  foodPreferenceText: string;
+  clothesPreferenceText: string;
 }
 export const StreamerEmpty: Streamer = {
   id: '',
@@ -49,6 +51,8 @@ export const StreamerEmpty: Streamer = {
   from: '',
   to: '',
   isStoppedDelivery: false,
+  foodPreferenceText: '',
+  clothesPreferenceText: '',
 };
 
 export interface Password {
