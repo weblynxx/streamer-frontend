@@ -1,7 +1,7 @@
 <v-card
   class="ml-auto mr-auto elevation-0"
   :img="require(`../../assets/bg_main_profile.png`)"
-  min-height="550"
+  min-height="751"
 >
   <v-card-title class="black--text profile_font">
     <v-spacer></v-spacer>
@@ -54,7 +54,7 @@
                 style="border-bottom: 1px solid #5F5F5F; width: 92%; "
               >
                 <v-tabs-slider color="#F12C5E"></v-tabs-slider>
-                <v-tab class="v-tabs-font-style">
+                <v-tab class="v-tabs-font-style ">
                   <span>{{ $t('editProfile_management.food_preference')}}</span>
                 </v-tab>
                 <v-tab class="v-tabs-font-style">
@@ -63,20 +63,22 @@
                   </span>
                 </v-tab>
               </v-tabs>
+              <v-tabs-items v-model="tab">
+                <v-tab-item>
+                  <preference-food
+                    :preferenceFoodTextProp="editedProfile.foodPreferenceText"
+                    @update-food-preference="updateFoodPreference"
+                  ></preference-food>
+                </v-tab-item>
+                <v-tab-item>
+                  <preference-clothes
+                    :preferenceClothesTextProp="editedProfile.clothesPreferenceText"
+                    @update-clothes-preference="updateClothesPreference"
+                  ></preference-clothes>
+                </v-tab-item>
+              </v-tabs-items>
             </v-flex>
-            <v-flex xs12 md12>
-              <validation-provider rules="max:255" v-slot="{ errors }">
-                <v-textarea
-                  outlined
-                  background-color="rgba(169, 162, 164, 0.3)"
-                  rows="6"
-                  no-resize
-                  counter="255"
-                  class="rounded-lg black--text"
-                  :error-messages="errors[0]"
-                ></v-textarea>
-              </validation-provider>
-            </v-flex>
+
             <!-- <v-flex xs12 sm8 md8>
             <validation-provider
               name="lastName"
