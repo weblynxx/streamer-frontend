@@ -37,17 +37,7 @@
     "uniq_id_info": "You can update your ID, thereby making the previous ID unavailable for use",
     "food_preference": "Preference in food",
     "clothes_preference": "Preference in clothing",
-    "food_category": {
-      "pizza": "Зizza",
-      "sushi": "Sushi",
-      "steaks": "Steaks",
-      "hot_dogs": "Hot dogs",
-      "vietnamese_food": "Vietnamese food",
-      "georgian_food": "Georgian food",
-      "seafood": "Seafood",
-      "bakery_products": "Bakery products",
-      "burgers": "Burgers"
-    },
+
     "error": {
       "update_profile": "Updating the profile failed.",
       "update_streamerId": "Updating the StreamerId failed."
@@ -92,6 +82,36 @@
     },
     "success": {
       "update_time_delivery": "Updating has been successfully."
+    }
+  },
+  "preference_management": {
+    "food_category": {
+      "pizza": "Pizza",
+      "sushi": "Sushi",
+      "steaks": "Steaks",
+      "hot_dogs": "Hot dogs",
+      "vietnamese_food": "Vietnamese food",
+      "georgian_food": "Georgian food",
+      "seafood": "Seafood",
+      "bakery_products": "Bakery products",
+      "burgers": "Burgers"
+    },
+    "clothes_category": {
+      "footwear": "Footwear",
+      "head": "Head",
+      "trousers": "Trousers",
+      "socks": "Socks",
+      "sweaters": "Sweaters",
+      "jackets": "Jackets",
+      "jewelry": "Jewelry",
+      "accessories": "Accessories",
+      "t_shirts": "T-shirts"
+    },
+    "error": {
+      "update_food_prefence": "Updating data failed."
+    },
+    "success": {
+      "update_food_prefence": "Updating has been successfully."
     }
   },
   "messages": {

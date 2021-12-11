@@ -37,17 +37,7 @@
     "uniq_id_info": "Вы можете обновить свой ID, тем самым сделав предыдущий ID недоступным для использования",
     "food_preference": "Предпочтения в еде",
     "clothes_preference": "Предпочтения в одежде",
-    "food_category": {
-      "pizza": "Пицца",
-      "sushi": "Суши",
-      "steaks": "Стейки",
-      "hot_dogs": "Хот доги",
-      "vietnamese_food": "Вьетнамская еда",
-      "georgian_food": "Грузинская еда",
-      "seafood": "Морепродукты",
-      "bakery_products": "Выпечка",
-      "burgers": "Бургеры"
-    },
+
     "error": {
       "update_profile": "Ошибка при обновлении профиля.",
       "update_streamerId": "Ошибка при обновлении StreamerId."
@@ -94,7 +84,36 @@
       "update_time_delivery": "Данные успешно сохранены"
     }
   },
-
+  "preference_management": {
+    "food_category": {
+      "pizza": "Пицца",
+      "sushi": "Суши",
+      "steaks": "Стейки",
+      "hot_dogs": "Хот доги",
+      "vietnamese_food": "Вьетнамская еда",
+      "georgian_food": "Грузинская еда",
+      "seafood": "Морепродукты",
+      "bakery_products": "Выпечка",
+      "burgers": "Бургеры"
+    },
+    "clothes_category": {
+      "footwear": "Обувь",
+      "head": "Голова",
+      "trousers": "Штаны",
+      "socks": "Носки",
+      "sweaters": "Свитера",
+      "jackets": "Куртки",
+      "jewelry": "Ювелирка",
+      "accessories": "Аксессуары",
+      "t_shirts": "Футболки"
+    },
+    "error": {
+      "update_food_prefence": "Ошибка при выполнении запроса"
+    },
+    "success": {
+      "update_food_prefence": "Данные успешно сохранены"
+    }
+  },
   "messages": {
     "verify_time_interval": "Введите интервал времени в формате -  18:00 - 23:00",
     "verify_password": "Пароль должен содержать хотя бы одну букву в нижнем и верхнем регистре, цифру, а также спец. символ (.!_?...)",
