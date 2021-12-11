@@ -1,0 +1,60 @@
+<v-card class="ml-auto mr-auto elevation-0 transparent_bg">
+  <validation-observer ref="observer-preference-food-form" v-slot="v">
+    <v-form class="form__edit" data-vv-scope="preferenceFood">
+      <v-card-text class="elevation-0">
+        <v-container grid-list-md>
+          <v-layout wrap class="white--text">
+            <v-row no-gutters>
+              <v-col xs="12" sm="12" md="10" lg="8">
+                <v-row class="ma-0 pa-0">
+                  <v-col
+                    v-for="(item, index) in getterPreferencesFood"
+                    xs="2"
+                    sm="4"
+                    class="ma-0 pa-0"
+                    :key="item.id"
+                  >
+                    <v-checkbox
+                      class="ma-0 pa-0"
+                      v-model="selected"
+                      on-icon="mdi-checkbox-intermediate"
+                      color="#F12C5E"
+                      :label="$t(`preference_management.food_category.${item.name}`)"
+                      :value="item.id"
+                    >
+                    </v-checkbox>
+                  </v-col>
+                </v-row>
+              </v-col>
+            </v-row>
+            <v-flex xs12 md12>
+              <validation-provider rules="max:255" v-slot="{ errors }">
+                <v-textarea
+                  outlined
+                  background-color="rgba(169, 162, 164, 0.3)"
+                  rows="6"
+                  no-resize
+                  v-model="stateCurrentUser.foodPreferenceText"
+                  counter="255"
+                  class="rounded-lg black--text"
+                  :error-messages="errors[0]"
+                ></v-textarea>
+              </validation-provider>
+            </v-flex>
+            <v-flex md11 class="d-flex justify-end ">
+              <v-btn
+                v-t="'editProfile_management.update'"
+                x-large
+                @click="updateFoodData"
+                class="btn_update white--text rounded-lg"
+                :class="isMobile ? 'mt-n8 pa-0 px-6' :'px-10  ml-2'"
+                :disabled="isLoading"
+                :loading="isLoading"
+              ></v-btn>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-card-text>
+    </v-form>
+  </validation-observer>
+</v-card>
