@@ -184,7 +184,7 @@ import { Credentials } from '@/shared/model/credentials';
 const authModule = namespace('authManagement');
 
 @Component
-export default class MainLayout extends Vue {
+export default class AdminLayout extends Vue {
   @State('snackbar') public stateSnackbar!: Snackbar;
   // computed
   get snackbar() {

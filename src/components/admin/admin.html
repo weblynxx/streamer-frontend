@@ -1,5 +1,53 @@
 <div>
   <v-dialog
+    v-model="showFileUploadDialog"
+    class="file__upload_dialog"
+    :max-width="800"
+    persistent
+  >
+    <v-card>
+      <v-card-title>
+        Upload company logo
+      </v-card-title>
+      <v-card-text>
+        <v-file-input
+          id="file__upload__input"
+          :show-size="1024"
+          label="filename"
+          hint="Please select png file"
+          :persistent-hint="true"
+          name="cv"
+          v-model="cv"
+          prepend-inner-icon="mdi-paperclip"
+          prepend-icon=""
+          accept=".png"
+          @change="onChange"
+        >
+        </v-file-input>
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn
+          id="document__upload__close__btn"
+          color="error"
+          text
+          @click="clickClose"
+          v-t="$t('app.actions.cancel')"
+        >
+        </v-btn>
+        <v-btn
+          id="document-upload__upload__btn"
+          color="primary"
+          text
+          :disabled="!hasFile || isLoading"
+          @click="uploadImage"
+          v-t="$t('app.actions.save')"
+        >
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+  <v-dialog
     persistent
     v-model="dialog"
     @keydown.esc="close"
@@ -8,7 +56,7 @@
   >
     <v-card
       class="ml-auto mr-auto elevation-0"
-      style="background-color: black;"
+      style="background-color: white;"
     >
       <v-card-title class="white--text profile_font">
         <v-spacer></v-spacer>
@@ -20,18 +68,22 @@
           <v-card-text class="elevation-0">
             <v-container grid-list-md>
               <v-layout wrap>
+                <v-flex xs12 md12>
+                  <v-btn xl dark color="warning" @click="changeMainImage()"
+                    >Add logo</v-btn
+                  >
+                </v-flex>
                 <v-flex xs6 md6>
                   <validation-provider
                     name="username"
-                    rules="required"
+                    mode="lazy"
+                    rules="required|max:32|verify_already_exist_username"
                     v-slot="{ errors }"
                   >
                     <v-text-field
                       label="username"
                       outlined
-                      dense
-                      background-color="#14182E"
-                      dark
+                      background-color="rgba(169, 162, 164, 0.3)"
                       class="rounded-lg "
                       v-model="partner.userName"
                       :error-messages="errors[0]"
@@ -46,10 +98,8 @@
                   >
                     <v-text-field
                       label="password"
+                      background-color="rgba(169, 162, 164, 0.3)"
                       outlined
-                      dense
-                      background-color="#14182E"
-                      dark
                       class="rounded-lg "
                       v-model="partner.password"
                       :error-messages="errors[0]"
@@ -65,9 +115,7 @@
                     <v-text-field
                       label="email"
                       outlined
-                      dense
-                      background-color="#14182E"
-                      dark
+                      background-color="rgba(169, 162, 164, 0.3)"
                       class="rounded-lg "
                       v-model="partner.email"
                       :error-messages="errors[0]"
@@ -83,9 +131,7 @@
                     <v-text-field
                       label="deliverName"
                       outlined
-                      dense
-                      background-color="#14182E"
-                      dark
+                      background-color="rgba(169, 162, 164, 0.3)"
                       class="rounded-lg "
                       v-model="partner.deliveryName"
                       :error-messages="errors[0]"
@@ -101,9 +147,7 @@
                     <v-select
                       label="DelivreryType"
                       outlined
-                      dense
-                      background-color="#14182E"
-                      dark
+                      background-color="rgba(169, 162, 164, 0.3)"
                       :items="deliveryType"
                       class="rounded-lg "
                       v-model="partner.deliveryType"
@@ -113,6 +157,14 @@
                 </v-flex>
                 <v-flex xs12 md12 class="d-flex">
                   <v-spacer> </v-spacer>
+
+                  <v-btn
+                    v-t="$t('app.actions.cancel')"
+                    @click="close"
+                    class="px-10 rounded-lg"
+                    dark
+                    color="#FEA116"
+                  ></v-btn>
                   <v-btn
                     v-t="$t('app.actions.save')"
                     @click="addPartner"
@@ -133,7 +185,13 @@
   <v-row>
     <v-col>
       <v-card>
-        <v-card-title>Our partners </v-card-title>
+        <v-card-title>
+          <span>Our partners </span>
+          <v-spacer></v-spacer>
+          <v-btn dark fab bottom right color="green" @click="addItem">
+            <v-icon>mdi-plus</v-icon>
+          </v-btn>
+        </v-card-title>
 
         <v-data-table
           :headers="headers"

@@ -47,6 +47,8 @@ export default class AdminComponent extends Vue {
       return;
     }
     this.actionCreatePartner(this.partner).then(() => {
+      this.close();
+      this.OptionsChanged();
       this.isLoading = false;
     });
   }
@@ -114,4 +116,47 @@ export default class AdminComponent extends Vue {
     this.partner = Object.assign({}, item);
     this.dialog = true;
   }
+
+  //#region upload image
+
+  private showFileUploadDialog = false;
+
+  changeMainImage() {
+    this.showFileUploadDialog = true;
+  }
+
+  cv: any = null;
+  private hasFile = false;
+
+  private onChange(e: any) {
+    const isInputHasFile = e && e.name ? true : false;
+    this.hasFile = isInputHasFile;
+  }
+
+  @partnerManagementModule.Action('uploadImage')
+  private actionUploadImage!: any;
+
+  async uploadImage(payload: any) {
+    this.isLoading = true;
+    await this.actionUploadImage({
+      file: this.cv,
+      targetFolder: this.partner.id,
+    })
+      .then((result: string) => {
+        payload.id = result;
+        //logger.debug('doc uploaded:' + JSON.stringify(payload));
+      })
+      .finally(() => {
+        this.isLoading = false;
+        this.cv = null;
+        this.showFileUploadDialog = false;
+        // this.loadDesignSettings();
+      });
+  }
+
+  clickClose() {
+    this.showFileUploadDialog = false;
+  }
+
+  //#endregion
 }

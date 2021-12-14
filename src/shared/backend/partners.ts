@@ -7,9 +7,13 @@ import { DefaultBackendHelper } from './backendHelper';
 export interface BackendPartners {
   createPartner: (payload: any) => AxiosPromise<Partner>;
   getPartners: (searchParams: any) => AxiosPromise<Value>;
+  uploadImage(payload: any): AxiosPromise<any>;
 }
 
 export const defaultBackendPartners: BackendPartners = {
+  uploadImage(payload: any): AxiosPromise<any> {
+    return instance.post<any>(`${URLS.partners}/UploadImage`, payload);
+  },
   getPartners(searchParams?: any): AxiosPromise<Value> {
     let url = '';
     if (searchParams) {

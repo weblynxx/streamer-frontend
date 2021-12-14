@@ -60,6 +60,26 @@ export const actions: ActionTree<PartnerManagement, RootState> = {
         );
       });
   },
+  async uploadImage({ commit }, payload: { file: any; targetFolder: string }) {
+    try {
+      const data = new FormData();
+      data.append('File', payload.file);
+      data.append('TargetFolder', payload.targetFolder);
+
+      //TODO uploading progress
+      await defaultBackendPartners.uploadImage(data);
+    } catch (e) {
+      console.log(e);
+      commit(
+        'setSnackbarError',
+        {
+          message: i18n.tc(`error.load_data_failed`),
+          duration: 5000,
+        },
+        { root: true }
+      );
+    }
+  },
 
   //
   // instance.post<any>(`/api/Service/TwitchLogin`, {
