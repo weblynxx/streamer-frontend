@@ -67,6 +67,18 @@ const router = new VueRouter({
       },
     },
     {
+      path: '/editRestaurant',
+      name: 'RestaurantsData',
+      component: () => import('@/components/editRestaurant/editRestaurant.vue'),
+      meta: {
+        title: 'My restaurants',
+        layout: 'main',
+        requiresAuth: true,
+        requiresRole: [AUTHORITIES.STREAMER],
+      },
+    },
+
+    {
       path: '/editTimeDelivery',
       name: 'TimeDelivery',
       component: () =>

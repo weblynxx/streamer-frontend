@@ -1,0 +1,57 @@
+<v-card
+  class="ml-auto mr-auto elevation-0"
+  :img="require(`../../assets/bg_main_profile.png`)"
+  min-height="751"
+>
+  <v-card-title class="black--text profile_font">
+    <v-spacer></v-spacer>
+    {{ $t('editRestaurant_management.resturants_info') }}
+    <v-spacer></v-spacer>
+  </v-card-title>
+  <validation-observer ref="observer-edit-resturants-form" v-slot="v">
+    <v-form
+      id="editResturants"
+      class="form__edit"
+      data-vv-scope="editResturants"
+    >
+      <v-card-text class="elevation-0">
+        <v-container grid-list-md>
+          <v-layout wrap class="white--text">
+            <v-flex xs12 md12>
+              <v-tabs
+                v-model="tab"
+                slider-size="2"
+                background-color="transparent"
+                style="border-bottom: 1px solid #5F5F5F; width: 92%; "
+              >
+                <v-tabs-slider color="#F12C5E"></v-tabs-slider>
+                <v-tab class="v-tabs-font-style ">
+                  <span>{{ $t('editProfile_management.food_preference')}}</span>
+                </v-tab>
+                <v-tab class="v-tabs-font-style">
+                  <span>
+                    {{ $t('editProfile_management.clothes_preference')}}
+                  </span>
+                </v-tab>
+              </v-tabs>
+              <v-tabs-items v-model="tab">
+                <v-tab-item>
+                  <preference-food
+                    :preferenceFoodTextProp="editedProfile.foodPreferenceText"
+                    @update-food-preference="updateFoodPreference"
+                  ></preference-food>
+                </v-tab-item>
+                <v-tab-item>
+                  <preference-clothes
+                    :preferenceClothesTextProp="editedProfile.clothesPreferenceText"
+                    @update-clothes-preference="updateClothesPreference"
+                  ></preference-clothes>
+                </v-tab-item>
+              </v-tabs-items>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-card-text>
+    </v-form>
+  </validation-observer>
+</v-card>

@@ -100,7 +100,7 @@
                       {{ $t('home_management.contact_data') }}
                     </v-list-item-title>
                   </v-list-item>
-                  <v-list-item link to="/editContactData">
+                  <v-list-item link to="/editRestaurant">
                     <v-list-item-action>
                       <v-img :src="require(`../assets/restorants.png`)"></v-img>
                     </v-list-item-action>

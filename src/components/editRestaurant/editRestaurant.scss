@@ -1,0 +1,45 @@
+.transparent_bg {
+  background-color: transparent !important;
+}
+.profile_font {
+  line-height: 30, 22px;
+  font-weight: 700 !important;
+}
+.your_uniq_id_font {
+  font-size: 20px !important;
+  line-height: 23, 54px !important;
+  font-weight: 500 !important;
+}
+.btn_update {
+  background: #f12c5e !important;
+  border-radius: 10px;
+  text-transform: capitalize;
+}
+.uniq_id_info {
+  color: #63698c;
+  font-size: 15px;
+  line-height: 17px;
+  letter-spacing: 0em;
+}
+.v-tabs-font-style {
+  font-weight: 500;
+  line-height: 23, 54px;
+  letter-spacing: 0em;
+  text-transform: lowercase;
+}
+.v-tabs-font-style.v-tab span::first-letter {
+  text-transform: capitalize !important;
+}
+.v-tabs-font-style.v-tab--active {
+  color: #44413b !important;
+  font-weight: 600;
+}
+.v-tabs div[role='tablist'] {
+  background-color: transparent;
+}
+.theme--light.v-tabs-items {
+  background-color: transparent !important;
+}
+.v-slide-group__prev.v-slide-group__prev--disabled {
+  display: none !important;
+}
