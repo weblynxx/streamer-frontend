@@ -1,7 +1,6 @@
 <v-card
   class="ml-auto mr-auto elevation-0"
   :img="require(`../../assets/bg_main_profile.png`)"
-  min-height="751"
 >
   <v-card-title class="black--text profile_font">
     <v-spacer></v-spacer>
@@ -26,26 +25,20 @@
               >
                 <v-tabs-slider color="#F12C5E"></v-tabs-slider>
                 <v-tab class="v-tabs-font-style ">
-                  <span>{{ $t('editProfile_management.food_preference')}}</span>
+                  <span>{{ $t('editRestaurant_management.restuarants')}}</span>
                 </v-tab>
                 <v-tab class="v-tabs-font-style">
                   <span>
-                    {{ $t('editProfile_management.clothes_preference')}}
+                    {{ $t('editRestaurant_management.clothing_store')}}
                   </span>
                 </v-tab>
               </v-tabs>
               <v-tabs-items v-model="tab">
                 <v-tab-item>
-                  <preference-food
-                    :preferenceFoodTextProp="editedProfile.foodPreferenceText"
-                    @update-food-preference="updateFoodPreference"
-                  ></preference-food>
+                  <restuarants-component></restuarants-component>
                 </v-tab-item>
                 <v-tab-item>
-                  <preference-clothes
-                    :preferenceClothesTextProp="editedProfile.clothesPreferenceText"
-                    @update-clothes-preference="updateClothesPreference"
-                  ></preference-clothes>
+                  <restuarants-component></restuarants-component>
                 </v-tab-item>
               </v-tabs-items>
             </v-flex>
