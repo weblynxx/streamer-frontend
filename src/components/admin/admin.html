@@ -77,7 +77,7 @@
                   <validation-provider
                     name="username"
                     mode="lazy"
-                    rules="required|max:32|verify_already_exist_username"
+                    :rules="`required|max:32|verify_already_exist_username:${partner.id}`"
                     v-slot="{ errors }"
                   >
                     <v-text-field

@@ -4,6 +4,7 @@ import { Streamer, StreamerEmpty } from '../../shared/model/user';
 import { namespace } from 'vuex-class';
 import { Logger } from 'fsts';
 import RestuarantsComponent from './restuarants/restuarants.vue';
+import ClothesComponent from './clothes/clothes.vue';
 
 const editProfileManagementModule = namespace('editProfileManagement');
 const preferenceModule = namespace('preferenceManagement');
@@ -13,6 +14,7 @@ const partnerManagementModule = namespace('partnerManagement');
 @Component({
   components: {
     'restuarants-component': RestuarantsComponent,
+    'clothes-component': ClothesComponent,
   },
 })
 export default class EditRestaurantComponent extends Vue {
@@ -32,5 +34,12 @@ export default class EditRestaurantComponent extends Vue {
 
   updateRestuarants(restuarantsId: string[]) {
     this.updateStreamerRestuarants(restuarantsId);
+  }
+
+  @partnerManagementModule.Action('updateStreamerClothesShop')
+  private updateStreamerClothesShop!: any;
+
+  updateClothes(restuarantsId: string[]) {
+    this.updateStreamerClothesShop(restuarantsId);
   }
 }

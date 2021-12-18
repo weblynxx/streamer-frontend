@@ -1,0 +1,48 @@
+<v-card class="ml-auto mr-auto elevation-0 transparent_bg">
+  <validation-observer ref="observer-clothes-form" v-slot="v">
+    <v-form class="form__edit" data-vv-scope="preferenceClothes">
+      <v-card-text class="elevation-0" min-height="300">
+        <v-container grid-list-md>
+          <v-layout wrap class="white--text">
+            <v-row class="ma-0 py-0">
+              <v-col
+                v-for="(item, index) in getterPartnersClothes"
+                :key="item.id"
+                cols="3"
+              >
+                <v-flex class="d-flex flex-column">
+                  <v-flex class="d-flex justify-center">
+                    <v-img
+                      :src="item.logo"
+                      aspect-ratio="1.0"
+                      :width="100"
+                      :height="100"
+                    ></v-img>
+                  </v-flex>
+                  <v-flex class="d-flex justify-center mt-n6">
+                    <v-checkbox
+                      :label="item.deliveryName"
+                      v-model="selected"
+                      :value="item.id"
+                    >
+                    </v-checkbox>
+                  </v-flex>
+                </v-flex>
+              </v-col>
+            </v-row>
+          </v-layout>
+        </v-container>
+      </v-card-text>
+      <v-card-actions
+        ><v-flex md12 class="d-flex justify-end">
+          <v-btn
+            v-t="'editProfile_management.update'"
+            x-large
+            @click="updateClothes"
+            class="btn_update white--text rounded-lg"
+          ></v-btn>
+        </v-flex>
+      </v-card-actions>
+    </v-form>
+  </validation-observer>
+</v-card>

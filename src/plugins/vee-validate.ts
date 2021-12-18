@@ -96,7 +96,6 @@ extend('verify_already_exist_username', {
     var editingUserId =
       args[0] == '' ? '00000000-0000-0000-0000-000000000000' : args[0];
 
-    var isForCustomer = args[1] == 'forCustomer' ? true : false;
     var url = '/api/Streamers/ValidateUserName';
     return instance
       .post<Promise<void>>(url, {

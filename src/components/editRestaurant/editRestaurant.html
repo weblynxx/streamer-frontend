@@ -36,12 +36,12 @@
               <v-tabs-items v-model="tab">
                 <v-tab-item>
                   <restuarants-component
-                    :restuarants="getterPartnersFood"
                     @update-restuarants="updateRestuarants"
                   ></restuarants-component>
                 </v-tab-item>
                 <v-tab-item>
-                  <restuarants-component></restuarants-component>
+                  <clothes-component @update-clothes="updateClothes">
+                  </clothes-component>
                 </v-tab-item>
               </v-tabs-items>
             </v-flex>

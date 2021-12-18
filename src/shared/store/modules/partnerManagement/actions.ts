@@ -91,9 +91,7 @@ export const actions: ActionTree<PartnerManagement, RootState> = {
         DeliveryTypeEnum.CLOTHES,
         preferencesIds
       );
-      commit('setPartnersClothes', response.data);
     } catch (e) {
-      commit('setPartnersClothes', []);
       commit(
         'setSnackbarError',
         {
