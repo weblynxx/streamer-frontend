@@ -138,7 +138,12 @@
             </v-flex>
           </v-col>
           <v-col cols="12" xs="12" sm="8" md="8" lg="8" xl="6">
-            <v-card min-height="50vh" rounded="lg" color="#1F2340">
+            <v-card
+              min-height="50vh"
+              rounded="lg"
+              color="transparent"
+              class="elevation-0"
+            >
               <router-view></router-view>
             </v-card>
           </v-col>
