@@ -1,16 +1,20 @@
 import { AxiosPromise } from 'axios';
 import { instance } from '.';
 import { URLS } from './index';
-import { Partner, Value } from '../model/partner';
+import { DeliveryTypeEnum, Partner, Value } from '../model/partner';
 import { DefaultBackendHelper } from './backendHelper';
 
 export interface BackendPartners {
   createPartner: (payload: any) => AxiosPromise<Partner>;
   getPartners: (searchParams: any) => AxiosPromise<Value>;
+  getPartnersByType: (type: DeliveryTypeEnum) => AxiosPromise<Partner[]>;
   uploadImage(payload: any): AxiosPromise<any>;
 }
 
 export const defaultBackendPartners: BackendPartners = {
+  getPartnersByType(type: DeliveryTypeEnum): AxiosPromise<Partner[]> {
+    return instance.get<any>(`${URLS.partners}/GetByType/${type}`);
+  },
   uploadImage(payload: any): AxiosPromise<any> {
     return instance.post<any>(`${URLS.partners}/UploadImage`, payload);
   },

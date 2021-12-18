@@ -8,6 +8,12 @@ export const mutations: MutationTree<PartnerManagement> = {
     state.partners = payload;
     state.isLoadingPartners = false;
   },
+  setPartnersFood(state, payload: Partner[]) {
+    state.partnersFood = payload;
+  },
+  setPartnersClothes(state, payload: Partner[]) {
+    state.partnersClothes = payload;
+  },
   updateOptions(state, payload: any) {
     state.options = payload;
   },

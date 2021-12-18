@@ -11,6 +11,7 @@ export interface Partner {
   token: string;
   deliveryName: string;
   deliveryType: DeliveryTypeEnum;
+  logo: string;
 }
 export const PartnerEmpty: Partner = {
   id: '',
@@ -25,6 +26,7 @@ export const PartnerEmpty: Partner = {
   token: '',
   deliveryName: '',
   deliveryType: 0,
+  logo: '',
 };
 export type DeliveryTypeEnum = 0 | 1;
 export const DeliveryTypeEnum = {

@@ -4,6 +4,8 @@ export const state = (): PartnerManagement => initialState();
 
 export const initialState = (): PartnerManagement => ({
   partners: [],
+  partnersFood: [],
+  partnersClothes: [],
   totalPartners: 0,
   isLoadingPartners: false,
   options: {

@@ -3,9 +3,47 @@ import { PartnerManagement } from './types';
 import { RootState } from '../../types';
 import { defaultBackendPartners } from '../../../backend/partners';
 import { initialState } from './state';
-import { Partner } from '@/shared/model/partner';
+import { DeliveryTypeEnum, Partner } from '@/shared/model/partner';
+import i18n from '@/i18n';
 
 export const actions: ActionTree<PartnerManagement, RootState> = {
+  async getPartnersFood({ commit, dispatch }) {
+    try {
+      const response = await defaultBackendPartners.getPartnersByType(
+        DeliveryTypeEnum.FOOD
+      );
+      console.log(response.data);
+      commit('setPartnersFood', response.data);
+    } catch (e) {
+      commit('setPartnersFood', []);
+      commit(
+        'setSnackbarError',
+        {
+          message: 'Error',
+          duration: 5000,
+        },
+        { root: true }
+      );
+    }
+  },
+  async getPartnersClothes({ commit, dispatch }) {
+    try {
+      const response = await defaultBackendPartners.getPartnersByType(
+        DeliveryTypeEnum.CLOTHES
+      );
+      commit('setPartnersClothes', response.data);
+    } catch (e) {
+      commit('setPartnersClothes', []);
+      commit(
+        'setSnackbarError',
+        {
+          message: 'Error',
+          duration: 5000,
+        },
+        { root: true }
+      );
+    }
+  },
   async getPartners({ commit, dispatch }, payload?: any) {
     try {
       commit('setIsLoadingPartners', true);
