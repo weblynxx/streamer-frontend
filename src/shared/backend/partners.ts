@@ -95,16 +95,19 @@ export const defaultBackendPartners: BackendPartners = {
     let newPartner = payload;
     let deliveryType = payload.deliveryType;
     let deliveryName = payload.deliveryName;
-    return instance.post<Partner>(
-      `${URLS.partners}/CreatePartner/${deliveryType}`,
-      {
-        FirstName: deliveryName,
-        LastName: deliveryName,
-        Email: newPartner.email,
-        UserName: newPartner.userName,
-        Password: newPartner.password,
-        Authorities: 'ROLE_PARTNER',
-      }
-    );
+    let url = `${URLS.partners}`;
+    if (deliveryType == DeliveryTypeEnum.FOOD) {
+      url += '/CreatePartnerFood';
+    } else {
+      url += '/CreatePartnerClothes';
+    }
+    return instance.post<Partner>(url, {
+      FirstName: deliveryName,
+      LastName: deliveryName,
+      Email: newPartner.email,
+      UserName: newPartner.userName,
+      Password: newPartner.password,
+      Authorities: 'ROLE_PARTNER',
+    });
   },
 };
