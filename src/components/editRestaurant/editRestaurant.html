@@ -35,7 +35,10 @@
               </v-tabs>
               <v-tabs-items v-model="tab">
                 <v-tab-item>
-                  <restuarants-component></restuarants-component>
+                  <restuarants-component
+                    :restuarants="getterPartnersFood"
+                    @update-restuarants="updateRestuarants"
+                  ></restuarants-component>
                 </v-tab-item>
                 <v-tab-item>
                   <restuarants-component></restuarants-component>

@@ -1,7 +1,7 @@
 ﻿import { GetterTree } from 'vuex';
 import { PartnerManagement } from './types';
 import { RootState } from '../../types';
-import { Partner } from '@/shared/model/partner';
+import { Partner, StreamerPartner } from '@/shared/model/partner';
 
 export const getters: GetterTree<PartnerManagement, RootState> = {
   getPartners(state): Partner[] {
@@ -12,5 +12,11 @@ export const getters: GetterTree<PartnerManagement, RootState> = {
   },
   getPartnersClothes(state): Partner[] {
     return state.partnersClothes;
+  },
+  getStreamerPartnersFood(state): StreamerPartner[] {
+    return state.streamerPartnersFood;
+  },
+  getStreamerPartnersClothes(state): StreamerPartner[] {
+    return state.streamerPartnersClothes;
   },
 };

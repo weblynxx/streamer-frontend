@@ -26,6 +26,84 @@ export const actions: ActionTree<PartnerManagement, RootState> = {
       );
     }
   },
+  async getStreamerPartnersFood({ commit, dispatch }) {
+    try {
+      const response = await defaultBackendPartners.getStreamerPartners(
+        DeliveryTypeEnum.FOOD
+      );
+      commit('setStreamerPartnersFood', response.data);
+    } catch (e) {
+      commit('setStreamerPartnersFood', []);
+      commit(
+        'setSnackbarError',
+        {
+          message: 'Error',
+          duration: 5000,
+        },
+        { root: true }
+      );
+    }
+  },
+  async getStreamerPartnersClothes({ commit, dispatch }) {
+    try {
+      const response = await defaultBackendPartners.getStreamerPartners(
+        DeliveryTypeEnum.CLOTHES
+      );
+      commit('setStreamerPartnersClothes', response.data);
+    } catch (e) {
+      commit('setStreamerPartnersClothes', []);
+      commit(
+        'setSnackbarError',
+        {
+          message: 'Error',
+          duration: 5000,
+        },
+        { root: true }
+      );
+    }
+  },
+  async updateStreamerRestuarants(
+    { commit, dispatch },
+    preferencesIds: string[]
+  ) {
+    try {
+      const response = await defaultBackendPartners.updateStreamerPartners(
+        DeliveryTypeEnum.FOOD,
+        preferencesIds
+      );
+    } catch (e) {
+      commit(
+        'setSnackbarError',
+        {
+          message: 'Error',
+          duration: 5000,
+        },
+        { root: true }
+      );
+    }
+  },
+  async updateStreamerClothesShop(
+    { commit, dispatch },
+    preferencesIds: string[]
+  ) {
+    try {
+      const response = await defaultBackendPartners.updateStreamerPartners(
+        DeliveryTypeEnum.CLOTHES,
+        preferencesIds
+      );
+      commit('setPartnersClothes', response.data);
+    } catch (e) {
+      commit('setPartnersClothes', []);
+      commit(
+        'setSnackbarError',
+        {
+          message: 'Error',
+          duration: 5000,
+        },
+        { root: true }
+      );
+    }
+  },
   async getPartnersClothes({ commit, dispatch }) {
     try {
       const response = await defaultBackendPartners.getPartnersByType(

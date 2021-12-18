@@ -1,7 +1,12 @@
 import { AxiosPromise } from 'axios';
 import { instance } from '.';
 import { URLS } from './index';
-import { DeliveryTypeEnum, Partner, Value } from '../model/partner';
+import {
+  DeliveryTypeEnum,
+  Partner,
+  StreamerPartner,
+  Value,
+} from '../model/partner';
 import { DefaultBackendHelper } from './backendHelper';
 
 export interface BackendPartners {
@@ -9,9 +14,23 @@ export interface BackendPartners {
   getPartners: (searchParams: any) => AxiosPromise<Value>;
   getPartnersByType: (type: DeliveryTypeEnum) => AxiosPromise<Partner[]>;
   uploadImage(payload: any): AxiosPromise<any>;
+  updateStreamerPartners: (
+    type: DeliveryTypeEnum,
+    restuarantsId: string[]
+  ) => AxiosPromise;
+  getStreamerPartners(type: DeliveryTypeEnum): AxiosPromise<StreamerPartner[]>;
 }
 
 export const defaultBackendPartners: BackendPartners = {
+  getStreamerPartners(type: DeliveryTypeEnum): AxiosPromise<StreamerPartner[]> {
+    return instance.get<StreamerPartner[]>(`${URLS.streamerPartners}/${type}`);
+  },
+  updateStreamerPartners(
+    type: DeliveryTypeEnum,
+    restuarantsId: string[]
+  ): AxiosPromise {
+    return instance.post(`${URLS.streamerPartners}/${type}`, restuarantsId);
+  },
   getPartnersByType(type: DeliveryTypeEnum): AxiosPromise<Partner[]> {
     return instance.get<any>(`${URLS.partners}/GetByType/${type}`);
   },

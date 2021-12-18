@@ -1,7 +1,7 @@
 import { MutationTree } from 'vuex';
 import { PartnerManagement } from './types';
 import { initialState } from './state';
-import { Partner } from '@/shared/model/partner';
+import { Partner, StreamerPartner } from '@/shared/model/partner';
 
 export const mutations: MutationTree<PartnerManagement> = {
   setPartners(state, payload: Partner[]) {
@@ -13,6 +13,12 @@ export const mutations: MutationTree<PartnerManagement> = {
   },
   setPartnersClothes(state, payload: Partner[]) {
     state.partnersClothes = payload;
+  },
+  setStreamerPartnersFood(state, payload: StreamerPartner[]) {
+    state.streamerPartnersFood = payload;
+  },
+  setStreamerPartnersClothes(state, payload: StreamerPartner[]) {
+    state.streamerPartnersClothes = payload;
   },
   updateOptions(state, payload: any) {
     state.options = payload;

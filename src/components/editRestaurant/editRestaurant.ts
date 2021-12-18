@@ -8,6 +8,7 @@ import RestuarantsComponent from './restuarants/restuarants.vue';
 const editProfileManagementModule = namespace('editProfileManagement');
 const preferenceModule = namespace('preferenceManagement');
 const authModule = namespace('authManagement');
+const partnerManagementModule = namespace('partnerManagement');
 
 @Component({
   components: {
@@ -15,5 +16,21 @@ const authModule = namespace('authManagement');
   },
 })
 export default class EditRestaurantComponent extends Vue {
+  @partnerManagementModule.Action('getPartnersFood')
+  private actionGetPartnersFood!: any;
+  @partnerManagementModule.Getter('getPartnersFood')
+  private getterPartnersFood!: any;
+
+  mounted() {
+    this.actionGetPartnersFood();
+  }
+
   private tab = 0;
+
+  @partnerManagementModule.Action('updateStreamerRestuarants')
+  private updateStreamerRestuarants!: any;
+
+  updateRestuarants(restuarantsId: string[]) {
+    this.updateStreamerRestuarants(restuarantsId);
+  }
 }

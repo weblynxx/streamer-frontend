@@ -6,6 +6,8 @@ export const initialState = (): PartnerManagement => ({
   partners: [],
   partnersFood: [],
   partnersClothes: [],
+  streamerPartnersFood: [],
+  streamerPartnersClothes: [],
   totalPartners: 0,
   isLoadingPartners: false,
   options: {

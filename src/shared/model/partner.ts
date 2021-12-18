@@ -28,6 +28,13 @@ export const PartnerEmpty: Partner = {
   deliveryType: 0,
   logo: '',
 };
+
+export interface StreamerPartner {
+  id: string;
+  streamerId: string;
+  partnerId: string;
+}
+
 export type DeliveryTypeEnum = 0 | 1;
 export const DeliveryTypeEnum = {
   FOOD: 0 as DeliveryTypeEnum,
