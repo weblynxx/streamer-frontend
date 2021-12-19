@@ -8,16 +8,15 @@
               <v-col
                 v-for="(item, index) in getterPartnersClothes"
                 :key="item.id"
-                cols="3"
+                xs="2"
+                sm="4"
+                md="3"
+                lg="3"
+                xl="2"
               >
                 <v-flex class="d-flex flex-column">
                   <v-flex class="d-flex justify-center">
-                    <v-img
-                      :src="item.logo"
-                      aspect-ratio="1.0"
-                      :width="100"
-                      :height="100"
-                    ></v-img>
+                    <v-img :src="item.logo" aspect-ratio="1.0"></v-img>
                   </v-flex>
                   <v-flex class="d-flex justify-center mt-n6">
                     <v-checkbox
