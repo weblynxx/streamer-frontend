@@ -4,6 +4,7 @@ import Home from '@/components/home/home.vue';
 import AuthorityUtils from './shared/backend/authorityUtils';
 import { AUTHORITIES } from './shared/store/modules/auth';
 import { Logger } from 'fsts';
+import { params } from 'vee-validate/dist/types/rules/alpha';
 
 Vue.use(VueRouter);
 const logger = new Logger('router');
@@ -77,7 +78,15 @@ const router = new VueRouter({
         requiresRole: [AUTHORITIES.STREAMER],
       },
     },
-
+    {
+      path: '/streamer/:username',
+      name: 'Public',
+      meta: {
+        title: 'Public',
+        layout: 'public',
+        requiresAuth: true,
+      },
+    },
     {
       path: '/editTimeDelivery',
       name: 'TimeDelivery',
@@ -115,6 +124,17 @@ router.beforeEach(async (to: any, from, next) => {
       path: '/login',
     });
     return;
+  }
+  if (to.name == 'Public' && to.params.username != '') {
+    let result = await AuthorityUtils.checkIsStreamerExist(to.params.username);
+    if (result) {
+      next();
+      return;
+    } else {
+      alert('Streamer not found');
+      next('error-access-view');
+      return;
+    }
   }
   // always load api information
   await AuthorityUtils.getApiInfo();
