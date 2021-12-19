@@ -7,6 +7,7 @@ import { editProfileManagement } from './modules/editProfileManagement';
 import { editServiceManagement } from './modules/editServiceManagement';
 import { partnerManagement } from './modules/partnerManagement';
 import { preferenceManagement } from './modules/preferenceManagement';
+import { publicStreamerManagement } from './modules/publicStreamerManagement';
 
 import i18n from '../../i18n';
 
@@ -112,6 +113,7 @@ const storeOptions: StoreOptions<RootState> = {
     editServiceManagement,
     partnerManagement,
     preferenceManagement,
+    publicStreamerManagement,
   },
   plugins: [],
 };

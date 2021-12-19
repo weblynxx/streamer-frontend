@@ -7,6 +7,7 @@ import { PasswordResetFinish } from '../model/passwordResetFinish';
 import { IdToken } from '../model/idToken';
 import { Credentials } from '../model/credentials';
 import { Streamer } from '../model/user';
+import { PublicStreamer } from '../model/publicStreamer';
 
 export interface BackendAccount {
   authenticate: (
@@ -28,9 +29,21 @@ export interface BackendAccount {
   checkPasswordReset: (key: string) => AxiosPromise;
   finishResetPassword: (key: string, newPassword: string) => AxiosPromise;
   logout: () => AxiosPromise;
+  checkIsStreamerExist: (userName: string) => AxiosPromise;
+  getPublicStreamer: (userName: string) => AxiosPromise<PublicStreamer>;
 }
 
 export const defaultBackendAccount: BackendAccount = {
+  getPublicStreamer(userName: string): AxiosPromise<PublicStreamer> {
+    return instance.get<any>(
+      `${URLS.streamers}/GetStreamerInfoByUserName/${userName}`
+    );
+  },
+  checkIsStreamerExist(userName: string): AxiosPromise {
+    return instance.post<any>(`${URLS.streamers}/IsExistStreamerByUserName`, {
+      username: userName,
+    });
+  },
   authenticate(
     username: string,
     password: string,

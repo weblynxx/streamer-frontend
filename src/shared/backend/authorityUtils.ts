@@ -19,6 +19,18 @@ export default class AuthorityUtils {
     }
   }
 
+  public static async checkIsStreamerExist(userName: string) {
+    try {
+      let result = await store.dispatch(
+        'authManagement/checkIsStreamerExist',
+        userName
+      );
+      return result.data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   public static async getApiInfo() {
     if (!store.getters['apiInfo']) {
       await store.dispatch('load_info');

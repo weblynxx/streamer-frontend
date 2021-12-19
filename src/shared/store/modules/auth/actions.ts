@@ -43,6 +43,10 @@ export const actions: ActionTree<AuthState, RootState> = {
       );
     }
   },
+  async checkIsStreamerExist({ commit }, userName: string) {
+    let result = await defaultBackendAccount.checkIsStreamerExist(userName);
+    return result;
+  },
   async loadAccountDetails({ commit }, id?: number) {
     return defaultBackendAccount
       .getMyAccount()
