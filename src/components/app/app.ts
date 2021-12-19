@@ -3,11 +3,13 @@ import Component from 'vue-class-component';
 import EmptyLayout from '@/layouts/EmptyLayout.vue';
 import MainLayout from '@/layouts/MainLayout.vue';
 import AdminLayout from '@/layouts/AdminLayout.vue';
+import PublicLayout from '@/layouts/publicLayout/publicLayout.vue';
 @Component({
   components: {
     EmptyLayout,
     MainLayout,
     AdminLayout,
+    PublicLayout,
   },
 })
 export default class AppComponent extends Vue {
@@ -18,7 +20,5 @@ export default class AppComponent extends Vue {
     return 'empty-layout';
   }
 
-  mounted () {
-    console.log(process.env.VUE_APP_TWITCH_REDIRECT);
-  }
+  mounted() {}
 }
