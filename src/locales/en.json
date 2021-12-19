@@ -119,6 +119,15 @@
     "restuarants": "Restuarants",
     "clothing_store": "Clothing store"
   },
+  "publicStreamer_management": {
+    "links": "Links",
+    "time_delivery": "Ready to accept delivery",
+    "streamer_id": "Streamer id",
+    "copy": "Copy",
+    "food": "Food",
+    "clothes": "Clothes",
+    "choose_a_food_category": "Choose a Food Category"
+  },
   "messages": {
     "verify_time_interval": "Enter the time interval in the format - 18:00 - 23:00",
     "verify_password": "The password must contain at least: 1 uppercase letter, 1 lowercase letter, 1 number, and one special character (E.g. , . _ & ? etc.)",

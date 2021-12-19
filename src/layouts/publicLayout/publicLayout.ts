@@ -26,6 +26,29 @@ export default class PublicLayout extends Vue {
     }
   }
 
+  get timeDelivery() {
+    return (
+      this.getterStreamer.from.slice(0, 5) +
+      ' - ' +
+      this.getterStreamer.to.slice(0, 5)
+    );
+  }
+
+  //#region linked services
+
+  get getTwitchFullUrl() {
+    let resultUrl = 'https://twitch.tv';
+    // let twitch = this.getterStreamer..find(
+    //   (x: LinkedServices) => x.serviceName == 'Twitch'
+    // );
+    // if (twitch != undefined) {
+    //   return resultUrl + '/' + twitch.userName;
+    // }
+    return resultUrl;
+  }
+
+  //#endregion
+
   get snackbar() {
     return this.stateSnackbar;
   }

@@ -119,6 +119,15 @@
     "restuarants": "Рестораны",
     "clothing_store": "Магазины одежды"
   },
+  "publicStreamer_management": {
+    "links": "Ссылки",
+    "time_delivery": "Готов принять доставку",
+    "streamer_id": "Id стримера",
+    "copy": "Копировать",
+    "food": "Еда",
+    "clothes": "Одежда",
+    "choose_a_food_category": "Choose a Food Category"
+  },
   "messages": {
     "verify_time_interval": "Введите интервал времени в формате -  18:00 - 23:00",
     "verify_password": "Пароль должен содержать хотя бы одну букву в нижнем и верхнем регистре, цифру, а также спец. символ (.!_?...)",

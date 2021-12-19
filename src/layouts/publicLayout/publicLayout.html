@@ -32,7 +32,7 @@
   <v-main>
     <v-container class="mb-10">
       <v-row>
-        <v-col cols="12" xs="12" sm="4" md="4" lg="3" xl="3">
+        <v-col cols="12" xs="12" sm="4" md="4" lg="4" xl="3">
           <v-card
             rounded="lg"
             :img="require(`../../assets/bg_main_profile.png`)"
@@ -46,15 +46,13 @@
                         mdi-account-circle
                       </v-icon>
                     </v-avatar>
+                    <v-flex
+                      class="d-flex black--text profile_form_text ml-4 mt-2"
+                    >
+                      {{ getterStreamer.lastName + ', ' +
+                      getterStreamer.firstName }}
+                    </v-flex>
                   </v-flex>
-                </v-col>
-                <v-col align="right" justify="center" cols="2">
-                  <v-img
-                    :src="require(`../../assets/setting.png`)"
-                    max-width="30"
-                    max-height="30"
-                  >
-                  </v-img>
                 </v-col>
               </v-row>
             </v-card-text>
@@ -65,7 +63,61 @@
             :img="require(`../../assets/bg_main_profile.png`)"
           >
             <v-card-text>
-              <v-list color="transparent"> </v-list>
+              <h2 class="d-flex justify-center black--text">
+                {{ $t('publicStreamer_management.links') }}
+              </h2>
+              <v-flex class="d-flex d-flex-inline">
+                <v-flex class="d-flex justify-center">
+                  <v-img
+                    class="mt-2 mr-1"
+                    :src="require(`../../assets/Twitch.png`)"
+                    max-width="45"
+                    max-height="45"
+                  ></v-img>
+                  <v-img
+                    class="mt-2 mr-2"
+                    :src="require(`../../assets/Youtube.png`)"
+                    max-width="45"
+                    max-height="45"
+                  ></v-img>
+                  <v-img
+                    class="mt-2"
+                    :src="require(`../../assets/Vk.png`)"
+                    max-width="40"
+                    max-height="40"
+                  ></v-img>
+                </v-flex>
+              </v-flex>
+            </v-card-text>
+          </v-card>
+          <v-card
+            class="profile_form mt-2"
+            rounded="lg"
+            :img="require(`../../assets/bg_main_profile.png`)"
+          >
+            <v-card-text>
+              <h2 class="d-flex justify-center black--text">
+                {{ $t('publicStreamer_management.time_delivery') }}
+              </h2>
+
+              <v-img
+                class="mt-2 mx-12"
+                :src="require(`../../assets/line_1.png`)"
+              ></v-img>
+
+              <v-flex class="d-flex d-flex-inline">
+                <v-flex class="d-flex justify-center mt-2 mb-0">
+                  <v-text-field
+                    class="mx-6 rounded-lg"
+                    align="center"
+                    outlined
+                    dense
+                    readonly
+                    :value="timeDelivery"
+                    background-color="rgba(169, 162, 164, 0.3)"
+                  ></v-text-field>
+                </v-flex>
+              </v-flex>
             </v-card-text>
           </v-card>
         </v-col>
@@ -73,10 +125,29 @@
           <v-card
             min-height="50vh"
             rounded="lg"
-            color="transparent"
+            :img="require(`../../assets/bg_main_profile.png`)"
             class="elevation-0"
           >
-            <router-view></router-view>
+            <v-card-text>
+              <v-container grid-list-md>
+                <v-layout wrap class="black--text">
+                  <v-flex md6>
+                    <h2>{{ $t('publicStreamer_management.streamer_id') }}</h2>
+                  </v-flex>
+                  <v-flex md8 class="d-flex-inline">
+                    <v-text-field
+                      class="rounded-lg black--text"
+                      readonly
+                      dense
+                      background-color="rgba(169, 162, 164, 0.3)"
+                      v-model="getterStreamer.streamerId"
+                      outlined
+                    >
+                    </v-text-field>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-card-text>
           </v-card>
         </v-col>
         <v-col cols="4"></v-col>

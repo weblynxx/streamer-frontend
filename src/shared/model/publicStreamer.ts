@@ -9,6 +9,8 @@ export interface PublicStreamer {
   foodPreferenceText: string;
   clothesPreferenceText: string;
 }
+
+export interface PublicStreamerServices {}
 export const PublicStreamerEmpty: PublicStreamer = {
   firstName: '',
   lastName: '',
