@@ -56,13 +56,24 @@
                       </v-flex>
                     </v-flex>
                   </v-col>
-                  <v-col align="right" justify="center" cols="2">
-                    <v-img
-                      :src="require(`../assets/setting.png`)"
-                      max-width="30"
-                      max-height="30"
-                    >
-                    </v-img>
+                  <v-col align="right" justify="center" cols="3">
+                    <v-flex class="d-flex d-flex-inline">
+                      <v-img
+                        v-if="isMobile"
+                        class="cursor mr-2"
+                        :src="require(`../assets/Logout.png`)"
+                        max-width="28"
+                        max-height="28"
+                        @click="logout"
+                      >
+                      </v-img>
+                      <v-img
+                        :src="require(`../assets/setting.png`)"
+                        max-width="30"
+                        max-height="30"
+                      >
+                      </v-img>
+                    </v-flex>
                   </v-col>
                 </v-row>
               </v-card-text>
@@ -122,6 +133,7 @@
               </v-card-text>
             </v-card>
             <v-flex
+              v-if="!isMobile"
               class="d-flex mt-12  cursor"
               @click="logout"
               style="align-items:center"
