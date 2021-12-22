@@ -134,17 +134,30 @@
                   <v-flex md6>
                     <h2>{{ $t('publicStreamer_management.streamer_id') }}</h2>
                   </v-flex>
-                  <v-flex md8 class="d-flex-inline">
-                    <v-text-field
-                      class="rounded-lg black--text"
-                      readonly
-                      dense
-                      background-color="rgba(169, 162, 164, 0.3)"
-                      v-model="getterStreamer.streamerId"
-                      outlined
-                    >
-                    </v-text-field>
+                  <v-flex md12 class="d-flex">
+                    <v-flex md8 class="d-flex-inline">
+                      <v-text-field
+                        class="rounded-lg black--text"
+                        readonly
+                        dense
+                        background-color="rgba(169, 162, 164, 0.3)"
+                        v-model="getterStreamer.streamerId"
+                        outlined
+                      >
+                      </v-text-field>
+                    </v-flex>
+                    <v-flex md4>
+                      <v-btn
+                        color="#F12C5E"
+                        large
+                        v-t="$t('publicStreamer_management.copy')"
+                        class="btn_update white--text rounded-lg"
+                        @click="copyToClipboard"
+                      >
+                      </v-btn
+                    ></v-flex>
                   </v-flex>
+                  
                 </v-layout>
               </v-container>
             </v-card-text>

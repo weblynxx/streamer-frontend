@@ -126,7 +126,10 @@
     "copy": "Copy",
     "food": "Food",
     "clothes": "Clothes",
-    "choose_a_food_category": "Choose a Food Category"
+    "choose_a_food_category": "Choose a Food Category",
+    "success": {
+      "copy_streamerId": "StreamerId successfully copied."
+    }
   },
   "messages": {
     "verify_time_interval": "Enter the time interval in the format - 18:00 - 23:00",

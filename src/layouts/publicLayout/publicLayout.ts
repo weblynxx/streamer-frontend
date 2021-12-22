@@ -1,7 +1,7 @@
 import { Snackbar } from '@/shared/model/snackbar';
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { Action, namespace, State } from 'vuex-class';
+import { Action, Mutation, namespace, State } from 'vuex-class';
 import i18n from '../../i18n';
 import { localize } from 'vee-validate';
 import { Credentials } from '@/shared/model/credentials';
@@ -12,6 +12,8 @@ const publicStreamerModule = namespace('publicStreamerManagement');
 @Component
 export default class PublicLayout extends Vue {
   @State('snackbar') public stateSnackbar!: Snackbar;
+  @Mutation('setSnackbarSuccess') public setSnackbarSuccess!: any;
+  @Action('releaseSnackbar') private releaseSnackbar: any;
   @Action('setLocale') public setLocaleForVuex!: any;
 
   @publicStreamerModule.Action('getPublicStreamer')
@@ -32,6 +34,18 @@ export default class PublicLayout extends Vue {
       ' - ' +
       this.getterStreamer.to.slice(0, 5)
     );
+  }
+
+  copyToClipboard() {
+    navigator.clipboard.writeText(this.getterStreamer.streamerId).then(() => {
+      this.setSnackbarSuccess(
+        {
+          message: i18n.tc('publicStreamer_management.success.copy_streamerId'),
+          duration: 5000,
+        },
+        { root: true }
+      );
+    });
   }
 
   //#region linked services
