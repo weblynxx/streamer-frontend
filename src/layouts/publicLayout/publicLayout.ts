@@ -63,6 +63,12 @@ export default class PublicLayout extends Vue {
 
   //#endregion
 
+  //#region tabs
+
+  private tab = 0;
+
+  //#endregion
+
   get snackbar() {
     return this.stateSnackbar;
   }

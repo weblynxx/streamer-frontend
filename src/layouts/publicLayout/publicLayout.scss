@@ -47,6 +47,31 @@ body {
 .v-text-field input {
   text-align: center;
 }
+.v-tabs-font-style {
+  font-weight: 500;
+  line-height: 23, 54px;
+  letter-spacing: 0em;
+  text-transform: lowercase;
+}
+.v-tabs-font-style.v-tab span::first-letter {
+  text-transform: capitalize !important;
+}
+.v-tabs-font-style.v-tab--active {
+  color: #44413b !important;
+  font-weight: 600;
+}
+.v-tabs div[role='tablist'] {
+  background-color: transparent;
+}
+.theme--light.v-tabs-items {
+  background-color: transparent !important;
+}
+.v-slide-group__prev.v-slide-group__prev--disabled {
+  display: none !important;
+}
+.food_styles_row {
+  background: rgba(169, 162, 164, 0.3);
+}
 
 @media only screen and (min-width: 600px) and (max-width: 960px) {
   .main_login_form {

@@ -1,3 +1,6 @@
+import { Partner } from './partner';
+import { StreamerPreference } from './preference';
+
 export interface PublicStreamer {
   firstName: string;
   lastName: string;
@@ -8,6 +11,10 @@ export interface PublicStreamer {
   isStoppedDelivery: boolean;
   foodPreferenceText: string;
   clothesPreferenceText: string;
+  preferencesFood: StreamerPreference[];
+  preferencesClothes: StreamerPreference[];
+  partnersFood: Partner[];
+  partnersClothes: Partner[];
 }
 
 export interface PublicStreamerServices {}
@@ -21,4 +28,8 @@ export const PublicStreamerEmpty: PublicStreamer = {
   isStoppedDelivery: false,
   foodPreferenceText: '',
   clothesPreferenceText: '',
+  preferencesFood: [],
+  preferencesClothes: [],
+  partnersFood: [],
+  partnersClothes: [],
 };

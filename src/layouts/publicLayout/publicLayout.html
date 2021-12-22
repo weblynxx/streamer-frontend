@@ -157,7 +157,138 @@
                       </v-btn
                     ></v-flex>
                   </v-flex>
-                  
+                  <v-flex md12>
+                    <v-tabs
+                      v-model="tab"
+                      slider-size="2"
+                      background-color="transparent"
+                      style="border-bottom: 1px solid #5F5F5F; width: 92%; "
+                    >
+                      <v-tabs-slider color="#F12C5E"></v-tabs-slider>
+                      <v-tab class="v-tabs-font-style ">
+                        <span>{{ $t('publicStreamer_management.food')}}</span>
+                      </v-tab>
+                      <v-tab class="v-tabs-font-style">
+                        <span>
+                          {{ $t('publicStreamer_management.clothes')}}
+                        </span>
+                      </v-tab>
+                    </v-tabs>
+                    <v-tabs-items v-model="tab">
+                      <v-tab-item>
+                        <v-flex
+                          md12
+                          class="d-flex  rounded-lg food_styles_row mt-2"
+                        >
+                          <v-tooltip
+                            bottom
+                            v-for="item in getterStreamer.preferencesFood"
+                            :key="item.id"
+                          >
+                            <template v-slot:activator="{ on, attrs }">
+                              <v-img
+                                :src="require(`../../assets/food/${item.name}.png`)"
+                                aspect-ratio="1.0"
+                                max-width="60"
+                                max-height="60"
+                                class="d-flex ma-2"
+                                v-on="on"
+                              >
+                              </v-img>
+                            </template>
+                            <span>
+                              {{
+                              $t(`preference_management.food_category.${item.name}`)
+                              }}
+                            </span>
+                          </v-tooltip>
+                        </v-flex>
+                        <v-flex
+                          md12
+                          class="d-flex  rounded-lg food_styles_row mt-2"
+                        >
+                          <v-tooltip
+                            bottom
+                            v-for="item in getterStreamer.partnersFood"
+                            :key="item.id"
+                          >
+                            <template v-slot:activator="{ on, attrs }">
+                              <v-img
+                                :src="item.logo"
+                                aspect-ratio="1.0"
+                                max-width="60"
+                                max-height="60"
+                                class="d-flex ma-2"
+                                v-on="on"
+                              >
+                              </v-img>
+                            </template>
+                            <span>
+                              {{ item.deliveryName }}
+                            </span>
+                          </v-tooltip>
+                        </v-flex>
+                        <v-flex
+                          md12
+                          class="d-flex  rounded-lg food_styles_row mt-2"
+                        >
+                          <span class="ma-2">
+                            {{ getterStreamer.foodPreferenceText }}
+                          </span>
+                        </v-flex>
+                      </v-tab-item>
+                      <v-tab-item>
+                        <v-flex
+                          md12
+                          class="d-flex pa-2 rounded-lg food_styles_row mt-2"
+                        >
+                          <v-flex
+                            class="d-flex justify-center"
+                            md2
+                            v-for="item in getterStreamer.preferencesClothes"
+                            :key="item.id"
+                          >
+                            {{
+                            $t(`preference_management.clothes_category.${item.name}`)
+                            }}
+                          </v-flex>
+                        </v-flex>
+                        <v-flex
+                          md12
+                          class="d-flex rounded-lg food_styles_row mt-2"
+                        >
+                          <v-tooltip
+                            bottom
+                            v-for="item in getterStreamer.partnersClothes"
+                            :key="item.id"
+                          >
+                            <template v-slot:activator="{ on, attrs }">
+                              <v-img
+                                :src="item.logo"
+                                aspect-ratio="1.0"
+                                max-width="60"
+                                max-height="60"
+                                class="d-flex ma-2"
+                                v-on="on"
+                              >
+                              </v-img>
+                            </template>
+                            <span>
+                              {{ item.deliveryName }}
+                            </span>
+                          </v-tooltip>
+                        </v-flex>
+                        <v-flex
+                          md12
+                          class="d-flex  rounded-lg food_styles_row mt-2"
+                        >
+                          <span class="ma-2">
+                            {{ getterStreamer.clothesPreferenceText }}
+                          </span>
+                        </v-flex>
+                      </v-tab-item>
+                    </v-tabs-items>
+                  </v-flex>
                 </v-layout>
               </v-container>
             </v-card-text>
