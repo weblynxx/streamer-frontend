@@ -6,3 +6,8 @@
   border-radius: 10px;
   text-transform: capitalize;
 }
+@media only screen and (max-width: 600px) {
+  .clothes_checkbox .v-label {
+    font-size: 12px !important;
+  }
+}

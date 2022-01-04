@@ -10,7 +10,7 @@
   </v-card-title>
   <validation-observer ref="observer-edit-profile-form" v-slot="v">
     <v-form id="editProfile" class="form__edit" data-vv-scope="editProfile">
-      <v-card-text class="elevation-0">
+      <v-card-text class="elevation-0 py-0">
         <v-container grid-list-md>
           <v-layout wrap class="white--text">
             <v-flex xs12 md12>
@@ -28,10 +28,16 @@
               >
               </v-text-field>
             </v-flex>
-            <v-flex xs12 sm4 md4 class="d-flex justify-end">
+            <v-flex
+              xs12
+              sm4
+              md4
+              class="d-flex justify-end"
+              :class="isMobile ? 'mt-n8' : ''"
+            >
               <v-btn
                 v-t="'editProfile_management.update'"
-                x-large
+                :x-large="isMobile ? false : true"
                 class="btn_update white--text rounded-lg "
                 @click="generateNewStreamerId"
                 :disabled="isLoading"
@@ -50,10 +56,10 @@
                 v-model="tab"
                 slider-size="2"
                 background-color="transparent"
-                style="border-bottom: 1px solid #5F5F5F; width: 92%; "
+                style="border-bottom: 1px solid #5F5F5F;"
               >
                 <v-tabs-slider color="#F12C5E"></v-tabs-slider>
-                <v-tab class="v-tabs-font-style ">
+                <v-tab class="v-tabs-font-style">
                   <span>{{ $t('editProfile_management.food_preference')}}</span>
                 </v-tab>
                 <v-tab class="v-tabs-font-style">

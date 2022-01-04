@@ -3,3 +3,8 @@
   border-radius: 10px;
   text-transform: capitalize;
 }
+@media only screen and (max-width: 600px) {
+  .food_checkbox .v-label {
+    font-size: 12px !important;
+  }
+}

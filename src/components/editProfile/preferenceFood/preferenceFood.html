@@ -1,8 +1,8 @@
 <v-card class="ml-auto mr-auto elevation-0 transparent_bg">
   <validation-observer ref="observer-preference-food-form" v-slot="v">
     <v-form class="form__edit" data-vv-scope="preferenceFood">
-      <v-card-text class="elevation-0">
-        <v-container grid-list-md>
+      <v-card-text class="elevation-0 pa-0 ma-0">
+        <v-container grid-list-md class="pa-0 pt-4">
           <v-layout wrap class="white--text">
             <v-row no-gutters>
               <v-col xs="12" sm="12" md="10" lg="8">
@@ -17,8 +17,7 @@
                     :key="item.id"
                   >
                     <v-checkbox
-                      id="preference_id"
-                      class="ma-0 py-0"
+                      class="ma-0 py-0 food_checkbox"
                       v-model="selected"
                       on-icon="mdi-checkbox-intermediate"
                       color="#F12C5E"
@@ -47,7 +46,7 @@
             <v-flex md12 class="d-flex justify-end">
               <v-btn
                 v-t="'editProfile_management.update'"
-                x-large
+                :x-large="isMobile ? false : true"
                 @click="updateFoodData"
                 class="btn_update white--text rounded-lg"
                 :disabled="isLoading"

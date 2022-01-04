@@ -43,3 +43,14 @@
 .v-slide-group__prev.v-slide-group__prev--disabled {
   display: none !important;
 }
+@media only screen and (max-width: 600px) {
+  .v-tabs-font-style {
+    font-size: 12px;
+  }
+  .your_uniq_id_font {
+    font-size: 17px !important;
+  }
+  .uniq_id_info {
+    font-size: 13px;
+  }
+}

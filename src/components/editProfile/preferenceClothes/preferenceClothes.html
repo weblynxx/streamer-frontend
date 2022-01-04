@@ -1,21 +1,23 @@
 <v-card class="ml-auto mr-auto elevation-0 transparent_bg">
   <validation-observer ref="observer-preference-clothes-form" v-slot="v">
     <v-form class="form__edit" data-vv-scope="preferenceClothes">
-      <v-card-text class="elevation-0">
-        <v-container grid-list-md>
+      <v-card-text class="elevation-0 pa-0">
+        <v-container grid-list-md class="pa-0 py-4">
           <v-layout wrap class="white--text">
             <v-row no-gutters>
               <v-col xs="12" sm="12" md="10" lg="8">
                 <v-row class="ma-0 py-0">
                   <v-col
                     v-for="(item, index) in getterPreferencesClothes"
-                    xs="2"
+                    cols="6"
                     sm="4"
+                    md="4"
+                    lg="4"
                     class="ma-0 py-0"
                     :key="item.id"
                   >
                     <v-checkbox
-                      class="ma-0 py-0"
+                      class="ma-0 py-0 clothes_checkbox"
                       v-model="selected"
                       color="#F12C5E"
                       on-icon="mdi-checkbox-intermediate"
