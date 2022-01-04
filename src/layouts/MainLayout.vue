@@ -1,37 +1,44 @@
 <template>
   <v-app class="transparent_bg">
-    <v-app-bar color="transparent" flat class="mt-12">
-      <v-container class="py-0 fill-height">
+    <v-app-bar color="transparent" flat class="mt-12" style="flex:0">
+      <v-container>
         <v-row align="center">
-          <v-col align="right" cols="7">
-            <v-img
-              :src="require(`../assets/SendAD.png`)"
-              max-height="100"
-              max-width="300"
-            ></v-img>
-          </v-col>
-          <v-col align="center">
-            <v-avatar class="pa-2 cursor">
-              <v-img
-                :src="
-                  $i18n.locale == 'en'
-                    ? require(`../assets/en-flag.svg`)
-                    : require(`../assets/ru-flag.png`)
-                "
-                aspect-ratio="1.0"
-                @click="setLocale($i18n.locale == 'en' ? 'ru' : 'en')"
-                max-height="32"
-              ></v-img>
-            </v-avatar>
-            <span class="white--text">{{
-              $i18n.locale == 'en' ? 'English' : 'Русский'
-            }}</span></v-col
+          <v-flex
+            md12
+            class="d-flex d-flex-inline offset-sm-3 offset-md-3 offset-lg-3"
           >
+            <v-flex md6 class="d-flex justify-center offset-1">
+              <div class="white--text logo" data-end="Fans  ">From</div>
+            </v-flex>
+            <v-row align="center" justify="end">
+              <v-col cols="12">
+                <v-flex md12 class="d-flex d-flex-inline ">
+                  <v-flex md4 class="d-flex ml-auto mr-auto">
+                    <v-avatar class="pa-2 mt-2 cursor">
+                      <v-img
+                        :src="
+                          $i18n.locale == 'en'
+                            ? require(`../assets/en-flag.svg`)
+                            : require(`../assets/ru-flag.png`)
+                        "
+                        aspect-ratio="1.0"
+                        @click="setLocale($i18n.locale == 'en' ? 'ru' : 'en')"
+                        max-height="32"
+                      ></v-img>
+                    </v-avatar>
+                    <span v-if="!isMobile" class="white--text mt-5">{{
+                      $i18n.locale == 'en' ? 'English' : 'Русский'
+                    }}</span>
+                  </v-flex>
+                </v-flex>
+              </v-col>
+            </v-row>
+          </v-flex>
         </v-row>
       </v-container>
     </v-app-bar>
     <v-main>
-      <v-container class="mb-10">
+      <v-container>
         <v-row>
           <v-col cols="12" xs="12" sm="4" md="4" lg="3" xl="3">
             <v-card
@@ -150,12 +157,7 @@
             </v-flex>
           </v-col>
           <v-col cols="12" xs="12" sm="8" md="8" lg="8" xl="6">
-            <v-card
-              min-height="50vh"
-              rounded="lg"
-              color="transparent"
-              class="elevation-0"
-            >
+            <v-card rounded="lg" color="transparent" class="elevation-0">
               <router-view></router-view>
             </v-card>
           </v-col>
@@ -200,9 +202,8 @@ body {
   background-color: transparent !important;
 }
 .logo {
-  font-family: Gilroy;
-  font-size: 100px;
   font-style: normal;
+  font-size: 70px !important;
   font-weight: 900;
   line-height: 125px;
   letter-spacing: 0em;
@@ -210,7 +211,7 @@ body {
 }
 .logo::after {
   content: attr(data-end);
-  color: #fea116;
+  color: #f12c5e;
 }
 .cursor {
   cursor: pointer;
@@ -243,6 +244,21 @@ body {
   }
   .logout {
     font-size: 15px;
+  }
+}
+@media only screen and (max-width: 1264px) {
+  .logo {
+    font-size: 60px !important;
+  }
+}
+@media only screen and (max-width: 960px) {
+  .logo {
+    font-size: 50px !important;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .logo {
+    font-size: 40px !important;
   }
 }
 </style>

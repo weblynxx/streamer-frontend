@@ -146,7 +146,7 @@ body {
 }
 .logo::after {
   content: attr(data-end);
-  color: #fea116;
+  color: #f12c5e;
 }
 .cursor {
   cursor: pointer;
