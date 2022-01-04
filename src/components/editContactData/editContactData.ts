@@ -47,4 +47,8 @@ export default class EditContactDataComponent extends Vue {
       this.isLoading = false;
     });
   }
+
+  get isMobile() {
+    return this.$vuetify.breakpoint.xsOnly;
+  }
 }

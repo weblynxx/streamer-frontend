@@ -10,7 +10,7 @@
   </v-card-title>
   <validation-observer ref="observer-edit-contact-data-form" v-slot="v">
     <v-form id="editContactData" data-vv-scope="editContactData">
-      <v-card-text class="elevation-0">
+      <v-card-text class="elevation-0 pa-0">
         <v-container grid-list-md>
           <v-layout wrap>
             <v-flex xs6 md6>
@@ -171,7 +171,7 @@
               <v-btn
                 v-t="$t('app.actions.save')"
                 @click="save"
-                x-large
+                :x-large="isMobile ? false : true"
                 :disabled="isLoading"
                 :loading="isLoading"
                 class="btn_update px-10 rounded-lg white--text"
