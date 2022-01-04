@@ -13,7 +13,7 @@
           <v-col cols="12">
             <v-flex md12 class="d-flex d-flex-inline ">
               <v-flex md4 class="d-flex ml-auto mr-auto">
-                <v-avatar class="pa-2 cursor">
+                <v-avatar class="pa-2 mt-2 cursor">
                   <v-img
                     :src="$i18n.locale =='en' ? require(`../../assets/en-flag.svg`) : require(`../../assets/ru-flag.png`)"
                     aspect-ratio="1.0"
@@ -21,7 +21,7 @@
                     max-height="32"
                   ></v-img>
                 </v-avatar>
-                <span class="white--text mt-3"
+                <span v-if="!isMobile" class="white--text mt-5"
                   >{{$i18n.locale =='en' ? 'English' : 'Русский'}}</span
                 >
               </v-flex>
@@ -34,15 +34,13 @@
   <v-row>
     <v-col>
       <v-row justify="center">
-        <v-col cols="12" xs="12" sm="8" md="5" lg="4">
+        <v-col cols="12" xs="12" sm="8" md="8" lg="4">
           <v-card class="ml-auto mr-auto main_login_form" color="#E8E8E8">
             <v-card-text>
               <v-tabs
                 v-model="tab"
-                :class="!isMobile ? 'mb-2 ml-4' :'mx-5'"
-                :fixed-tabs="isMobile"
                 slider-size="2"
-                style="border-bottom: 1px solid #5F5F5F; width: 92%;"
+                style="border-bottom: 1px solid #5F5F5F;"
               >
                 <v-tabs-slider color="#F12C5E"></v-tabs-slider>
                 <v-tab
@@ -61,7 +59,7 @@
                   <!--  -->
                   <!-- Login -->
                   <!--  -->
-                  <v-tab-item class="pa-3">
+                  <v-tab-item class="pt-3">
                     <validation-provider
                       name="login"
                       :name="$t('auth_management.login')"
@@ -101,7 +99,7 @@
                         :disabled="isLoading"
                         :loading="isLoading"
                         dense
-                        class="btn_log_in ml-auto mr-auto white--text px-12 py-5 mb-6 mt-2"
+                        class="btn_log_in ml-auto mr-auto white--text px-12 "
                         color="#F12C5E"
                         @click="login"
                         >{{$t('auth_management.log_in') }}</v-btn
@@ -113,7 +111,7 @@
                   <!--  -->
                   <!-- Registration form -->
                   <!--  -->
-                  <v-tab-item>
+                  <v-tab-item class="pt-3">
                     <validation-provider
                       name="email"
                       rules="required|email"
@@ -200,7 +198,7 @@
                       <v-btn
                         :disabled="isLoading"
                         :loading="isLoading"
-                        class="btn_log_in ml-auto mr-auto white--text px-12 py-5 mb-6 mt-2"
+                        class="btn_log_in ml-auto mr-auto white--text px-12"
                         color="#F12C5E"
                         @click="create"
                         >{{$t('auth_management.register')}}</v-btn
