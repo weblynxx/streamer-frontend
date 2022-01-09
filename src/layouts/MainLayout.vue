@@ -1,5 +1,143 @@
 <template>
   <v-app class="transparent_bg">
+    <v-dialog
+      v-model="showFileUploadDialog"
+      class="file__upload_dialog"
+      :max-width="800"
+      persistent
+    >
+      <v-card>
+        <v-card-title>
+          Upload company logo
+        </v-card-title>
+        <v-card-text>
+          <v-file-input
+            id="file__upload__input"
+            :show-size="1024"
+            label="filename"
+            hint="Please select png file"
+            :persistent-hint="true"
+            name="cv"
+            v-model="cv"
+            prepend-inner-icon="mdi-paperclip"
+            prepend-icon=""
+            accept=".png"
+            @change="onChange"
+          >
+          </v-file-input>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            id="document__upload__close__btn"
+            color="error"
+            text
+            @click="clickClose"
+            v-t="$t('app.actions.cancel')"
+          >
+          </v-btn>
+          <v-btn
+            id="document-upload__upload__btn"
+            color="primary"
+            text
+            :disabled="!hasFile || isLoading"
+            @click="uploadImage"
+            v-t="$t('app.actions.save')"
+          >
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <v-dialog
+      persistent
+      v-model="dialog"
+      @keydown.esc="close"
+      max-width="700px"
+    >
+      <v-card>
+        <v-toolbar dark color="" class="elevation-0">
+          <v-toolbar-title>{{
+            $t('home_management.settings')
+          }}</v-toolbar-title>
+        </v-toolbar>
+        <v-card-text class="pt-4">
+          <validation-observer ref="observer-settings-form">
+            <validation-provider
+              name="login"
+              mode="lazy"
+              :rules="
+                `required|max:32|verify_already_exist_username:${currentUser.id}`
+              "
+              v-slot="{ errors }"
+            >
+              <v-text-field
+                :label="$t('auth_management.login')"
+                color="#55597D"
+                outlined
+                class="rounded-lg"
+                v-model="currentUser.userName"
+                background-color="rgba(169, 162, 164, 0.3)"
+                :error-messages="errors[0]"
+              ></v-text-field>
+            </validation-provider>
+
+            <validation-provider
+              name="firstName"
+              rules="required"
+              v-slot="{ errors }"
+            >
+              <v-text-field
+                :label="$t('auth_management.first_name')"
+                v-model="currentUser.firstName"
+                outlined
+                class="rounded-lg"
+                color="#55597D"
+                background-color="rgba(169, 162, 164, 0.3)"
+                :error-messages="errors[0]"
+              ></v-text-field>
+            </validation-provider>
+            <validation-provider
+              name="lastName"
+              rules="required"
+              v-slot="{ errors }"
+            >
+              <v-text-field
+                :label="$t('auth_management.last_name')"
+                v-model="currentUser.lastName"
+                outlined
+                class="rounded-lg"
+                color="#55597D"
+                background-color="rgba(169, 162, 164, 0.3)"
+                :error-messages="errors[0]"
+              ></v-text-field>
+            </validation-provider>
+            <v-btn
+              v-t="'home_management.change_logo'"
+              color="#F12C5E"
+              @click="showFileUploadDialog = true"
+            ></v-btn>
+          </validation-observer>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+
+          <v-btn
+            v-t="'app.actions.cancel'"
+            color="error"
+            class="white--text px-12 "
+            @click="close"
+          ></v-btn>
+          <v-btn
+            v-t="'app.actions.save'"
+            class="white--text px-12"
+            color="primary"
+            :disabled="isLoading"
+            :loading="isLoading"
+            @click="updateProfile"
+          ></v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
     <v-app-bar color="transparent" flat class="mt-12" style="flex:0">
       <v-container>
         <v-row align="center">
@@ -50,9 +188,7 @@
                   <v-col>
                     <v-flex class="d-flex d-flex-inline">
                       <v-avatar color="indigo" max-height="60" max-width="60">
-                        <v-icon dark>
-                          mdi-account-circle
-                        </v-icon>
+                        <v-img :src="getterLogo"> </v-img>
                       </v-avatar>
                       <v-flex
                         class="d-flex black--text profile_form_text ml-4 mt-2"
@@ -78,6 +214,8 @@
                         :src="require(`../assets/setting.png`)"
                         max-width="30"
                         max-height="30"
+                        class="cursor"
+                        @click="dialog = true"
                       >
                       </v-img>
                     </v-flex>
@@ -270,8 +408,11 @@ import { Action, namespace, State } from 'vuex-class';
 import i18n from '../i18n';
 import { localize } from 'vee-validate';
 import { Credentials } from '@/shared/model/credentials';
+import { editProfileManagement } from '@/shared/store/modules/editProfileManagement';
+import { Ref } from 'vue-property-decorator';
 
 const authModule = namespace('authManagement');
+const editProfileManagementModule = namespace('editProfileManagement');
 
 @Component
 export default class MainLayout extends Vue {
@@ -281,6 +422,12 @@ export default class MainLayout extends Vue {
     return this.stateSnackbar;
   }
   @Action('setLocale') public setLocaleForVuex!: any;
+
+  @Ref('observer-settings-form') private observerForm!: any;
+
+  mounted() {
+    this.actionGetLogo();
+  }
 
   private setLocale(locale: string) {
     this.$i18n.locale = locale;
@@ -301,12 +448,78 @@ export default class MainLayout extends Vue {
       title: 'Welcome to Vuetify!',
     };
   }
-  private window = 0;
+  private dialog = false;
 
   private logout() {
     this.actionLogout().then((result: any) => {
       this.$router.push('/login');
     });
   }
+  private close() {
+    this.dialog = false;
+  }
+  private isLoading = false;
+
+  @editProfileManagementModule.Action('updateProfile')
+  private actionUpdateProfile!: any;
+
+  private async updateProfile() {
+    this.isLoading = true;
+    const result = await this.observerForm.validate();
+    if (!result) {
+      this.isLoading = false;
+      return;
+    }
+    this.actionUpdateProfile(this.currentUser).then(() => {
+      this.isLoading = false;
+      this.close();
+    });
+  }
+
+  //#region upload image
+
+  private showFileUploadDialog = false;
+
+  changeMainImage() {
+    this.showFileUploadDialog = true;
+  }
+
+  cv: any = null;
+  private hasFile = false;
+
+  private onChange(e: any) {
+    const isInputHasFile = e && e.name ? true : false;
+    this.hasFile = isInputHasFile;
+  }
+
+  @editProfileManagementModule.Action('uploadLogo')
+  private actionUploadImage!: any;
+  @editProfileManagementModule.Action('getLogo')
+  private actionGetLogo!: any;
+  @editProfileManagementModule.Getter('logo')
+  private getterLogo!: any;
+
+  async uploadImage(payload: any) {
+    this.isLoading = true;
+    await this.actionUploadImage({
+      file: this.cv,
+      targetFolder: 'logo',
+    })
+      .then((result: string) => {
+        payload.id = result;
+        this.actionGetLogo();
+      })
+      .finally(() => {
+        this.isLoading = false;
+        this.cv = null;
+        this.showFileUploadDialog = false;
+      });
+  }
+
+  clickClose() {
+    this.showFileUploadDialog = false;
+  }
+
+  //#endregion
 }
 </script>

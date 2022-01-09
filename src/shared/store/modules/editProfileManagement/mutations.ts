@@ -15,4 +15,7 @@ export const mutations: MutationTree<EditProfileManagementState> = {
     const initState = initialState();
     Object.assign(state, initState);
   },
+  setLogo(state: EditProfileManagementState, payload: string) {
+    state.logo = payload;
+  },
 };

@@ -27,7 +27,9 @@
     "integrations": "Интеграции",
     "contact_data": "Контактные данные",
     "my_restaurants": "Мои рестораны",
-    "delivery_time": "Время доставки"
+    "delivery_time": "Время доставки",
+    "settings": "Настройки",
+    "change_logo": "Изменить аватар"
   },
   "editProfile_management": {
     "profile": "Профиль",

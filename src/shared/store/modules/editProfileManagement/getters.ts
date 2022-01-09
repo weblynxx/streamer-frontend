@@ -7,4 +7,7 @@ export const getters: GetterTree<EditProfileManagementState, RootState> = {
   currentUser(state): Streamer | undefined {
     return state.currentUser;
   },
+  logo(state): string | '' {
+    return state.logo;
+  },
 };

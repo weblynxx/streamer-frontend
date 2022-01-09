@@ -9,4 +9,5 @@ export const initialState = (): EditProfileManagementState => ({
   },
   isLoadingCurrentUser: false,
   newPassword: '',
+  logo: '',
 });

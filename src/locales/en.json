@@ -27,7 +27,9 @@
     "integrations": "Integrations",
     "contact_data": "Contact data",
     "my_restaurants": "My restaurants",
-    "delivery_time": "Delivery time"
+    "delivery_time": "Delivery time",
+    "settings": "Settings",
+    "change_logo": "Change logo"
   },
   "editProfile_management": {
     "profile": "Profile",

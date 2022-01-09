@@ -14,6 +14,8 @@ export interface BackendStreamers {
   isUniqueEmail(email: string): AxiosPromise;
   generateNewStreamerId(): AxiosPromise;
   returnNewPassword(): AxiosPromise<Password>;
+  uploadLogo(payload: any): AxiosPromise<any>;
+  getLogo(): AxiosPromise<any>;
 }
 
 export const defaultBackendStreamers: BackendStreamers = {
@@ -69,5 +71,11 @@ export const defaultBackendStreamers: BackendStreamers = {
   },
   returnNewPassword(): AxiosPromise {
     return instance.post(`${URLS.streamers}/returnNewPassword`);
+  },
+  uploadLogo(payload: any): AxiosPromise<any> {
+    return instance.post<any>(`${URLS.streamers}/UploadLogo`, payload);
+  },
+  getLogo(): AxiosPromise<any> {
+    return instance.get<any>(`${URLS.streamers}/GetLogo`);
   },
 };

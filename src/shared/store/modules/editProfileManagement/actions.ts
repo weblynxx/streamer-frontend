@@ -179,7 +179,7 @@ export const actions: ActionTree<EditProfileManagementState, RootState> = {
         commit(
           'setSnackbarSuccess',
           {
-            message: `employee_management.success.update_employee`,
+            message: i18n.tc(`editProfile_management.success.update_profile`),
             duration: 5000,
           },
           { root: true }
@@ -190,7 +190,7 @@ export const actions: ActionTree<EditProfileManagementState, RootState> = {
       commit(
         'setSnackbarError',
         {
-          message: `employee_management.error.update_employee`,
+          message: i18n.tc(`editProfile_management.error.update_profile`),
           duration: 5000,
         },
         { root: true }
@@ -201,5 +201,43 @@ export const actions: ActionTree<EditProfileManagementState, RootState> = {
     return await defaultBackendStreamers.returnNewPassword().then(response => {
       commit('setNewPassword', response.data);
     });
+  },
+  async uploadLogo({ commit }, payload: { file: any; targetFolder: string }) {
+    try {
+      const data = new FormData();
+      data.append('File', payload.file);
+      data.append('TargetFolder', payload.targetFolder);
+
+      //TODO uploading progress
+      await defaultBackendStreamers.uploadLogo(data);
+    } catch (e) {
+      console.log(e);
+      commit(
+        'setSnackbarError',
+        {
+          message: i18n.tc(`error.load_data_failed`),
+          duration: 5000,
+        },
+        { root: true }
+      );
+    }
+  },
+
+  async getLogo({ commit }) {
+    try {
+      const logo: string = (await defaultBackendStreamers.getLogo()).data;
+      commit('setLogo', logo);
+    } catch (e) {
+      console.log(e);
+      commit('setLogo', initialState().logo);
+      commit(
+        'setSnackbarError',
+        {
+          message: `error.load_data_failed`,
+          duration: 5000,
+        },
+        { root: true }
+      );
+    }
   },
 };
