@@ -114,6 +114,7 @@
             <v-btn
               v-t="'home_management.change_logo'"
               color="#F12C5E"
+              class="white--text"
               @click="showFileUploadDialog = true"
             ></v-btn>
           </validation-observer>
