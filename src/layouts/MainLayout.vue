@@ -1,19 +1,14 @@
 <template>
   <v-app class="transparent_bg">
-    <v-dialog
-      v-model="showFileUploadDialog"
-      class="file__upload_dialog"
-      :max-width="800"
-      persistent
-    >
+    <v-dialog v-model="showFileUploadDialog" :max-width="800" persistent>
       <v-card>
         <v-card-title>
-          Upload company logo
+          Загрузить аватар
         </v-card-title>
         <v-card-text>
           <v-file-input
             id="file__upload__input"
-            :show-size="1024"
+            :show-size="7000"
             label="filename"
             hint="Please select png file"
             :persistent-hint="true"
@@ -125,12 +120,12 @@
           <v-btn
             v-t="'app.actions.cancel'"
             color="error"
-            class="white--text px-12 "
+            class="white--text px-10"
             @click="close"
           ></v-btn>
           <v-btn
             v-t="'app.actions.save'"
-            class="white--text px-12"
+            class="white--text px-10"
             color="primary"
             :disabled="isLoading"
             :loading="isLoading"
@@ -441,7 +436,7 @@ export default class MainLayout extends Vue {
     return this.$vuetify.breakpoint.xsOnly;
   }
   @authModule.Action('logout') private actionLogout: any;
-  @authModule.Getter('getUser') private currentUser!: Credentials;
+  @authModule.Getter('getUser') private currentUser!: any;
 
   get message() {
     return {
