@@ -8,6 +8,7 @@ import { Credentials } from '@/shared/model/credentials';
 import { PublicStreamer } from '@/shared/model/publicStreamer';
 
 const publicStreamerModule = namespace('publicStreamerManagement');
+const editProfileManagementModule = namespace('editProfileManagement');
 
 @Component
 export default class PublicLayout extends Vue {
@@ -21,11 +22,17 @@ export default class PublicLayout extends Vue {
   @publicStreamerModule.Getter('getStreamer')
   private getterStreamer!: PublicStreamer;
 
+  @editProfileManagementModule.Action('getLogo')
+  private actionGetLogo!: any;
+  @editProfileManagementModule.Getter('logo')
+  private getterLogo!: any;
+
   mounted() {
     let username = this.$route.params.username;
     if (username != '') {
       this.actionGetPublicStreamer(username);
     }
+    this.actionGetLogo();
   }
 
   get timeDelivery() {
