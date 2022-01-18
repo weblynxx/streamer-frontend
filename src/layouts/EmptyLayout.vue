@@ -19,7 +19,6 @@
   </v-app>
 </template>
 <style>
-@import url('../style/fonts/Gilroy/stylesheet.css');
 html,
 body {
   margin: 0;
@@ -31,21 +30,11 @@ body {
   background-size: cover;
 }
 
-body {
-  font-family: 'Gilroy', sans-serif !important;
-  font: optional;
-}
 .v-text-field fieldset {
   border: none !important;
 }
 </style>
-<style>
-@font-face {
-  font-family: 'Gilroy';
-  src: local('../style/fonts/Gilroy/stylesheet.css'),
-    url(../style/fonts/Gilroy/Gilroy-Light.ttf) format('truetype');
-}
-</style>
+//
 <script lang="ts">
 import router from '@/router';
 import { Snackbar } from '@/shared/model/snackbar';
