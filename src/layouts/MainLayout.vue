@@ -187,7 +187,8 @@
                         <v-img :src="getterLogo"> </v-img>
                       </v-avatar>
                       <v-flex
-                        class="d-flex black--text profile_form_text ml-4 mt-2"
+                        class="d-flex text-lg-subtitle-1 black--text profile_form_text ml-4 mt-2 "
+                        style="font-family: 'Gilroy', sans-serif !important;"
                       >
                         {{
                           currentUser.lastName + ', ' + currentUser.firstName
@@ -318,7 +319,6 @@
   </v-app>
 </template>
 <style>
-@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
 html,
 body {
   margin: 0;
@@ -329,9 +329,7 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
-body {
-  font-family: 'Exo', sans-serif;
-}
+
 .transparent_bg {
   background-color: transparent !important;
 }
@@ -351,8 +349,8 @@ body {
   cursor: pointer;
 }
 .profile_form_text {
-  font-size: 20px;
-  font-weight: 500;
+  font-family: 'Gilroy', sans-serif !important;
+  font-weight: 500 !important;
   line-height: 35px;
   text-align: left;
 }
