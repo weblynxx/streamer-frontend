@@ -223,9 +223,10 @@ export const actions: ActionTree<EditProfileManagementState, RootState> = {
     }
   },
 
-  async getLogo({ commit }) {
+  async getLogo({ commit }, username?: string) {
     try {
-      const logo: string = (await defaultBackendStreamers.getLogo()).data;
+      const logo: string = (await defaultBackendStreamers.getLogo(username))
+        .data;
       commit('setLogo', logo);
     } catch (e) {
       console.log(e);

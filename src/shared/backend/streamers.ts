@@ -2,6 +2,7 @@ import { AxiosPromise } from 'axios';
 import { instance } from '.';
 import { URLS } from './index';
 import { Password, Streamer } from '../model/user';
+import AuthorityUtils from './authorityUtils';
 
 export interface BackendStreamers {
   updateStreamer(user: Streamer): AxiosPromise<Streamer>;
@@ -15,7 +16,7 @@ export interface BackendStreamers {
   generateNewStreamerId(): AxiosPromise;
   returnNewPassword(): AxiosPromise<Password>;
   uploadLogo(payload: any): AxiosPromise<any>;
-  getLogo(): AxiosPromise<any>;
+  getLogo(username?: string): AxiosPromise<any>;
 }
 
 export const defaultBackendStreamers: BackendStreamers = {
@@ -75,7 +76,12 @@ export const defaultBackendStreamers: BackendStreamers = {
   uploadLogo(payload: any): AxiosPromise<any> {
     return instance.post<any>(`${URLS.streamers}/UploadLogo`, payload);
   },
-  getLogo(): AxiosPromise<any> {
+  getLogo(username?: string): AxiosPromise<any> {
+    if (AuthorityUtils.isEmptyAccount()) {
+      return instance.get<any>(
+        `${URLS.streamers}/GetLogoByUserName/${username}`
+      );
+    }
     return instance.get<any>(`${URLS.streamers}/GetLogo`);
   },
 };
