@@ -21,13 +21,7 @@ module.exports = {
       enableInSFC: true,
     },
   },
-  pwa: {
-    workboxPluginMode: 'InjectManifest',
-    workboxOptions: {
-      swSrc: './src/sw.js',
-      swDest: 'service-worker.js',
-    },
-  },
+
   transpileDependencies: ['vuetify'],
   devServer: {
     host: '0.0.0.0',
