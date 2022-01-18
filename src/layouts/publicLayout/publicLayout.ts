@@ -31,8 +31,8 @@ export default class PublicLayout extends Vue {
     let username = this.$route.params.username;
     if (username != '') {
       this.actionGetPublicStreamer(username);
+      this.actionGetLogo(username);
     }
-    this.actionGetLogo();
   }
 
   get timeDelivery() {
