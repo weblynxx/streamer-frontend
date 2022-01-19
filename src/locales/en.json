@@ -51,6 +51,7 @@
   },
   "editServices_management": {
     "integrations": "Integration in social networks",
+    "text": "Links to linked social networks will be displayed in the public profile, as well as integration allows you to confirm the original page of the author",
     "link": "Link"
   },
   "editContactData_management": {
@@ -98,6 +99,8 @@
       "bakery_products": "Bakery products",
       "burgers": "Burgers"
     },
+    "food_description": "Here you can choose your preferred food categories so that your fans can choose a restaurant based on their",
+    "clothes_description": "Here you can choose your preferred food categories so that your fans can choose a restaurant based on their",
     "clothes_category": {
       "footwear": "Footwear",
       "head": "Head",

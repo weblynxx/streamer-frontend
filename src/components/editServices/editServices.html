@@ -5,7 +5,18 @@
 >
   <v-card-title class="black--text profile_font">
     <v-spacer></v-spacer>
-    {{ $t('editServices_management.integrations') }}
+    <v-tooltip bottom max-width="600" color="white">
+      <template v-slot:activator="{ on, attrs }">
+        <span v-bind="attrs" v-on="on">
+          {{ $t('editServices_management.integrations') }}
+          <span style="color: #F12C5E;">*</span>
+        </span>
+      </template>
+      <span class="black--text pl-12 text-center">
+        {{ $t('editServices_management.text') }}
+      </span>
+    </v-tooltip>
+
     <v-spacer></v-spacer>
   </v-card-title>
   <v-card-text class="elevation-0 py-12 pl-0">

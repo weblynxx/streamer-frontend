@@ -29,6 +29,25 @@
                 </v-row>
               </v-col>
             </v-row>
+            <v-flex xs12 md12 class="text-right mt-n12">
+              <v-tooltip bottom max-width="600" color="white">
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn
+                    fab
+                    small
+                    color="#F12C5E"
+                    class="white--text ml-auto"
+                    v-bind="attrs"
+                    v-on="on"
+                  >
+                    ?
+                  </v-btn>
+                </template>
+                <span class="black--text"
+                  >{{ $t('preference_management.clothes_description')}}</span
+                >
+              </v-tooltip>
+            </v-flex>
             <v-flex xs12 md12>
               <validation-provider rules="max:255" v-slot="{ errors }">
                 <v-textarea
