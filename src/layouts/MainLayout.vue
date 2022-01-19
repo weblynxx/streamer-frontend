@@ -182,17 +182,29 @@
               <v-card-text>
                 <v-row align="center" justify="center">
                   <v-col>
-                    <v-flex class="d-flex d-flex-inline">
-                      <v-avatar color="indigo" max-height="60" max-width="60">
+                    <v-flex class="d-flex">
+                      <v-avatar color="indigo">
                         <v-img :src="getterLogo"> </v-img>
                       </v-avatar>
                       <v-flex
-                        class="d-flex text-lg-subtitle-1 black--text profile_form_text ml-4 mt-2 "
+                        class="d-flex flex-column text-lg-subtitle-1 black--text profile_form_text justify-center"
                         style="font-family: 'Gilroy', sans-serif !important;"
                       >
-                        {{
-                          currentUser.lastName + ', ' + currentUser.firstName
-                        }}
+                        <v-flex class="d-flex justify-center">
+                          {{
+                            currentUser.lastName + ', ' + currentUser.firstName
+                          }}
+                        </v-flex>
+                        <v-flex class="d-flex justify-center">
+                          <a
+                            id="publicUrl"
+                            :href="getLinkForPublicProfile"
+                            style="color:inherit;"
+                            target="_blank"
+                            class="d-flex black--text "
+                            >Публичный профиль
+                          </a>
+                        </v-flex>
                       </v-flex>
                     </v-flex>
                   </v-col>
@@ -216,6 +228,14 @@
                       >
                       </v-img>
                     </v-flex>
+                  </v-col>
+                </v-row>
+                <v-row no-gutters>
+                  <v-col align="center">
+                    <v-img
+                      class="mx-10"
+                      :src="require(`../assets/line_1.png`)"
+                    ></v-img>
                   </v-col>
                 </v-row>
               </v-card-text>
@@ -345,6 +365,17 @@ body {
   content: attr(data-end);
   color: #f12c5e;
 }
+.public_url {
+  letter-spacing: 0em;
+  text-align: left;
+}
+.public_url::after {
+  content: attr(data-end);
+  color: #f12c5e;
+}
+#publicUrl {
+  text-decoration: none;
+}
 .cursor {
   cursor: pointer;
 }
@@ -442,6 +473,11 @@ export default class MainLayout extends Vue {
       title: 'Welcome to Vuetify!',
     };
   }
+
+  get getLinkForPublicProfile() {
+    return `${process.env.VUE_APP_TWITCH_REDIRECT}/streamer/${this.currentUser.userName}`;
+  }
+
   private dialog = false;
 
   private logout() {
