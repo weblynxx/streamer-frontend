@@ -195,7 +195,7 @@
                             currentUser.lastName + ', ' + currentUser.firstName
                           }}
                         </v-flex>
-                        <v-flex class="d-flex justify-center">
+                        <v-flex class="d-flex justify-center text-center">
                           <a
                             id="publicUrl"
                             :href="getLinkForPublicProfile"
