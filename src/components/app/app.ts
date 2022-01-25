@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import EmptyLayout from '@/layouts/EmptyLayout.vue';
+import EmptyLayout from '@/layouts/emptyLayout/emptyLayout.vue';
 import MainLayout from '@/layouts/MainLayout.vue';
 import AdminLayout from '@/layouts/AdminLayout.vue';
 import PublicLayout from '@/layouts/publicLayout/publicLayout.vue';

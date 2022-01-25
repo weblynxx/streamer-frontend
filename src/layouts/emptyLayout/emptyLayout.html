@@ -1,0 +1,24 @@
+<div>
+  <v-app class="transparent_bg">
+    <div class="circle-container" v-for="index in 100" :key="index">
+      <div class="circle"></div>
+    </div>
+
+    <router-view></router-view>
+    <v-snackbar
+      top
+      v-model="snackbar.show"
+      :color="snackbar.color"
+      :timeout="snackbar.duration"
+      right
+    >
+      {{ snackbar.text }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn dark text v-bind="attrs" @click="releaseSnackbar()">
+          Ok
+        </v-btn>
+      </template>
+    </v-snackbar>
+  </v-app>
+</div>
